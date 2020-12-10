@@ -2,7 +2,7 @@ package domain;
 
 public class Pizza {
 
-    private int pizzaId;  // Id i databasen
+    private int pizzaId;  // Id i database
     private int pizzaNo;
     private String name;
     private String ingredients;
