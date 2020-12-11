@@ -1,8 +1,10 @@
 package ui;
 
 import domain.Pizza;
+import domain.Order;
 import persistence.Database;
 import persistence.DbMenuCardMapper;
+import persistence.DbOrderMapper;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class MainMenu {
 
     private Database database = new Database(USER, PASSWORD, URL);
     private DbMenuCardMapper dbMenuCardMapper = new DbMenuCardMapper(database);
+    private DbOrderMapper dbOrderMapper = new DbOrderMapper(database);
 
     public void mainMenuLoop() {
 
@@ -21,13 +24,14 @@ public class MainMenu {
 
         while (running) {
             showMenu();
-            switch(Input.getInt("Vælg 1-6: ")){
+            switch(Input.getInt("Vælg 1-7: ")){
                 case 1: showMenuCard(); break;
                 case 2: showSinglePizza(); break;
                 case 3: deletePizza(); break;
                 case 4: insertPizza(); break;
                 case 5: updatePizza(); break;
-                case 6: running = false; break;
+                case 6: dbOrderMapper.getAllOrders();
+                case 7: running = false; break;
             }
         }
         System.out.println("Tak for denne gang!");
