@@ -49,6 +49,49 @@ public class DbOrderMapper {
         return orderList;
     }
 
+    public Order insertOrder(Order order) {
+        boolean result = false;
+        int newId = 0;
+
+//        genereret i workbench
+//        INSERT INTO `mario`.`order` (`order_nr`, `pizza_id`, `amount`, `pickup_time`, `order_time`, `custemor_name`, `phone`, `remove`)
+//        VALUES ('6', '3', '2', '1245', '2020-12-11 08:48:19.00', 'Preben', '666', '1');
+        String sql = "INSERT INTO `mario`.`order` (`pizza_id`, `amount`, `remove`) " +
+                "values (?, ?, ?)";
+        try (Connection connection = database.connect()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+//                ps.setInt(1, order.getOrderNr());
+                ps.setInt(1, order.getPizzaId());
+                ps.setInt(2, order.getAmount());
+//                //                Måske virker det at bruge setTimestamp - vi har brug for noget der returnerer af datatypen timestamp
+//                ps.setInt(4, order.getPickuptime());
+//                ps.setTimestamp(5, order.getOrdertime());
+//                ps.setString(6, order.getCustomerName());
+//                ps.setString(7, order.getPhone());
+                ps.setBoolean(3, order.isRemove());
+
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1) {
+                    result = true;
+                }
+
+                ResultSet idResultset = ps.getGeneratedKeys();
+                if (idResultset.next()) {
+                    newId = idResultset.getInt(1);
+                    order.setOrderNr(newId);
+                } else {
+                    order = null;
+                }
+            } catch (SQLException throwables) {
+                // TODO: Make own throwable exception and let it bubble upwards
+                throwables.printStackTrace();
+            }
+        } catch (SQLException throwables) {
+            // TODO: Make own throwable exception and let it bubble upwards
+            throwables.printStackTrace();
+        }
+        return order;
+    }
 //    public Order (int pizzaNo) {
 //        Pizza pizza = null;
 //        String sql = "select * from pizza where pizza_no = ?";
