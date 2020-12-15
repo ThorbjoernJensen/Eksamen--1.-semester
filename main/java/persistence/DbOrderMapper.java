@@ -54,18 +54,15 @@ public class DbOrderMapper {
         int newId = 0;
 
 //
-        String sql = "INSERT INTO mario.order ( pizza_id, amount, pickup_time, order_time, custemor_name, phone, remove) " +
-                "values (?, ?, ?,NOW(),?,?,?)";
+        String sql = "INSERT INTO mario.order ( pizza_id, amount, pickup_time, order_time, custemor_name, phone, remove) values (?, ?, ?,NOW(),?,?,?)";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                //ps.setInt(1, order.getOrderNr());
                 ps.setInt(1, order.getPizzaId());
                 ps.setInt(2, order.getAmount());
                 ps.setInt(3, order.getPickuptime());
-                ps.setTimestamp(4, order.getOrdertime());
-                ps.setString(5, order.getCustomerName());
-                ps.setString(6, order.getPhone());
-                ps.setBoolean(7, order.isRemove());
+                ps.setString(4, order.getCustomerName());
+                ps.setString(5, order.getPhone());
+                ps.setBoolean(6, order.isRemove());
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {

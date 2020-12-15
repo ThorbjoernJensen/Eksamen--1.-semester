@@ -29,6 +29,23 @@ public class Order {
         this.phone = phone;
     }
 
+    public Order(int pizzaId, int amount, int pickuptime, String custemorName, String phone) {
+        this.pizzaId = pizzaId;
+        this.amount = amount;
+        this.pickuptime = pickuptime;
+        this.custemorName = custemorName;
+        this.phone = phone;
+    }
+
+    public Order(int pizzaId, int amount, int pickuptime, Timestamp ordertime, String custemorName, String phone, boolean remove) {
+        this.pizzaId = pizzaId;
+        this.amount = amount;
+        this.pickuptime = pickuptime;
+        this.ordertime = ordertime;
+        this.custemorName = custemorName;
+        this.phone = phone;
+        this.remove = remove;
+    }
 
     public int getOrderNr() {
         return orderNr;

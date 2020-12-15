@@ -151,7 +151,7 @@ public class MainMenu {
         Pizza chosenPizza = dbMenuCardMapper.getPizzaById(pizzaNo);
 
         if (chosenPizza != null) {
-            Order newOrder = new Order(chosenPizza.getPizzaId(), amount);
+            Order newOrder = new Order(chosenPizza.getPizzaId(), amount, pickup_time, custemor_name,phone);
 
 
             //        hvad er det nu lige vi gør her? for at kunne køre et tjek?
