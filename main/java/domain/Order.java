@@ -13,7 +13,12 @@ public class Order {
     private String phone;
     private boolean remove;
 
+    public Order(int pizzaId, int amount) {
+        this.pizzaId = pizzaId;
+        this.amount = amount;
+        remove = false;
 
+    }
     public Order(int orderNr, int pizzaId, int amount, int pickuptime, Timestamp ordertime, String custemorName, String phone) {
         this.orderNr = orderNr;
         this.pizzaId = pizzaId;

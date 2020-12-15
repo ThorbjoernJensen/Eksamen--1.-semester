@@ -24,14 +24,28 @@ public class MainMenu {
 
         while (running) {
             showMenu();
-            switch(Input.getInt("Vælg 1-7: ")){
-                case 1: showMenuCard(); break;
-                case 2: showSinglePizza(); break;
-                case 3: deletePizza(); break;
-                case 4: insertPizza(); break;
-                case 5: updatePizza(); break;
-                case 6: dbOrderMapper.getAllOrders();
-                case 7: running = false; break;
+            switch (Input.getInt("Vælg 1-7: ")) {
+                case 1:
+                    showMenuCard();
+                    break;
+                case 2:
+                    showSinglePizza();
+                    break;
+                case 3:
+                    deletePizza();
+                    break;
+                case 4:
+                    insertPizza();
+                    break;
+                case 5:
+                    updatePizza();
+                    break;
+                case 6:
+                    dbOrderMapper.getAllOrders();
+                case 7:
+                    running = false;
+                    break;
+                case 8: insertOrder(); break;
             }
         }
         System.out.println("Tak for denne gang!");
@@ -47,24 +61,24 @@ public class MainMenu {
         int pizzaNo = Input.getInt("Indtast pizza nummer på den du vil rette: ");
         System.out.println("Indtast ny værdi, hvis den skal rettes - eller blot <retur>: ");
         Pizza pizza = dbMenuCardMapper.getPizzaById(pizzaNo);
-        String newPizzaNoInput = Input.getString("Pizzanummer: (" + pizza.getPizzaNo() + "): " );
-        if (newPizzaNoInput.length() > 0){
+        String newPizzaNoInput = Input.getString("Pizzanummer: (" + pizza.getPizzaNo() + "): ");
+        if (newPizzaNoInput.length() > 0) {
             pizza.setPizzaNo(Integer.parseInt(newPizzaNoInput));
         }
         String newPizzaNameInput = Input.getString("Pizza navn: (" + pizza.getName() + "): ");
-        if (newPizzaNameInput.length() > 0){
+        if (newPizzaNameInput.length() > 0) {
             pizza.setName(newPizzaNameInput);
         }
         String newPizzaIngredientsInput = Input.getString("Pizza ingredienser: (" + pizza.getIngredients() + "): ");
-        if (newPizzaIngredientsInput.length() > 0){
+        if (newPizzaIngredientsInput.length() > 0) {
             pizza.setIngredients(newPizzaIngredientsInput);
         }
         String newPizzaPriceInput = Input.getString("Pizza pris: (" + pizza.getPrice() + "): ");
-        if (newPizzaPriceInput.length() > 0){
+        if (newPizzaPriceInput.length() > 0) {
             pizza.setPrice(Integer.parseInt(newPizzaPriceInput));
         }
         boolean result = dbMenuCardMapper.updatePizza(pizza);
-        if (result){
+        if (result) {
             System.out.println("Pizzaen med nr = " + pizzaNo + " er nu opdateret");
         } else {
             System.out.println("Vi kunne desværre ikke opdatere den nye pizza.");
@@ -79,7 +93,7 @@ public class MainMenu {
         int price = Input.getInt("Indtast pris: ");
         Pizza newPizza = new Pizza(pizzaNo, name, ingredients, price);
         Pizza insertedPizza = dbMenuCardMapper.insertPizza(newPizza);
-        if (insertedPizza != null){
+        if (insertedPizza != null) {
             System.out.println("Pizzaen med nr = " + pizzaNo + " er nu tilføjet");
             System.out.println("Pizzaen har fået DB id = " + insertedPizza.getPizzaId());
         } else {
@@ -92,7 +106,7 @@ public class MainMenu {
     private void deletePizza() {
         int pizzaNo = Input.getInt("Indtast nummer på pizza som skal fjernes: ");
         boolean result = dbMenuCardMapper.deletePizza(pizzaNo);
-        if (result){
+        if (result) {
             System.out.println("Pizzaen med nr = " + pizzaNo + " er nu fjernet");
         } else {
             System.out.println("Pizzaen med nr = " + pizzaNo + " findes ikke, og kan derfor ikke fjernes");
@@ -103,7 +117,7 @@ public class MainMenu {
     private void showSinglePizza() {
         int pizzaNo = Input.getInt("Indtast pizzanummer: ");
         Pizza pizza = dbMenuCardMapper.getPizzaById(pizzaNo);
-        if (pizza != null){
+        if (pizza != null) {
             System.out.println("Du har fundet pizza nummer: " + pizzaNo);
             System.out.println(pizza.toString());
         } else {
@@ -118,5 +132,42 @@ public class MainMenu {
             System.out.println(pizza.toString());
         }
     }
+
+    private void insertOrder() {
+        System.out.println("**** Opret ny ordre *******");
+
+        int pizzaNo = Input.getInt("Indtast pizza nummer: ");
+        int amount = Input.getInt("Indtast antal: ");
+
+//        vi skal bruge en constructor der svarer til hvad vi gerne vil have af brugerinput
+        // så kan constructoren gøre arbejdet med at generere noget data
+        // og det databasen genererer henter vi i dbmapper
+
+
+        Pizza chosenPizza = dbMenuCardMapper.getPizzaById(pizzaNo);
+
+        if (chosenPizza != null) {
+            Order newOrder = new Order(chosenPizza.getPizzaId(), amount);
+
+
+            //        hvad er det nu lige vi gør her? for at kunne køre et tjek?
+            Order insertedOrder = dbOrderMapper.insertOrder(newOrder);
+
+            if (insertedOrder != null) {
+//            System.out.println("Pizzaen med nr = " + pizzaNo + " er nu tilføjet");
+//            System.out.println("Pizzaen har fået DB id = " + insertedPizza.getPizzaId());
+            } else {
+                System.out.println("Vi kunne desværre ikke oprette den nye pizza. PizzaNo findes allerede.");
+            }
+
+        } else {
+            System.out.println("Det lykkedes ikke at finde en pizza med det nummer");
+        }
+
+//(int orderNr, int pizzaId, int amount, int pickuptime, Timestamp ordertime, String custemorName, String phone)
+
+    }
+
+
 
 }
