@@ -139,7 +139,7 @@ public class MainMenu {
         Pizza chosenPizza = dbMenuCardMapper.getPizzaById(pizzaNo);
         if (chosenPizza == null) {
             System.out.println("Pizza med nr " + pizzaNo + " findes ikke i menuen ");
-            return; // TODO Ret så hvis man skriver en pizza der ikke findes skal den fortælle det og efterfølgende give dig lov igen.
+            return; // TODO Ret så hvis man skriver en pizza der ikke findes skal den fortælle det og efterfølgende give dig lov til at skrive nyt nr.
         } else {
             int amount = Input.getInt("Indtast antal: ");
             int pickup_time = Input.getInt("Hvad tid ønsker du at hente den: ");
