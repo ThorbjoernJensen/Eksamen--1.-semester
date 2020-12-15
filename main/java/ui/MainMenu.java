@@ -24,7 +24,7 @@ public class MainMenu {
 
         while (running) {
             showMenu();
-            switch (Input.getInt("Vælg 1-7: ")) {
+            switch (Input.getInt("Vælg 1-8: ")) {
                 case 1:
                     showMenuCard();
                     break;
@@ -42,10 +42,13 @@ public class MainMenu {
                     break;
                 case 6:
                     dbOrderMapper.getAllOrders();
+                    break;
                 case 7:
+                    insertOrder();
+                    break;
+                case 8:
                     running = false;
                     break;
-                case 8: insertOrder(); break;
             }
         }
         System.out.println("Tak for denne gang!");
@@ -53,7 +56,7 @@ public class MainMenu {
 
     private void showMenu() {
         System.out.println("**** Marios pizzabar - hovedmenu ******");
-        System.out.println("[1] Vis menukort [2] Vis enkelt pizza [3] Fjern pizza [4] Opret ny pizza [5] Opdater pizza [6] Afslut");
+        System.out.println("[1] Vis menukort [2] Vis enkelt pizza [3] Fjern pizza [4] Opret ny pizza [5] Opdater pizza [6] Se alle ordre [7] Opret ny ordre [8] Afslut");
     }
 
     private void updatePizza() {
@@ -99,8 +102,6 @@ public class MainMenu {
         } else {
             System.out.println("Vi kunne desværre ikke oprette den nye pizza. PizzaNo findes allerede.");
         }
-
-
     }
 
     private void deletePizza() {
@@ -111,7 +112,6 @@ public class MainMenu {
         } else {
             System.out.println("Pizzaen med nr = " + pizzaNo + " findes ikke, og kan derfor ikke fjernes");
         }
-
     }
 
     private void showSinglePizza() {
@@ -135,43 +135,26 @@ public class MainMenu {
 
     private void insertOrder() {
         System.out.println("**** Opret ny ordre *******");
-
-
         int pizzaNo = Input.getInt("Indtast pizza nummer: ");
-        int amount = Input.getInt("Indtast antal: ");
-        int pickup_time = Input.getInt("Hvad tid ønsker du at hente den: ");
-        String custemor_name = Input.getString("hvad er dit navn: ");
-        String phone = Input.getString("Skriv telefon nr: ");
-
-//        vi skal bruge en constructor der svarer til hvad vi gerne vil have af brugerinput
-        // så kan constructoren gøre arbejdet med at generere noget data
-        // og det databasen genererer henter vi i dbmapper
-
-
         Pizza chosenPizza = dbMenuCardMapper.getPizzaById(pizzaNo);
-
-        if (chosenPizza != null) {
-            Order newOrder = new Order(chosenPizza.getPizzaId(), amount, pickup_time, custemor_name,phone);
-
-
-            //        hvad er det nu lige vi gør her? for at kunne køre et tjek?
-            Order insertedOrder = dbOrderMapper.insertOrder(newOrder);
-
-            if (insertedOrder != null) {
-//            System.out.println("Pizzaen med nr = " + pizzaNo + " er nu tilføjet");
-//            System.out.println("Pizzaen har fået DB id = " + insertedPizza.getPizzaId());
-            } else {
-                System.out.println("Vi kunne desværre ikke oprette den nye pizza. PizzaNo findes allerede.");
-            }
-
+        if (chosenPizza == null) {
+            System.out.println("Pizza med nr " + pizzaNo + " findes ikke i menuen ");
+            return;
         } else {
-            System.out.println("Det lykkedes ikke at finde en pizza med det nummer");
+            int amount = Input.getInt("Indtast antal: ");
+            int pickup_time = Input.getInt("Hvad tid ønsker du at hente den: ");
+            String custemor_name = Input.getString("Hvad er dit navn: ");
+            String phone = Input.getString("Skriv telefon nr: ");
+            if (chosenPizza != null) {
+                Order newOrder = new Order(chosenPizza.getPizzaId(), amount, pickup_time, custemor_name, phone);
+                Order insertedOrder = dbOrderMapper.insertOrder(newOrder);
+                if (insertedOrder != null) {
+                } else {
+                    System.out.println("Vi kunne desværre ikke oprette den nye pizza. PizzaNo findes allerede.");
+                }
+            } else {
+                System.out.println("Det lykkedes ikke at finde en pizza med det nummer");
+            }
         }
-
-//(int orderNr, int pizzaId, int amount, int pickuptime, Timestamp ordertime, String custemorName, String phone)
-
     }
-
-
-
 }
