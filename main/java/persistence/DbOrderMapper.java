@@ -37,7 +37,7 @@ public class DbOrderMapper {
                     String custemor_name = rs.getString("custemor_name");
                     String phone = rs.getString("phone");
 //                    int price = rs.getInt("price");
-                    orderList.add(new Order(order_nr, pizza_id, amount, pickup_time, order_time,custemor_name,phone));
+                    orderList.add(new Order(order_nr, pizza_id, amount, pickup_time, order_time, custemor_name, phone));
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -53,22 +53,19 @@ public class DbOrderMapper {
         boolean result = false;
         int newId = 0;
 
-//        genereret i workbench
-//        INSERT INTO `mario`.`order` (`order_nr`, `pizza_id`, `amount`, `pickup_time`, `order_time`, `custemor_name`, `phone`, `remove`)
-//        VALUES ('6', '3', '2', '1245', '2020-12-11 08:48:19.00', 'Preben', '666', '1');
-        String sql = "INSERT INTO `mario`.`order` (`pizza_id`, `amount`, `remove`) " +
-                "values (?, ?, ?)";
+//
+        String sql = "INSERT INTO mario.order ( pizza_id, amount, pickup_time, order_time, custemor_name, phone, remove) " +
+                "values (?, ?, ?,NOW(),?,?,?)";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-//                ps.setInt(1, order.getOrderNr());
+                //ps.setInt(1, order.getOrderNr());
                 ps.setInt(1, order.getPizzaId());
                 ps.setInt(2, order.getAmount());
-//                //                Måske virker det at bruge setTimestamp - vi har brug for noget der returnerer af datatypen timestamp
-//                ps.setInt(4, order.getPickuptime());
-//                ps.setTimestamp(5, order.getOrdertime());
-//                ps.setString(6, order.getCustomerName());
-//                ps.setString(7, order.getPhone());
-                ps.setBoolean(3, order.isRemove());
+                ps.setInt(3, order.getPickuptime());
+                ps.setTimestamp(4, order.getOrdertime());
+                ps.setString(5, order.getCustomerName());
+                ps.setString(6, order.getPhone());
+                ps.setBoolean(7, order.isRemove());
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {

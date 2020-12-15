@@ -136,8 +136,12 @@ public class MainMenu {
     private void insertOrder() {
         System.out.println("**** Opret ny ordre *******");
 
+
         int pizzaNo = Input.getInt("Indtast pizza nummer: ");
         int amount = Input.getInt("Indtast antal: ");
+        int pickup_time = Input.getInt("Hvad tid ønsker du at hente den: ");
+        String custemor_name = Input.getString("hvad er dit navn: ");
+        String phone = Input.getString("Skriv telefon nr: ");
 
 //        vi skal bruge en constructor der svarer til hvad vi gerne vil have af brugerinput
         // så kan constructoren gøre arbejdet med at generere noget data
