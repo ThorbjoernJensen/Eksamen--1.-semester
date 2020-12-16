@@ -49,6 +49,10 @@ public class MainMenu {
                 case 8:
                     running = false;
                     break;
+                case 9:
+
+                    System.out.println("denne ordre indeholder en pizza med id = " + dbOrderMapper.getOrderById(Input.getInt("indtast ordrenummer")).getPizzaId());
+
             }
         }
         System.out.println("Tak for denne gang!");
@@ -159,8 +163,8 @@ public class MainMenu {
     }
 
     private void updateOrder() {
-        String orderNr =
-        dbOrderMapper.updateOrder()
+//        String orderNr =
+//        dbOrderMapper.updateOrder()
 
     }
 

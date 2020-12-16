@@ -190,6 +190,34 @@ public class DbOrderMapper {
       return result;
     }
 
+    public Order getOrderById (int order_nr) {
+        Order order = null;
+        String sql = "select * from mario.order where order_nr = ?";
+        try (Connection connection = database.connect()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, order_nr);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    int orderNr = rs.getInt("order_nr");
+                    int pizza_id = rs.getInt("pizza_id");
+                    int amount = rs.getInt("amount");
+                    int pickup_time =rs.getInt("pickup_time");
+                    Timestamp order_time = rs.getTimestamp("order_time");
+                    String custemor_name = rs.getString("custemor_name");
+                    String phone = rs.getString("phone");
+                    boolean remove = rs.getBoolean("remove");
+                    order = new Order(orderNr, pizza_id, amount, pickup_time, order_time, custemor_name, phone);
+                }
+            } catch (SQLException throwables) {
+                // TODO: Make own throwable exception and let it bubble upwards
+                throwables.printStackTrace();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return order;
+    }
+
 
 
 
