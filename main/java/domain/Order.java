@@ -87,11 +87,12 @@ public class Order {
         this.ordertime = ordertime;
     }
 
-    public String getCustomerName() {
+
+    public String getCustemorName() {
         return custemorName;
     }
 
-    public void setCustomerName(String customerName) {
+    public void setCustemorName(String custemorName) {
         this.custemorName = custemorName;
     }
 
@@ -112,6 +113,7 @@ public class Order {
     }
 
 
+
     @Override
     public String toString() {
         return  "orderNr= " + orderNr + "\n" +
@@ -119,7 +121,7 @@ public class Order {
                 "amount= " + amount + "\n" +
                 "pickuptime= " + pickuptime + "\n" +
                 "ordertime= " + ordertime + "\n" +
-                "customerName= " + custemorName + "\n" +
+                "custemorName= " + custemorName + "\n" +
                 "phone= " + phone + "\n";
     }
 }

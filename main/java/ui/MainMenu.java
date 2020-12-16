@@ -41,7 +41,7 @@ public class MainMenu {
                     updatePizza();
                     break;
                 case 6:
-                    dbOrderMapper.getAllOrders();
+                    System.out.println(dbOrderMapper.getAllOrders());
                     break;
                 case 7:
                     insertOrder();
@@ -50,8 +50,7 @@ public class MainMenu {
                     running = false;
                     break;
                 case 9:
-
-                    System.out.println("denne ordre indeholder en pizza med id = " + dbOrderMapper.getOrderById(Input.getInt("indtast ordrenummer")).getPizzaId());
+updateOrder();
 
             }
         }
@@ -163,9 +162,84 @@ public class MainMenu {
     }
 
     private void updateOrder() {
-//        String orderNr =
-//        dbOrderMapper.updateOrder()
+        System.out.println("***** Opdater order *******");
+        int orderNo = Input.getInt("Indtast order nummer på den du vil rette: ");
+        Order order = dbOrderMapper.getOrderById(orderNo);
+        System.out.println("Hvad ønsker du at rette? " + "\n" + "1: Alt: " + "2: Pizza nr: " + "3: Pizza mængde: " + "4: Leverings tid: " + "5: Kundens navn: " + "6: Tlf nr: ");
+        int option = Input.getInt("");
+        switch (option){
+            case 1:
+                int newPizzaInput = Input.getInt("Pizza nr: (" + order.getPizzaId() + "): ");
+                if (newPizzaInput > 0) {
+                    order.setPizzaId(newPizzaInput);
+                }
+                int newPizzaAmountInput = Input.getInt("Pizza mængde: (" + order.getAmount() + "): ");
+                if (newPizzaAmountInput > 0) {
+                    order.setAmount(newPizzaAmountInput);
+                }
+                int newPickupTimeInput = Input.getInt("Leverings tid: (" + order.getPickuptime() + "): ");
+                if (newPickupTimeInput  > 0) {
+                    order.setPickuptime(newPickupTimeInput);
+                }
 
+                String newNameInput = Input.getString("Kundens navn: (" + order.getCustemorName() + "): ");
+                if (newNameInput.length() > 0) {
+                    order.setCustemorName(newNameInput);
+                }
+
+                String newPhoneInput = Input.getString("Tlf nr: (" + order.getPhone() + "): ");
+                if (newPhoneInput.length() > 0) {
+                    order.setPhone(newPhoneInput);
+                }
+                updateSqlOrder(orderNo, order);
+                break;
+            case 2:
+                int newPizzaInputOption2 = Input.getInt("Pizza nr: (" + order.getPizzaId() + "): ");
+                if (newPizzaInputOption2 > 0) {
+                    order.setPizzaId(newPizzaInputOption2);
+                }
+                updateSqlOrder(orderNo, order);
+                break;
+
+            case 3:
+                int newPizzaAmountInputOption3 = Input.getInt("Pizza mængde: (" + order.getAmount() + "): ");
+                if (newPizzaAmountInputOption3 > 0) {
+                    order.setAmount(newPizzaAmountInputOption3);
+                }
+                updateSqlOrder(orderNo, order);
+                break;
+            case 4:
+                int newPickupTimeInput4 = Input.getInt("Leverings tid: (" + order.getPickuptime() + "): ");
+                if (newPickupTimeInput4  > 0) {
+                    order.setPickuptime(newPickupTimeInput4);
+                }
+                updateSqlOrder(orderNo, order);
+                break;
+            case 5:
+                String newNameInput5 = Input.getString("Kundens navn: (" + order.getCustemorName() + "): ");
+                if (newNameInput5.length() > 0) {
+                    order.setCustemorName(newNameInput5);
+                }
+                updateSqlOrder(orderNo, order);
+                break;
+            case 6:
+                String newPhoneInput6 = Input.getString("Tlf nr: (" + order.getPhone() + "): ");
+                if (newPhoneInput6.length() > 0) {
+                    order.setPhone(newPhoneInput6);
+                }
+                updateSqlOrder(orderNo, order);
+                break;
+                    }
+
+    }
+
+    private void updateSqlOrder(int orderNo, Order order) {
+        boolean result = dbOrderMapper.updateOrder(order);
+        if (result) {
+            System.out.println("Ordren med nr = " + orderNo + " er nu opdateret");
+        } else {
+            System.out.println("Vi kunne desværre ikke opdatere den nye ordre.");
+        }
     }
 
 }

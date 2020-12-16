@@ -1,6 +1,6 @@
 package persistence;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
+
 import domain.Order;
 
 import java.sql.*;
@@ -45,7 +45,6 @@ public class DbOrderMapper {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        System.out.print(orderList);
         return orderList;
     }
 
@@ -60,7 +59,7 @@ public class DbOrderMapper {
                 ps.setInt(1, order.getPizzaId());
                 ps.setInt(2, order.getAmount());
                 ps.setInt(3, order.getPickuptime());
-                ps.setString(4, order.getCustomerName());
+                ps.setString(4, order.getCustemorName());
                 ps.setString(5, order.getPhone());
                 ps.setBoolean(6, order.isRemove());
 
@@ -164,17 +163,19 @@ public class DbOrderMapper {
 //        return pizza;
 //    }
 //
+
   public boolean updateOrder(Order order) {
       boolean result = false;
-      String sql = "update order set pizza_id = ?, amount = ?, pickup_time = ?, customer_name = ?, phone = ?, remove = ? where order_nr = ?";
+      String sql = "update mario.order set order_nr = ?, pizza_id = ?, amount = ?, pickup_time = ?, custemor_name = ?, phone = ? where order_nr = ?";
       try (Connection connection = database.connect()) {
           try (PreparedStatement ps = connection.prepareStatement(sql)) {
-              ps.setInt(1, order.getPizzaId());
-              ps.setInt(2, order.getAmount());
-              ps.setInt(3, order.getPickuptime());
-              ps.setString(4, order.getCustomerName());
-              ps.setString(5, order.getPhone());
-              ps.setBoolean(6, order.isRemove());
+              ps.setInt(1, order.getOrderNr());
+              ps.setInt(2, order.getPizzaId());
+              ps.setInt(3, order.getAmount());
+              ps.setInt(4, order.getPickuptime());
+              ps.setString(5, order.getCustemorName());
+              ps.setString(6, order.getPhone());
+              ps.setInt(7, order.getOrderNr());
               int rowsAffected = ps.executeUpdate();
               if (rowsAffected == 1) {
                   result = true;
