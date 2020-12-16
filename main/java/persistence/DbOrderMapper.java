@@ -164,28 +164,34 @@ public class DbOrderMapper {
 //        return pizza;
 //    }
 //
-//    public boolean updatePizza(Pizza pizza) {
-//        boolean result = false;
-//        String sql = "update pizza set pizza_no = ?, name = ?, ingredients = ?, price = ? where pizza_no = ?";
-//        try (Connection connection = database.connect()) {
-//            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-//                ps.setInt(1, pizza.getPizzaNo());
-//                ps.setString(2, pizza.getName());
-//                ps.setString(3, pizza.getIngredients());
-//                ps.setInt(4, pizza.getPrice());
-//                ps.setInt(5, pizza.getPizzaNo());
-//                int rowsAffected = ps.executeUpdate();
-//                if (rowsAffected == 1) {
-//                    result = true;
-//                }
-//            } catch (SQLException throwables) {
-//                // TODO: Make own throwable exception and let it bubble upwards
-//                throwables.printStackTrace();
-//            }
-//        } catch (SQLException throwables) {
-//            // TODO: Make own throwable exception and let it bubble upwards
-//            throwables.printStackTrace();
-//        }
-//        return result;
-//    }
+  public boolean updateOrder(Order order) {
+      boolean result = false;
+      String sql = "update order set pizza_id = ?, amount = ?, pickup_time = ?, customer_name = ?, phone = ?, remove = ? where order_nr = ?";
+      try (Connection connection = database.connect()) {
+          try (PreparedStatement ps = connection.prepareStatement(sql)) {
+              ps.setInt(1, order.getPizzaId());
+              ps.setInt(2, order.getAmount());
+              ps.setInt(3, order.getPickuptime());
+              ps.setString(4, order.getCustomerName());
+              ps.setString(5, order.getPhone());
+              ps.setBoolean(6, order.isRemove());
+              int rowsAffected = ps.executeUpdate();
+              if (rowsAffected == 1) {
+                  result = true;
+              }
+          } catch (SQLException throwables) {
+              // TODO: Make own throwable exception and let it bubble upwards
+              throwables.printStackTrace();
+          }
+      } catch (SQLException throwables) {
+          // TODO: Make own throwable exception and let it bubble upwards
+          throwables.printStackTrace();
+      }
+      return result;
+    }
+
+
+
+
+
 }

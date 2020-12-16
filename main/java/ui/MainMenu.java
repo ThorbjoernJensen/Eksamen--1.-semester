@@ -157,4 +157,11 @@ public class MainMenu {
             }
         }
     }
+
+    private void updateOrder() {
+        String orderNr =
+        dbOrderMapper.updateOrder()
+
+    }
+
 }
