@@ -50,7 +50,10 @@ public class MainMenu {
                     running = false;
                     break;
                 case 9:
-updateOrder();
+                    updateOrder();
+                    break;
+                case 10:
+                    deleteOrder();
 
             }
         }
@@ -239,6 +242,15 @@ updateOrder();
             System.out.println("Ordren med nr = " + orderNo + " er nu opdateret");
         } else {
             System.out.println("Vi kunne desværre ikke opdatere den nye ordre.");
+        }
+    }
+    private void deleteOrder() {
+        int orderNo = Input.getInt("Indtast nummer på den ordre som skal fjernes: ");
+        boolean result = dbOrderMapper.deleteOrder(orderNo);
+        if (result) {
+            System.out.println("Ordren med nr = " + orderNo + " er nu fjernet");
+        } else {
+            System.out.println("Ordren med nr = " + orderNo + " findes ikke, og kan derfor ikke fjernes");
         }
     }
 

@@ -218,6 +218,26 @@ public class DbOrderMapper {
         }
         return order;
     }
+    public boolean deleteOrder(int orderNo){
+        boolean result = false;
+        String sql = "delete from mario.order where order_nr= ?";
+        try (Connection connection = database.connect()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderNo);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1){
+                    result = true;
+                }
+            } catch (SQLException throwables) {
+                // TODO: Make own throwable exception and let it bubble upwards
+                throwables.printStackTrace();
+            }
+        } catch (SQLException throwables) {
+            // TODO: Make own throwable exception and let it bubble upwards
+            throwables.printStackTrace();
+        }
+        return result;
+    }
 
 
 
