@@ -1,6 +1,7 @@
 package domain;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Order {
 
@@ -9,6 +10,7 @@ public class Order {
     private int amount;
     private int pickuptime;
     private Timestamp ordertime;
+    private Date date;
     private String custemorName;
     private String phone;
     private boolean remove;
@@ -19,14 +21,19 @@ public class Order {
         remove = false;
 
     }
-    public Order(int orderNr, int pizzaId, int amount, int pickuptime, Timestamp ordertime, String custemorName, String phone) {
+    public Order(int orderNr, int pizzaId, int amount, int pickuptime, Timestamp ordertime, Date date, String custemorName, String phone) {
         this.orderNr = orderNr;
         this.pizzaId = pizzaId;
         this.amount = amount;
         this.pickuptime = pickuptime;
         this.ordertime = ordertime;
+        this.date = date;
         this.custemorName = custemorName;
         this.phone = phone;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     public Order(int pizzaId, int amount, int pickuptime, String custemorName, String phone) {
@@ -45,6 +52,9 @@ public class Order {
         this.custemorName = custemorName;
         this.phone = phone;
         this.remove = remove;
+    }
+
+    public Order(int order_nr, int pizza_id, int amount, int pickup_time, Timestamp order_time, String custemor_name, String phone, boolean remove) {
     }
 
     public int getOrderNr() {
@@ -113,15 +123,17 @@ public class Order {
     }
 
 
-
     @Override
     public String toString() {
-        return  "orderNr= " + orderNr + "\n" +
-                "pizzaId= " + pizzaId + "\n" +
-                "amount= " + amount + "\n" +
-                "pickuptime= " + pickuptime + "\n" +
-                "ordertime= " + ordertime + "\n" +
-                "custemorName= " + custemorName + "\n" +
-                "phone= " + phone + "\n";
+        return "Order{" +
+                "orderNr=" + orderNr +
+                ", pizzaId=" + pizzaId +
+                ", amount=" + amount +
+                ", pickuptime=" + pickuptime +
+                ", ordertime=" + ordertime +
+                ", date=" + date +
+                ", custemorName='" + custemorName + '\'' +
+                ", phone='" + phone + '\'' +
+                '}'+"\n";
     }
 }

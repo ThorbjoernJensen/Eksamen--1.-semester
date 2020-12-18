@@ -23,7 +23,7 @@ public class DbOrderMapper {
 
         List<Order> orderList = new ArrayList<>();
 
-        String sql = "select * from mario.order";
+        String sql = "select * from mario.order order by date DESC, pickup_time ASC";
 
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -34,10 +34,11 @@ public class DbOrderMapper {
                     int amount = rs.getInt("amount");
                     int pickup_time = rs.getInt("pickup_time");
                     Timestamp order_time = rs.getTimestamp("order_time");
+                    Date date = rs.getDate("date");
                     String custemor_name = rs.getString("custemor_name");
                     String phone = rs.getString("phone");
 //                    int price = rs.getInt("price");
-                    orderList.add(new Order(order_nr, pizza_id, amount, pickup_time, order_time, custemor_name, phone));
+                    orderList.add(new Order(order_nr, pizza_id, amount, pickup_time, order_time, date, custemor_name, phone));
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -53,7 +54,7 @@ public class DbOrderMapper {
         int newId = 0;
 
 //
-        String sql = "INSERT INTO mario.order ( pizza_id, amount, pickup_time, order_time, custemor_name, phone, remove) values (?, ?, ?,NOW(),?,?,?)";
+        String sql = "INSERT INTO mario.order ( pizza_id, amount, pickup_time, order_time, date, custemor_name, phone, remove) values (?, ?, ?,NOW(), CURDATE(),?,?,?)";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, order.getPizzaId());
@@ -204,10 +205,11 @@ public class DbOrderMapper {
                     int amount = rs.getInt("amount");
                     int pickup_time =rs.getInt("pickup_time");
                     Timestamp order_time = rs.getTimestamp("order_time");
+                    Date date = rs.getDate("date");
                     String custemor_name = rs.getString("custemor_name");
                     String phone = rs.getString("phone");
                     boolean remove = rs.getBoolean("remove");
-                    order = new Order(orderNr, pizza_id, amount, pickup_time, order_time, custemor_name, phone);
+                    order = new Order(orderNr, pizza_id, amount, pickup_time, order_time, date, custemor_name, phone);
                 }
             } catch (SQLException throwables) {
                 // TODO: Make own throwable exception and let it bubble upwards
