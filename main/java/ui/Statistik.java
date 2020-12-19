@@ -6,6 +6,7 @@ import persistence.Database;
 import persistence.DbMenuCardMapper;
 import persistence.DbOrderMapper;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -32,16 +33,23 @@ public class Statistik {
 
     public void pizzaCount() {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
-        for (int i = 0; i < allPizzas.size(); i++) {
-        int pizzaCount =0;
-        String statement = "select * from mario.order where pizza_id = " + i;
-        List<Order> selectedOrders = dbOrderMapper.getOrdersAsList(statement);
-
+        int pizzaCount = 0;
+        int pizzaRevenue = 0;
+        Date orderdate;
+        for (int i = 1; i < allPizzas.size(); i++) {
+            Pizza pizza = dbMenuCardMapper.getPizzaById(i);
+            String statement = "select * from mario.order where pizza_id = " + i;
+            List<Order> selectedOrders = dbOrderMapper.getOrdersAsList(statement);
             for (Order o : selectedOrders) {
                 pizzaCount = pizzaCount + o.getAmount();
             }
-            System.out.println("antal solgte pizzaer for nr. " + i + "er: " + pizzaCount + "stk.");
+            pizzaRevenue = pizzaCount * pizza.getPrice();
+            System.out.println("antal solgte pizzaer for nr. " + pizza.getPizzaNo() + " , " + pizza.getName() + " er " + pizzaCount + " stk.");
+            System.out.println("samlet omsætning for denne pizza er " + pizzaRevenue + " kr.\n");
+
         }
+int totalRevenue= pizzaRevenue + pizzaRevenue;
+        System.out.println(totalRevenue);
 
 
 //        for (Pizza pizza : allPizzas
@@ -72,7 +80,6 @@ public class Statistik {
 //                        System.out.println(finalPrice);
     }
 
-}
 //            }
 //
 //                    }
@@ -97,4 +104,4 @@ public class Statistik {
 //                            }
 
 
-
+    }

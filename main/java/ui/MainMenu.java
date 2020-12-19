@@ -58,6 +58,7 @@ public class MainMenu {
                 case 11:
                     statistik.pizzaCount();
 
+
             }
         }
         System.out.println("Tak for denne gang!");
