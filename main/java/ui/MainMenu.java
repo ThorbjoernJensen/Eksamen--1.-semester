@@ -17,6 +17,7 @@ public class MainMenu {
     private Database database = new Database(USER, PASSWORD, URL);
     private DbMenuCardMapper dbMenuCardMapper = new DbMenuCardMapper(database);
     private DbOrderMapper dbOrderMapper = new DbOrderMapper(database);
+    private Statistik statistik = new Statistik(database);
 
     public void mainMenuLoop() {
 
@@ -41,7 +42,7 @@ public class MainMenu {
                     updatePizza();
                     break;
                 case 6:
-                    System.out.println(dbOrderMapper.getAllOrders());
+                    System.out.println(dbOrderMapper.getOrdersAsList("select * from mario.order order by date DESC, pickup_time ASC"));
                     break;
                 case 7:
                     insertOrder();
@@ -54,6 +55,8 @@ public class MainMenu {
                     break;
                 case 10:
                     deleteOrder();
+                case 11:
+                    statistik.pizzaCount();
 
             }
         }

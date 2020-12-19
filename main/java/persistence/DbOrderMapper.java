@@ -19,12 +19,11 @@ public class DbOrderMapper {
 
     }
 
-    public List<Order> getAllOrders() {
-
+    public List<Order> getOrdersAsList (String sqlargument){
         List<Order> orderList = new ArrayList<>();
 
-        String sql = "select * from mario.order order by date DESC, pickup_time ASC";
-
+        //        String sql = "select * from mario.order order by date DESC, pickup_time ASC";
+        String sql = sqlargument;
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
