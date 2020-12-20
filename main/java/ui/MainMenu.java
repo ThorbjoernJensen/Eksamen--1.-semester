@@ -56,7 +56,23 @@ public class MainMenu {
                 case 10:
                     deleteOrder();
                 case 11:
-                    statistik.pizzaCountDate();
+                    System.out.println("Hvilken statistik vil du gerne se? ");
+                    System.out.println("1: Antal solgte pizza \n2: Mest solgte Pizza \n3: Omsætningen \n4: Omsætning på en bestemt dato: ");
+                    int option = Input.getInt("");
+                    switch (option){
+                        case 1:
+                            statistik.pizzaCount();
+                            break;
+                        case 2:
+                            //TODO statistik mest solgte Pizza
+                            break;
+                        case 3:
+                            statistik.pizzaRevenue();
+                            break;
+                        case 4:
+                            statistik.pizzaCountDate();
+                            break;
+                    }
             }
         }
         System.out.println("Tak for denne gang!");
