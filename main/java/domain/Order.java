@@ -97,6 +97,9 @@ public class Order {
         this.ordertime = ordertime;
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public String getCustemorName() {
         return custemorName;

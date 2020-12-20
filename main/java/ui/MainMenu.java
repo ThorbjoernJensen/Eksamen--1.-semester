@@ -56,9 +56,7 @@ public class MainMenu {
                 case 10:
                     deleteOrder();
                 case 11:
-                    statistik.pizzaCount();
-
-
+                    statistik.pizzaCountDate();
             }
         }
         System.out.println("Tak for denne gang!");
