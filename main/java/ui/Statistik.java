@@ -66,10 +66,10 @@ public class Statistik {
 //            }
 //        }
 //        if (token2 = 0) { // hvis der ikke er delt førsteplads )
+        }
             System.out.println("Total omsætning: " + totalRevenue + "kr.");
             System.out.println("pizza med størst omsætning er pizza nr. " + dbMenuCardMapper.getPizzaById(token).getPizzaNo() +
                     " " + dbMenuCardMapper.getPizzaById(token).getName() + ", der har indtjent " + maxRevenue + " kr.\n");
-        }
 
         if (token2 != 0) { // hvis der er delt førsteplads)
             System.out.println("der er 2 pizzaer med samme omsætning ");

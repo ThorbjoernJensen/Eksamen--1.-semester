@@ -25,7 +25,7 @@ public class MainMenu {
 
         while (running) {
             showMenu();
-            switch (Input.getInt("Vælg 1-8: ")) {
+            switch (Input.getInt("Vælg 1-11: ")) {
                 case 1:
                     showMenuCard();
                     break;
@@ -42,20 +42,19 @@ public class MainMenu {
                     updatePizza();
                     break;
                 case 6:
-                    System.out.println(dbOrderMapper.getOrdersAsList("select * from mario.order order by date DESC, pickup_time ASC"));
+                    String statement = "select * from mario.order order by date DESC, pickup_time ASC";
+                    System.out.println(dbOrderMapper.getOrdersAsList(statement));
                     break;
                 case 7:
                     insertOrder();
                     break;
                 case 8:
-                    running = false;
-                    break;
-                case 9:
                     updateOrder();
                     break;
-                case 10:
+                case 9:
                     deleteOrder();
-                case 11:
+                    break;
+                case 10:
                     System.out.println("Hvilken statistik vil du gerne se? ");
                     System.out.println("1: Antal solgte pizza \n2: Mest solgte Pizza \n3: Omsætning over tid \n4: Omsætning på en bestemt dato: ");
                     int option = Input.getInt("");
@@ -74,6 +73,19 @@ public class MainMenu {
                             statistik.pizzaCountDate();
                             break;
                     }
+                    break;
+                case 11:
+                    System.out.println("Ønsker du at lukke programmet? ");
+                    System.out.println("Tryk y for at fortsætte eller en vilkårlig tast for at gå tilbage ");
+                    String input = Input.getString("");
+                    if (input.equals("y")){
+                        running=false;
+                    }else {
+                        showMenu();
+                    }
+                    break;
+                default:
+                    System.out.println("Vælg en menu ");
             }
         }
         System.out.println("Tak for denne gang!");
@@ -81,7 +93,7 @@ public class MainMenu {
 
     private void showMenu() {
         System.out.println("**** Marios pizzabar - hovedmenu ******");
-        System.out.println("[1] Vis menukort [2] Vis enkelt pizza [3] Fjern pizza [4] Opret ny pizza [5] Opdater pizza [6] Se alle ordre [7] Opret ny ordre [8] Afslut");
+        System.out.println("[1] Vis menukort [2] Vis enkelt pizza [3] Fjern pizza [4] Opret ny pizza [5] Opdater pizza [6] Se alle ordre [7] Opret ny ordre [8] Opdater ordre [9] Slet ordre [10] Statistik [11] Afslut program");
     }
 
     private void updatePizza() {
