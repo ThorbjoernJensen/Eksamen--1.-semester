@@ -57,7 +57,7 @@ public class MainMenu {
                     deleteOrder();
                 case 11:
                     System.out.println("Hvilken statistik vil du gerne se? ");
-                    System.out.println("1: Antal solgte pizza \n2: Mest solgte Pizza \n3: Omsætningen \n4: Omsætning på en bestemt dato: ");
+                    System.out.println("1: Antal solgte pizza \n2: Mest solgte Pizza \n3: Omsætning over tid \n4: Omsætning på en bestemt dato: ");
                     int option = Input.getInt("");
                     switch (option) {
                         case 1:
@@ -67,7 +67,8 @@ public class MainMenu {
 //TODO                            Mest solgte pizza. Udtræk fra SQL eller fra metode "statistik.pizzaCount()".
                             break;
                         case 3:
-                            statistik.pizzaRevenue();
+                            statistik.revenueCountDate();
+//                            statistik.pizzaRevenue();
                             break;
                         case 4:
                             statistik.pizzaCountDate();
