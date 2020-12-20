@@ -56,20 +56,20 @@ public class MainMenu {
                     break;
                 case 10:
                     System.out.println("Hvilken statistik vil du gerne se? ");
-                    System.out.println("1: Antal solgte pizza \n2: Mest solgte Pizza \n3: Omsætning over tid \n4: Omsætning på en bestemt dato: ");
+                    System.out.println("1: Omsætning fordelt på pizzaer \n2: Daglig omsætning over periode \n3: Vis handler for given dato ");
                     int option = Input.getInt("");
                     switch (option) {
                         case 1:
                             statistik.pizzaCount();
                             break;
+//                        case 2:
+////TODO                            Mest solgte pizza. Udtræk fra SQL eller fra metode "statistik.pizzaCount()".
+//                            break;
                         case 2:
-//TODO                            Mest solgte pizza. Udtræk fra SQL eller fra metode "statistik.pizzaCount()".
-                            break;
-                        case 3:
                             statistik.revenueCountDate();
 //                            statistik.pizzaRevenue();
                             break;
-                        case 4:
+                        case 3:
                             statistik.pizzaCountDate();
                             break;
                     }

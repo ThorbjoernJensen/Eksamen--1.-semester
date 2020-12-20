@@ -39,9 +39,10 @@ public class Statistik {
         int pizzaRevenue = 0;
         Date orderdate;
         int totalRevenue = 0;
-        int maxRevenue= pizzaRevenue;
-        int token=0;
-        int token2=0;
+        int maxRevenue = pizzaRevenue;
+        int token = 0;
+        int token2 = 0;
+
         System.out.println("salgs-statistik for pizzaer: ");
         for (int i = 1; i < allPizzas.size(); i++) {
             Pizza pizza = dbMenuCardMapper.getPizzaById(i);
@@ -54,21 +55,26 @@ public class Statistik {
             System.out.println("pizza nr. " + pizza.getPizzaNo() + ", " + pizza.getName() + ": " + pizzaCount + " stk.");
             System.out.println("samlet omsætning: " + pizzaRevenue + " kr.\n");
             totalRevenue = totalRevenue + pizzaRevenue;
+
             if (pizzaRevenue > maxRevenue) {
                 maxRevenue = pizzaRevenue;
                 token = i;
+                token2 =0;
             }
-//            if (pizzaRevenue = maxRevenue && pizzaRevenue != 0) {
-//                token2 = i;
-//            }
-//        }
-//        if (token2 = 0) { // hvis der ikke er delt førsteplads )
+            if (pizzaRevenue == maxRevenue) {
+                token2 = i;
+            }
         }
+        if (token2 == 0) { // hvis der ikke er delt førsteplads )
+
         System.out.println("Total omsætning: " + totalRevenue + "kr.");
         System.out.println("pizza med størst omsætning er pizza nr. " + dbMenuCardMapper.getPizzaById(token).getPizzaNo() +
                 " " + dbMenuCardMapper.getPizzaById(token).getName() + ", der har indtjent " + maxRevenue + " kr.\n");
+        }
         if (token2 != 0) { // hvis der er delt førsteplads)
-            System.out.println("der er 2 pizzaer med samme omsætning ");
+            System.out.println("Der er 2 pizzaer med samme omsætning: " + "pizza nr. " + dbMenuCardMapper.getPizzaById(token).getPizzaNo() +
+                    " og pizza nr. " + dbMenuCardMapper.getPizzaById(token2).getPizzaNo() + " har begge solgt for " + maxRevenue + " kr.\n");
+
         }
     }
 
@@ -92,6 +98,7 @@ public class Statistik {
 
 
     }
+
 
     public void pizzaCountDate() {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
