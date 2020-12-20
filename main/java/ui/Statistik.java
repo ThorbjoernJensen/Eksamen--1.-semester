@@ -41,6 +41,8 @@ public class Statistik {
         int totalRevenue = 0;
         int maxRevenue= pizzaRevenue;
         int token=0;
+        int token2=0;
+
 
         for (int i = 1; i < allPizzas.size(); i++) {
             Pizza pizza = dbMenuCardMapper.getPizzaById(i);
@@ -55,16 +57,23 @@ public class Statistik {
 
             totalRevenue = totalRevenue + pizzaRevenue;
 
-            if (pizzaRevenue> maxRevenue){
-                maxRevenue=pizzaRevenue;
+            if (pizzaRevenue > maxRevenue) {
+                maxRevenue = pizzaRevenue;
                 token = i;
-
             }
+//            if (pizzaRevenue = maxRevenue pizzaRevenue != 0) {
+//                token2 = i;
+//            }
+//        }
+//        if (token2 = 0) { // hvis der ikke er delt førsteplads )
+            System.out.println("Total omsætning: " + totalRevenue + "kr.");
+            System.out.println("pizza med størst omsætning er pizza nr. " + dbMenuCardMapper.getPizzaById(token).getPizzaNo() +
+                    " " + dbMenuCardMapper.getPizzaById(token).getName() + ", der har indtjent " + maxRevenue + " kr.\n");
         }
-        System.out.println("Total omsætning: " + totalRevenue + "kr.");
-        System.out.println("pizza med størst omsætning er pizza nr. " + dbMenuCardMapper.getPizzaById(token));
 
-
+        if (token2 != 0) { // hvis der er delt førsteplads)
+            System.out.println("der er 2 pizzaer med samme omsætning ");
+        }
     }
 
     public void pizzaRevenue() {
