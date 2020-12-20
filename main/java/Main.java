@@ -1,8 +1,4 @@
-import persistence.Database;
-import persistence.DbMenuCardMapper;
-import persistence.DbOrderMapper;
 import ui.MainMenu;
-import java.sql.*;
 
 public class Main {
 

@@ -59,12 +59,12 @@ public class MainMenu {
                     System.out.println("Hvilken statistik vil du gerne se? ");
                     System.out.println("1: Antal solgte pizza \n2: Mest solgte Pizza \n3: Omsætningen \n4: Omsætning på en bestemt dato: ");
                     int option = Input.getInt("");
-                    switch (option){
+                    switch (option) {
                         case 1:
                             statistik.pizzaCount();
                             break;
                         case 2:
-                            //TODO statistik mest solgte Pizza
+//TODO                            Mest solgte pizza. Udtræk fra SQL eller fra metode "statistik.pizzaCount()".
                             break;
                         case 3:
                             statistik.pizzaRevenue();
@@ -188,7 +188,7 @@ public class MainMenu {
         Order order = dbOrderMapper.getOrderById(orderNo);
         System.out.println("Hvad ønsker du at rette? " + "\n" + "1: Alt: " + "2: Pizza nr: " + "3: Pizza mængde: " + "4: Leverings tid: " + "5: Kundens navn: " + "6: Tlf nr: ");
         int option = Input.getInt("");
-        switch (option){
+        switch (option) {
             case 1:
                 int newPizzaInput = Input.getInt("Pizza nr: (" + order.getPizzaId() + "): ");
                 if (newPizzaInput > 0) {
@@ -199,7 +199,7 @@ public class MainMenu {
                     order.setAmount(newPizzaAmountInput);
                 }
                 int newPickupTimeInput = Input.getInt("Leverings tid: (" + order.getPickuptime() + "): ");
-                if (newPickupTimeInput  > 0) {
+                if (newPickupTimeInput > 0) {
                     order.setPickuptime(newPickupTimeInput);
                 }
 
@@ -231,7 +231,7 @@ public class MainMenu {
                 break;
             case 4:
                 int newPickupTimeInput4 = Input.getInt("Leverings tid: (" + order.getPickuptime() + "): ");
-                if (newPickupTimeInput4  > 0) {
+                if (newPickupTimeInput4 > 0) {
                     order.setPickuptime(newPickupTimeInput4);
                 }
                 updateSqlOrder(orderNo, order);
@@ -250,7 +250,7 @@ public class MainMenu {
                 }
                 updateSqlOrder(orderNo, order);
                 break;
-                    }
+        }
 
     }
 
@@ -262,6 +262,7 @@ public class MainMenu {
             System.out.println("Vi kunne desværre ikke opdatere den nye ordre.");
         }
     }
+
     private void deleteOrder() {
         int orderNo = Input.getInt("Indtast nummer på den ordre som skal fjernes: ");
         boolean result = dbOrderMapper.deleteOrder(orderNo);

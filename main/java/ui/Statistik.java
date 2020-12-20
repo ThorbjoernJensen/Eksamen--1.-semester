@@ -6,20 +6,9 @@ import persistence.Database;
 import persistence.DbMenuCardMapper;
 import persistence.DbOrderMapper;
 
-import java.security.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Stream;
-
 
 public class Statistik {
 
@@ -79,7 +68,7 @@ public class Statistik {
                 pizzaCount = pizzaCount + o.getAmount();
             }
             pizzaRevenue = pizzaCount * pizza.getPrice();
-                     totalRevenue = totalRevenue + pizzaRevenue;
+            totalRevenue = totalRevenue + pizzaRevenue;
         }
         System.out.println("Total omsætning: " + totalRevenue + "kr.");
 
@@ -115,34 +104,14 @@ public class Statistik {
                 totalRevenue = totalRevenue + pizzaRevenue;
             }
         }
-        System.out.println("Total omsætning for den: " + orderdate + " er: " + totalRevenue + "kr."+"\n");
+        System.out.println("Total omsætning for den: " + orderdate + " er: " + totalRevenue + "kr." + "\n");
     }
 
-//    public void revenueCountDate() {
-////        String orderdate = Input.getString("Dato? ");
-//        int totalRevenue = 0;
-//        Timestamp ts = new Timestamp(System.currentTimeMillis());
-//        LocalDate nowDate = ts.toLocalDateTime().toLocalDate();
-//        // n kan øges med en for hvert gennemløb, så den hopper til en ny dato. Og while-løkken skal stoppe på et smart tidspunkt.
-//        int n = 0;
-//        boolean running = true;
-//        while (running) {
-//            LocalDate nDaysAgo = nowDate.minus(n, ChronoUnit.DAYS);
-//            String statement = "select * from mario.order where date = '" + nDaysAgo + "'";
-//            // Vi opretter en liste med ordrer der bærer samme dato
-//            List<Order> selectedOrders = dbOrderMapper.getOrdersAsList(statement);
-////          med de ordrer der er i den liste skal vi have udregnet hvor mange penge vi har tjent for den ordrerække
-//            int dayRevenue = 0;
-//            for (Order o : selectedOrders) {
-//                dayRevenue = dayRevenue + o.getAmount() * dbMenuCardMapper.getPizzaById(o.getPizzaId()).getPrice();
-//            }
-//            System.out.println("omsætning den " + nDaysAgo + " er " + dayRevenue + " kr.");
-//            totalRevenue = totalRevenue + dayRevenue;
-//            n++;
-//            if (n > 5) {
-//                running = false;
-//            }
-//        }
-//        System.out.println("\n Total omsætning: " + totalRevenue + "kr.");
+//    public void pizzaPopular(){
+//
+//
+//
 //    }
+
+
 }
