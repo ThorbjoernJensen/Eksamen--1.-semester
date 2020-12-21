@@ -94,7 +94,10 @@ public class MainMenu {
 
     private void setOrderAsDone() {
 
-        dbOrderMapper.setOrderAsDone();
+        if (dbOrderMapper.setOrderAsDone()) {
+            System.out.println("ordre " + dbOrderMapper.getOrderNr() + " er blevet leveret til kunden");
+
+        }
 
     }
 

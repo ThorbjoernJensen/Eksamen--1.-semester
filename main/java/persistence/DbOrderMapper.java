@@ -11,6 +11,16 @@ public class DbOrderMapper {
 
     private Database database;
 
+    private int orderNr = 0;
+
+    public int getOrderNr() {
+        return orderNr;
+    }
+
+    public void setOrderNr(int orderNr) {
+        this.orderNr = orderNr;
+    }
+
     public DbOrderMapper(Database database) {
         this.database = database;
     }
@@ -243,16 +253,18 @@ public class DbOrderMapper {
 
     public boolean setOrderAsDone() {
         boolean remove = false;
-        List<Order> færdigeordre = getOrdersAsList("select * from mario.order where remove = 'false' order by date ASC, pickup_time ASC");
-        int orderNo=færdigeordre.get(0).getOrderNr();
+        færdigeOrdre();
+
 
         String sql = "update mario.order SET remove = true where order_nr=?";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, orderNo);
+                setOrderNr(færdigeOrdre());
+                ps.setInt(1, færdigeOrdre());
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     remove = true;
+
                 }
             } catch (SQLException throwables) {
                 // TODO: Make own throwable exception and let it bubble upwards
@@ -262,7 +274,17 @@ public class DbOrderMapper {
             // TODO: Make own throwable exception and let it bubble upwards
             throwables.printStackTrace();
         }
+
         return remove;
+    }
+
+    public int færdigeOrdre() {
+
+        List<Order> færdigeordre = getOrdersAsList("select * from mario.order where remove = 'false' order by date ASC, pickup_time ASC");
+        int orderNo = færdigeordre.get(0).getOrderNr();
+
+        return orderNo;
+
     }
 }
 
