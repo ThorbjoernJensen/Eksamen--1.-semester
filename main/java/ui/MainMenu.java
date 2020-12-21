@@ -62,12 +62,8 @@ public class MainMenu {
                         case 1:
                             statistik.pizzaCount();
                             break;
-//                        case 2:
-////TODO                            Mest solgte pizza. Udtræk fra SQL eller fra metode "statistik.pizzaCount()".
-//                            break;
                         case 2:
                             statistik.revenueCountDate();
-//                            statistik.pizzaRevenue();
                             break;
                         case 3:
                             statistik.pizzaCountDate();
@@ -76,14 +72,16 @@ public class MainMenu {
                     break;
                 case 11:
                     setOrderAsDone();
-//                    System.out.println("Ønsker du at lukke programmet? ");
-//                    System.out.println("Tryk y for at fortsætte eller en vilkårlig tast for at gå tilbage ");
-//                    String input = Input.getString("");
-//                    if (input.equals("y")){
-//                        running=false;
-//                    }else {
-//                        showMenu();
-//                    }
+                    break;
+                case 12:
+                    System.out.println("Ønsker du at lukke programmet? ");
+                    System.out.println("Tryk y for at fortsætte eller en vilkårlig tast for at gå tilbage ");
+                    String input = Input.getString("");
+                    if (input.equals("y")) {
+                        running = false;
+                    } else {
+                        showMenu();
+                    }
                     break;
                 default:
                     System.out.println("Vælg en menu ");
@@ -103,7 +101,7 @@ public class MainMenu {
 
     private void showMenu() {
         System.out.println("**** Marios pizzabar - hovedmenu ******");
-        System.out.println("[1] Vis menukort [2] Vis enkelt pizza [3] Fjern pizza [4] Opret ny pizza [5] Opdater pizza [6] Se alle ordre [7] Opret ny ordre [8] Opdater ordre [9] Slet ordre [10] Statistik [11] Afslut program");
+        System.out.println("[1] Vis menukort [2] Vis enkelt pizza [3] Fjern pizza [4] Opret ny pizza [5] Opdater pizza [6] Se alle ordre [7] Opret ny ordre [8] Opdater ordre [9] Slet ordre [10] Statistik [11] Afslut ordre [12] Afslut program");
     }
 
     private void updatePizza() {
