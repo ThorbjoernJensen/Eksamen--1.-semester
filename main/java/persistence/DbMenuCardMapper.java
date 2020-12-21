@@ -35,11 +35,15 @@ public class DbMenuCardMapper {
                     pizzaList.add(new Pizza(pizza_id, pizza_no, name, ingredients, price));
                 }
             } catch (Exception e) {
-throw new ExceptionHandling("Fejl i hentning af menukort",e);            }
+//                ExceptionHandling.logfile(e);
+                throw new ExceptionHandling("Fejl i hentning af menukort");
+            }
         } catch (Exception e) {
-            throw new ExceptionHandling("Fejl i hentning af menukort",e);            }
-        return pizzaList;
+            ExceptionHandling.logfile(e);
+            throw new ExceptionHandling("Fejl i hentning af menukort");
         }
+        return pizzaList;
+    }
 
 
     public Pizza getPizzaById(int pizzaNo) throws Exception {
@@ -57,12 +61,14 @@ throw new ExceptionHandling("Fejl i hentning af menukort",e);            }
                     int price = rs.getInt("price");
                     pizza = new Pizza(pizza_id, pizza_no, name, ingredients, price);
                 }
-            } catch (SQLException throwables) {
-                // TODO: Make own throwable exception and let it bubble upwards
-                throwables.printStackTrace();
+            } catch (Exception e) {
+                ExceptionHandling.logfile(e);
+                throw new ExceptionHandling("Fuck dig Rene");
             }
-        } catch (SQLException | IOException | ExceptionHandling throwables) {
-            throwables.printStackTrace();
+        } catch (Exception e) {
+            ExceptionHandling.logfile(e);
+            throw new ExceptionHandling("Fuck dig Rene");
+
         }
         return pizza;
     }
@@ -74,7 +80,7 @@ throw new ExceptionHandling("Fejl i hentning af menukort",e);            }
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, pizzaNo);
                 int rowsAffected = ps.executeUpdate();
-                if (rowsAffected == 1){
+                if (rowsAffected == 1) {
                     result = true;
                 }
             } catch (SQLException throwables) {
@@ -93,17 +99,17 @@ throw new ExceptionHandling("Fejl i hentning af menukort",e);            }
         int newId = 0;
         String sql = "insert into pizza (pizza_no, name, ingredients, price) values (?,?,?,?)";
         try (Connection connection = database.connect()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS )) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, pizza.getPizzaNo());
                 ps.setString(2, pizza.getName());
                 ps.setString(3, pizza.getIngredients());
                 ps.setInt(4, pizza.getPrice());
                 int rowsAffected = ps.executeUpdate();
-                if (rowsAffected == 1){
+                if (rowsAffected == 1) {
                     result = true;
                 }
                 ResultSet idResultset = ps.getGeneratedKeys();
-                if (idResultset.next()){
+                if (idResultset.next()) {
                     newId = idResultset.getInt(1);
                     pizza.setPizzaId(newId);
                 } else {
@@ -131,7 +137,7 @@ throw new ExceptionHandling("Fejl i hentning af menukort",e);            }
                 ps.setInt(4, pizza.getPrice());
                 ps.setInt(5, pizza.getPizzaNo());
                 int rowsAffected = ps.executeUpdate();
-                if (rowsAffected == 1){
+                if (rowsAffected == 1) {
                     result = true;
                 }
             } catch (SQLException throwables) {

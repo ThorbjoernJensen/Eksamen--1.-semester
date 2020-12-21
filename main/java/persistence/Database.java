@@ -22,8 +22,7 @@ public class Database {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            // TODO: Make own throwable exception and let it bubble upwards
-            throw new ExceptionHandling("Fucking fejl i databse driveren din ko",e);
+            ExceptionHandling.logfile(e);
         }
     }
 
@@ -32,7 +31,7 @@ public class Database {
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (Exception e) {
-            throw new ExceptionHandling("HEJ MED DIG FEJL", e);
+            ExceptionHandling.logfile(e);
         }
         return connection;
     }

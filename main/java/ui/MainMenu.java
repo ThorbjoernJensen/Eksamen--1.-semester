@@ -52,7 +52,8 @@ public class MainMenu {
                         String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
                         System.out.println(dbOrderMapper.getOrdersAsList(statement));
                     } catch (Exception e) {
-                        throw new ExceptionHandling("Fejl i database",e);
+                        ExceptionHandling.logfile(e);
+                        throw new ExceptionHandling("Fejl i database");
                     }
 
 
@@ -183,10 +184,15 @@ public class MainMenu {
     }
 
     private void showMenuCard() throws Exception {
-        System.out.println("**** Menukort hos Marios ******");
-        List<Pizza> menuCard = dbMenuCardMapper.getAllPizzas();
-        for (Pizza pizza : menuCard) {
-            System.out.println(pizza.toString());
+        try {
+            System.out.println("**** Menukort hos Marios ******");
+            List<Pizza> menuCard = dbMenuCardMapper.getAllPizzas();
+            for (Pizza pizza : menuCard) {
+                System.out.println(pizza.toString());
+            }
+        } catch (Exception e) {
+//            ExceptionHandling.logfile(e);
+            throw new ExceptionHandling("Fejl i hentning af menukort. Kontakt Wehba");
         }
     }
 

@@ -9,9 +9,9 @@ import java.util.Date;
 public class ExceptionHandling extends Exception {
 
 
-    public ExceptionHandling(String message, Exception e) throws Exception {
+    public ExceptionHandling(String message) throws Exception {
         super(message);
-        ExceptionHandling.logfile(e);
+//        logfile();
     }
 
     public static void logfile(Exception e) throws Exception {
@@ -19,7 +19,7 @@ public class ExceptionHandling extends Exception {
         Date date = new Date();
         try {
             FileWriter fileWriter = new FileWriter(file, true);
-            fileWriter.write(date.toString() + " : " + e.toString()+"\n");
+            fileWriter.write(date.toString() + " : " + e.toString() + "\n");
             fileWriter.close();
         } catch (IOException ioException) {
             ioException.printStackTrace();
