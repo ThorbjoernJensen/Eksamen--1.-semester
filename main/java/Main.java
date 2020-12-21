@@ -1,14 +1,16 @@
 import exceptionHandling.ExceptionHandling;
 import ui.MainMenu;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) throws ExceptionHandling {
+    public static void main(String[] args) throws Exception {
         try {
             MainMenu mainMenu = new MainMenu();
             mainMenu.mainMenuLoop();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }

@@ -17,7 +17,7 @@ public class DbMenuCardMapper {
         this.database = database;
     }
 
-    public List<Pizza> getAllPizzas() {
+    public List<Pizza> getAllPizzas() throws Exception {
 
         List<Pizza> pizzaList = new ArrayList<>();
 
@@ -34,17 +34,15 @@ public class DbMenuCardMapper {
                     int price = rs.getInt("price");
                     pizzaList.add(new Pizza(pizza_id, pizza_no, name, ingredients, price));
                 }
-            } catch (SQLException throwables) {
-                // TODO: Make own throwable exception and let it bubble upwards
-                throwables.printStackTrace();
-            }
-        } catch (SQLException | IOException | SUPER throwables) {
-            throwables.printStackTrace();
-        }
+            } catch (Exception e) {
+throw new ExceptionHandling("Fejl i hentning af menukort",e);            }
+        } catch (Exception e) {
+            throw new ExceptionHandling("Fejl i hentning af menukort",e);            }
         return pizzaList;
-    }
+        }
 
-    public Pizza getPizzaById(int pizzaNo) {
+
+    public Pizza getPizzaById(int pizzaNo) throws Exception {
         Pizza pizza = null;
         String sql = "select * from pizza where pizza_no = ?";
         try (Connection connection = database.connect()) {
@@ -63,13 +61,13 @@ public class DbMenuCardMapper {
                 // TODO: Make own throwable exception and let it bubble upwards
                 throwables.printStackTrace();
             }
-        } catch (SQLException | IOException | SUPER throwables) {
+        } catch (SQLException | IOException | ExceptionHandling throwables) {
             throwables.printStackTrace();
         }
         return pizza;
     }
 
-    public boolean deletePizza(int pizzaNo){
+    public boolean deletePizza(int pizzaNo) throws Exception {
         boolean result = false;
         String sql = "delete from pizza where pizza_no = ?";
         try (Connection connection = database.connect()) {
@@ -83,14 +81,14 @@ public class DbMenuCardMapper {
                 // TODO: Make own throwable exception and let it bubble upwards
                 throwables.printStackTrace();
             }
-        } catch (SQLException | IOException | SUPER throwables) {
+        } catch (SQLException | IOException | ExceptionHandling throwables) {
             // TODO: Make own throwable exception and let it bubble upwards
             throwables.printStackTrace();
         }
         return result;
     }
 
-    public Pizza insertPizza(Pizza pizza){
+    public Pizza insertPizza(Pizza pizza) throws Exception {
         boolean result = false;
         int newId = 0;
         String sql = "insert into pizza (pizza_no, name, ingredients, price) values (?,?,?,?)";
@@ -115,14 +113,14 @@ public class DbMenuCardMapper {
                 // TODO: Make own throwable exception and let it bubble upwards
                 throwables.printStackTrace();
             }
-        } catch (SQLException | IOException | SUPER throwables) {
+        } catch (SQLException | IOException | ExceptionHandling throwables) {
             // TODO: Make own throwable exception and let it bubble upwards
             throwables.printStackTrace();
         }
         return pizza;
     }
 
-    public boolean updatePizza(Pizza pizza) {
+    public boolean updatePizza(Pizza pizza) throws Exception {
         boolean result = false;
         String sql = "update pizza set pizza_no = ?, name = ?, ingredients = ?, price = ? where pizza_no = ?";
         try (Connection connection = database.connect()) {
@@ -140,7 +138,7 @@ public class DbMenuCardMapper {
                 // TODO: Make own throwable exception and let it bubble upwards
                 throwables.printStackTrace();
             }
-        } catch (SQLException | IOException | SUPER throwables) {
+        } catch (SQLException | IOException | ExceptionHandling throwables) {
             // TODO: Make own throwable exception and let it bubble upwards
             throwables.printStackTrace();
         }

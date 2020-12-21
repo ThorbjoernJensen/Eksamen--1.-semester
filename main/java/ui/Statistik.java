@@ -34,7 +34,7 @@ public class Statistik {
 
     }
 
-    public void pizzaCount() throws ExceptionHandling {
+    public void pizzaCount() throws Exception {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
         int pizzaCount = 0;
         int pizzaRevenue = 0;
@@ -75,7 +75,7 @@ public class Statistik {
         }
     }
 
-    public void pizzaRevenue() throws ExceptionHandling {
+    public void pizzaRevenue() throws Exception {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
         int pizzaCount = 0;
         int pizzaRevenue = 0;
@@ -94,7 +94,7 @@ public class Statistik {
     }
 
 
-    public void pizzaCountDate() throws ExceptionHandling {
+    public void pizzaCountDate() throws Exception {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
         int pizzaCount = 0;
         int pizzaRevenue = 0;
@@ -126,7 +126,7 @@ public class Statistik {
         System.out.println("Total omsætning for den: " + orderdate + " er: " + totalRevenue + "kr." + "\n");
     }
 
-    public void revenueCountDate() throws ExceptionHandling {
+    public void revenueCountDate() throws Exception {
         int totalRevenue = 0;
         Timestamp ts = new Timestamp(System.currentTimeMillis());
         LocalDate nowDate = ts.toLocalDateTime().toLocalDate();

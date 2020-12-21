@@ -1,0 +1,13 @@
+Mon Dec 21 23:03:52 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Mon Dec 21 23:04:05 CET 2020 : java.lang.ClassNotFoundException: com.mysql.cj.jdbc.Driverd
+Mon Dec 21 23:04:37 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Mon Dec 21 23:07:00 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Mon Dec 21 23:07:00 CET 2020 : exceptionHandling.ExceptionHandling: Fucking fejl i databsen din ko
+Mon Dec 21 23:10:40 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Mon Dec 21 23:10:40 CET 2020 : exceptionHandling.ExceptionHandling: Fucking fejl i databsen din ko
+Mon Dec 21 23:13:43 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Mon Dec 21 23:13:43 CET 2020 : exceptionHandling.ExceptionHandling: Fucking fejl i databsen din ko
+Mon Dec 21 23:18:58 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Mon Dec 21 23:18:58 CET 2020 : exceptionHandling.ExceptionHandling: HEJ MED DIG FEJL
+Mon Dec 21 23:19:51 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Mon Dec 21 23:19:51 CET 2020 : exceptionHandling.ExceptionHandling

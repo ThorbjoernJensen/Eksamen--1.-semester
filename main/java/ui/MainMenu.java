@@ -7,6 +7,7 @@ import persistence.Database;
 import persistence.DbMenuCardMapper;
 import persistence.DbOrderMapper;
 
+import java.io.IOException;
 import java.util.List;
 
 public class MainMenu {
@@ -20,10 +21,10 @@ public class MainMenu {
     private DbOrderMapper dbOrderMapper = new DbOrderMapper(database);
     private Statistik statistik = new Statistik(database);
 
-    public MainMenu() throws ExceptionHandling {
+    public MainMenu() throws Exception {
     }
 
-    public void mainMenuLoop() throws ExceptionHandling {
+    public void mainMenuLoop() throws Exception {
 
         boolean running = true;
 
@@ -46,8 +47,15 @@ public class MainMenu {
                     updatePizza();
                     break;
                 case 6:
-                    String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
-                    System.out.println(dbOrderMapper.getOrdersAsList(statement));
+
+                    try {
+                        String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
+                        System.out.println(dbOrderMapper.getOrdersAsList(statement));
+                    } catch (Exception e) {
+                        throw new ExceptionHandling("Fejl i database",e);
+                    }
+
+
                     break;
                 case 7:
                     insertOrder();
@@ -94,7 +102,7 @@ public class MainMenu {
         System.out.println("Tak for denne gang!");
     }
 
-    private void setOrderAsDone() throws ExceptionHandling {
+    private void setOrderAsDone() throws Exception {
 
         if (dbOrderMapper.setOrderAsDone()) {
             System.out.println("ordre " + dbOrderMapper.getOrderNr() + " er blevet leveret til kunden");
@@ -108,7 +116,7 @@ public class MainMenu {
         System.out.println("[1] Vis menukort [2] Vis enkelt pizza [3] Fjern pizza [4] Opret ny pizza [5] Opdater pizza [6] Se alle ordre [7] Opret ny ordre [8] Opdater ordre [9] Slet ordre [10] Statistik [11] Afslut ordre [12] Afslut program");
     }
 
-    private void updatePizza() {
+    private void updatePizza() throws Exception {
         System.out.println("***** Opdater pizza *******");
         int pizzaNo = Input.getInt("Indtast pizza nummer på den du vil rette: ");
         System.out.println("Indtast ny værdi, hvis den skal rettes - eller blot <retur>: ");
@@ -137,7 +145,7 @@ public class MainMenu {
         }
     }
 
-    private void insertPizza() {
+    private void insertPizza() throws Exception {
         System.out.println("**** Opret ny pizza *******");
         int pizzaNo = Input.getInt("Indtast pizza nummer: ");
         String name = Input.getString("Indtast navn på pizza: ");
@@ -153,7 +161,7 @@ public class MainMenu {
         }
     }
 
-    private void deletePizza() {
+    private void deletePizza() throws Exception {
         int pizzaNo = Input.getInt("Indtast nummer på pizza som skal fjernes: ");
         boolean result = dbMenuCardMapper.deletePizza(pizzaNo);
         if (result) {
@@ -163,7 +171,7 @@ public class MainMenu {
         }
     }
 
-    private void showSinglePizza() {
+    private void showSinglePizza() throws Exception {
         int pizzaNo = Input.getInt("Indtast pizzanummer: ");
         Pizza pizza = dbMenuCardMapper.getPizzaById(pizzaNo);
         if (pizza != null) {
@@ -174,7 +182,7 @@ public class MainMenu {
         }
     }
 
-    private void showMenuCard() {
+    private void showMenuCard() throws Exception {
         System.out.println("**** Menukort hos Marios ******");
         List<Pizza> menuCard = dbMenuCardMapper.getAllPizzas();
         for (Pizza pizza : menuCard) {
@@ -182,7 +190,7 @@ public class MainMenu {
         }
     }
 
-    private void insertOrder() throws ExceptionHandling {
+    private void insertOrder() throws Exception {
         System.out.println("**** Opret ny ordre *******");
         int pizzaNo = Input.getInt("Indtast pizza nummer: ");
         Pizza chosenPizza = dbMenuCardMapper.getPizzaById(pizzaNo);
@@ -207,7 +215,7 @@ public class MainMenu {
         }
     }
 
-    private void updateOrder() throws ExceptionHandling {
+    private void updateOrder() throws Exception {
         System.out.println("***** Opdater order *******");
         int orderNo = Input.getInt("Indtast order nummer på den du vil rette: ");
         Order order = dbOrderMapper.getOrderById(orderNo);
@@ -279,7 +287,7 @@ public class MainMenu {
 
     }
 
-    private void updateSqlOrder(int orderNo, Order order) throws ExceptionHandling {
+    private void updateSqlOrder(int orderNo, Order order) throws Exception {
         boolean result = dbOrderMapper.updateOrder(order);
         if (result) {
             System.out.println("Ordren med nr = " + orderNo + " er nu opdateret");
@@ -288,7 +296,7 @@ public class MainMenu {
         }
     }
 
-    private void deleteOrder() throws ExceptionHandling {
+    private void deleteOrder() throws Exception {
         int orderNo = Input.getInt("Indtast nummer på den ordre som skal fjernes: ");
         boolean result = dbOrderMapper.deleteOrder(orderNo);
         if (result) {
