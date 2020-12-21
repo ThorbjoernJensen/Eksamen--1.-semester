@@ -1,7 +1,10 @@
 package persistence;
 
 import domain.Pizza;
+import exceptionHandling.ExceptionHandling;
+import exceptionHandling.SUPER;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +38,7 @@ public class DbMenuCardMapper {
                 // TODO: Make own throwable exception and let it bubble upwards
                 throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException | SUPER throwables) {
             throwables.printStackTrace();
         }
         return pizzaList;
@@ -60,7 +63,7 @@ public class DbMenuCardMapper {
                 // TODO: Make own throwable exception and let it bubble upwards
                 throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException | SUPER throwables) {
             throwables.printStackTrace();
         }
         return pizza;
@@ -80,7 +83,7 @@ public class DbMenuCardMapper {
                 // TODO: Make own throwable exception and let it bubble upwards
                 throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException | SUPER throwables) {
             // TODO: Make own throwable exception and let it bubble upwards
             throwables.printStackTrace();
         }
@@ -112,7 +115,7 @@ public class DbMenuCardMapper {
                 // TODO: Make own throwable exception and let it bubble upwards
                 throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException | SUPER throwables) {
             // TODO: Make own throwable exception and let it bubble upwards
             throwables.printStackTrace();
         }
@@ -137,7 +140,7 @@ public class DbMenuCardMapper {
                 // TODO: Make own throwable exception and let it bubble upwards
                 throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException | SUPER throwables) {
             // TODO: Make own throwable exception and let it bubble upwards
             throwables.printStackTrace();
         }

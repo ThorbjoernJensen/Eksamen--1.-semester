@@ -2,7 +2,10 @@ package persistence;
 
 
 import domain.Order;
+import exceptionHandling.ExceptionHandling;
+import exceptionHandling.SUPER;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +32,7 @@ public class DbOrderMapper {
 
     }
 
-    public List<Order> getOrdersAsList(String sqlargument) {
+    public List<Order> getOrdersAsList(String sqlargument) throws ExceptionHandling {
         List<Order> orderList = new ArrayList<>();
         String sql = sqlargument;
         try (Connection connection = database.connect()) {
@@ -48,15 +51,15 @@ public class DbOrderMapper {
                     orderList.add(new Order(order_nr, pizza_id, amount, pickup_time, order_time, date, custemor_name, phone));
                 }
             } catch (SQLException throwables) {
-                throwables.printStackTrace();
+//                throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException | IOException | SUPER throwables) {
+//            throwables.printStackTrace();
         }
         return orderList;
     }
 
-    public Order insertOrder(Order order) {
+    public Order insertOrder(Order order) throws ExceptionHandling {
         boolean result = false;
         int newId = 0;
 
@@ -85,16 +88,16 @@ public class DbOrderMapper {
                 }
             } catch (SQLException throwables) {
                 // TODO: Make own throwable exception and let it bubble upwards
-                throwables.printStackTrace();
+//                throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException | SUPER throwables) {
             // TODO: Make own throwable exception and let it bubble upwards
-            throwables.printStackTrace();
+//            throwables.printStackTrace();
         }
         return order;
     }
 
-    public boolean updateOrder(Order order) {
+    public boolean updateOrder(Order order) throws ExceptionHandling {
         boolean result = false;
         String sql = "update mario.order set order_nr = ?, pizza_id = ?, amount = ?, pickup_time = ?, custemor_name = ?, phone = ? where order_nr = ?";
         try (Connection connection = database.connect()) {
@@ -112,16 +115,16 @@ public class DbOrderMapper {
                 }
             } catch (SQLException throwables) {
                 // TODO: Make own throwable exception and let it bubble upwards
-                throwables.printStackTrace();
+//                throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException | SUPER throwables) {
             // TODO: Make own throwable exception and let it bubble upwards
-            throwables.printStackTrace();
+//            throwables.printStackTrace();
         }
         return result;
     }
 
-    public Order getOrderById(int order_nr) {
+    public Order getOrderById(int order_nr) throws ExceptionHandling {
         Order order = null;
         String sql = "select * from mario.order where order_nr = ?";
         try (Connection connection = database.connect()) {
@@ -142,15 +145,15 @@ public class DbOrderMapper {
                 }
             } catch (SQLException throwables) {
                 // TODO: Make own throwable exception and let it bubble upwards
-                throwables.printStackTrace();
+//                throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException | IOException | SUPER throwables) {
+//            throwables.printStackTrace();
         }
         return order;
     }
 
-    public boolean deleteOrder(int orderNo) {
+    public boolean deleteOrder(int orderNo) throws ExceptionHandling {
         boolean result = false;
         String sql = "delete from mario.order where order_nr= ?";
         try (Connection connection = database.connect()) {
@@ -162,16 +165,16 @@ public class DbOrderMapper {
                 }
             } catch (SQLException throwables) {
                 // TODO: Make own throwable exception and let it bubble upwards
-                throwables.printStackTrace();
+//                throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException | SUPER throwables) {
             // TODO: Make own throwable exception and let it bubble upwards
-            throwables.printStackTrace();
+//            throwables.printStackTrace();
         }
         return result;
     }
 
-    public boolean setOrderAsDone() {
+    public boolean setOrderAsDone() throws ExceptionHandling {
         boolean remove = false;
         færdigeOrdre();
 
@@ -188,17 +191,17 @@ public class DbOrderMapper {
                 }
             } catch (SQLException throwables) {
                 // TODO: Make own throwable exception and let it bubble upwards
-                throwables.printStackTrace();
+//                throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException | SUPER throwables) {
             // TODO: Make own throwable exception and let it bubble upwards
-            throwables.printStackTrace();
+//            throwables.printStackTrace();
         }
 
         return remove;
     }
 
-    public int færdigeOrdre() {
+    public int færdigeOrdre() throws ExceptionHandling {
 
         List<Order> færdigeordre = getOrdersAsList("select * from mario.order where remove = 'false' order by date ASC, pickup_time ASC");
         int orderNo = færdigeordre.get(0).getOrderNr();

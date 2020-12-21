@@ -2,6 +2,7 @@ package ui;
 
 import domain.Order;
 import domain.Pizza;
+import exceptionHandling.ExceptionHandling;
 import persistence.Database;
 import persistence.DbMenuCardMapper;
 import persistence.DbOrderMapper;
@@ -33,7 +34,7 @@ public class Statistik {
 
     }
 
-    public void pizzaCount() {
+    public void pizzaCount() throws ExceptionHandling {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
         int pizzaCount = 0;
         int pizzaRevenue = 0;
@@ -74,7 +75,7 @@ public class Statistik {
         }
     }
 
-    public void pizzaRevenue() {
+    public void pizzaRevenue() throws ExceptionHandling {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
         int pizzaCount = 0;
         int pizzaRevenue = 0;
@@ -93,7 +94,7 @@ public class Statistik {
     }
 
 
-    public void pizzaCountDate() {
+    public void pizzaCountDate() throws ExceptionHandling {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
         int pizzaCount = 0;
         int pizzaRevenue = 0;
@@ -125,7 +126,7 @@ public class Statistik {
         System.out.println("Total omsætning for den: " + orderdate + " er: " + totalRevenue + "kr." + "\n");
     }
 
-    public void revenueCountDate() {
+    public void revenueCountDate() throws ExceptionHandling {
         int totalRevenue = 0;
         Timestamp ts = new Timestamp(System.currentTimeMillis());
         LocalDate nowDate = ts.toLocalDateTime().toLocalDate();

@@ -2,6 +2,7 @@ package ui;
 
 import domain.Pizza;
 import domain.Order;
+import exceptionHandling.ExceptionHandling;
 import persistence.Database;
 import persistence.DbMenuCardMapper;
 import persistence.DbOrderMapper;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class MainMenu {
 
-    private final String USER = "testdb_user";
+    private final String USER = "testdb_user1";
     private final String PASSWORD = "1234";
     private final String URL = "jdbc:mysql://localhost:3306/mario?serverTimezone=CET&useSSL=false";
 
@@ -19,7 +20,10 @@ public class MainMenu {
     private DbOrderMapper dbOrderMapper = new DbOrderMapper(database);
     private Statistik statistik = new Statistik(database);
 
-    public void mainMenuLoop() {
+    public MainMenu() throws ExceptionHandling {
+    }
+
+    public void mainMenuLoop() throws ExceptionHandling {
 
         boolean running = true;
 
@@ -90,7 +94,7 @@ public class MainMenu {
         System.out.println("Tak for denne gang!");
     }
 
-    private void setOrderAsDone() {
+    private void setOrderAsDone() throws ExceptionHandling {
 
         if (dbOrderMapper.setOrderAsDone()) {
             System.out.println("ordre " + dbOrderMapper.getOrderNr() + " er blevet leveret til kunden");
@@ -178,7 +182,7 @@ public class MainMenu {
         }
     }
 
-    private void insertOrder() {
+    private void insertOrder() throws ExceptionHandling {
         System.out.println("**** Opret ny ordre *******");
         int pizzaNo = Input.getInt("Indtast pizza nummer: ");
         Pizza chosenPizza = dbMenuCardMapper.getPizzaById(pizzaNo);
@@ -203,7 +207,7 @@ public class MainMenu {
         }
     }
 
-    private void updateOrder() {
+    private void updateOrder() throws ExceptionHandling {
         System.out.println("***** Opdater order *******");
         int orderNo = Input.getInt("Indtast order nummer på den du vil rette: ");
         Order order = dbOrderMapper.getOrderById(orderNo);
@@ -275,7 +279,7 @@ public class MainMenu {
 
     }
 
-    private void updateSqlOrder(int orderNo, Order order) {
+    private void updateSqlOrder(int orderNo, Order order) throws ExceptionHandling {
         boolean result = dbOrderMapper.updateOrder(order);
         if (result) {
             System.out.println("Ordren med nr = " + orderNo + " er nu opdateret");
@@ -284,7 +288,7 @@ public class MainMenu {
         }
     }
 
-    private void deleteOrder() {
+    private void deleteOrder() throws ExceptionHandling {
         int orderNo = Input.getInt("Indtast nummer på den ordre som skal fjernes: ");
         boolean result = dbOrderMapper.deleteOrder(orderNo);
         if (result) {
