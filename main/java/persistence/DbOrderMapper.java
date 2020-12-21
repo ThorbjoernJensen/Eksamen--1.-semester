@@ -19,7 +19,7 @@ public class DbOrderMapper {
 
     }
 
-    public List<Order> getOrdersAsList (String sqlargument){
+    public List<Order> getOrdersAsList(String sqlargument) {
         List<Order> orderList = new ArrayList<>();
 
         //        String sql = "select * from mario.order order by date DESC, pickup_time ASC";
@@ -164,34 +164,34 @@ public class DbOrderMapper {
 //    }
 //
 
-  public boolean updateOrder(Order order) {
-      boolean result = false;
-      String sql = "update mario.order set order_nr = ?, pizza_id = ?, amount = ?, pickup_time = ?, custemor_name = ?, phone = ? where order_nr = ?";
-      try (Connection connection = database.connect()) {
-          try (PreparedStatement ps = connection.prepareStatement(sql)) {
-              ps.setInt(1, order.getOrderNr());
-              ps.setInt(2, order.getPizzaId());
-              ps.setInt(3, order.getAmount());
-              ps.setInt(4, order.getPickuptime());
-              ps.setString(5, order.getCustemorName());
-              ps.setString(6, order.getPhone());
-              ps.setInt(7, order.getOrderNr());
-              int rowsAffected = ps.executeUpdate();
-              if (rowsAffected == 1) {
-                  result = true;
-              }
-          } catch (SQLException throwables) {
-              // TODO: Make own throwable exception and let it bubble upwards
-              throwables.printStackTrace();
-          }
-      } catch (SQLException throwables) {
-          // TODO: Make own throwable exception and let it bubble upwards
-          throwables.printStackTrace();
-      }
-      return result;
+    public boolean updateOrder(Order order) {
+        boolean result = false;
+        String sql = "update mario.order set order_nr = ?, pizza_id = ?, amount = ?, pickup_time = ?, custemor_name = ?, phone = ? where order_nr = ?";
+        try (Connection connection = database.connect()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, order.getOrderNr());
+                ps.setInt(2, order.getPizzaId());
+                ps.setInt(3, order.getAmount());
+                ps.setInt(4, order.getPickuptime());
+                ps.setString(5, order.getCustemorName());
+                ps.setString(6, order.getPhone());
+                ps.setInt(7, order.getOrderNr());
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1) {
+                    result = true;
+                }
+            } catch (SQLException throwables) {
+                // TODO: Make own throwable exception and let it bubble upwards
+                throwables.printStackTrace();
+            }
+        } catch (SQLException throwables) {
+            // TODO: Make own throwable exception and let it bubble upwards
+            throwables.printStackTrace();
+        }
+        return result;
     }
 
-    public Order getOrderById (int order_nr) {
+    public Order getOrderById(int order_nr) {
         Order order = null;
         String sql = "select * from mario.order where order_nr = ?";
         try (Connection connection = database.connect()) {
@@ -202,7 +202,7 @@ public class DbOrderMapper {
                     int orderNr = rs.getInt("order_nr");
                     int pizza_id = rs.getInt("pizza_id");
                     int amount = rs.getInt("amount");
-                    int pickup_time =rs.getInt("pickup_time");
+                    int pickup_time = rs.getInt("pickup_time");
                     Timestamp order_time = rs.getTimestamp("order_time");
                     Date date = rs.getDate("date");
                     String custemor_name = rs.getString("custemor_name");
@@ -219,14 +219,15 @@ public class DbOrderMapper {
         }
         return order;
     }
-    public boolean deleteOrder(int orderNo){
+
+    public boolean deleteOrder(int orderNo) {
         boolean result = false;
         String sql = "delete from mario.order where order_nr= ?";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, orderNo);
                 int rowsAffected = ps.executeUpdate();
-                if (rowsAffected == 1){
+                if (rowsAffected == 1) {
                     result = true;
                 }
             } catch (SQLException throwables) {
@@ -240,8 +241,28 @@ public class DbOrderMapper {
         return result;
     }
 
+    public boolean setOrderAsDone() {
+        boolean remove = false;
+        List<Order> færdigeordre = getOrdersAsList("select * from mario.order where remove = 'false' order by date ASC, pickup_time ASC");
+        int orderNo=færdigeordre.get(0).getOrderNr();
 
-
-
-
+        String sql = "update mario.order SET remove = true where order_nr=?";
+        try (Connection connection = database.connect()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderNo);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1) {
+                    remove = true;
+                }
+            } catch (SQLException throwables) {
+                // TODO: Make own throwable exception and let it bubble upwards
+                throwables.printStackTrace();
+            }
+        } catch (SQLException throwables) {
+            // TODO: Make own throwable exception and let it bubble upwards
+            throwables.printStackTrace();
+        }
+        return remove;
+    }
 }
+

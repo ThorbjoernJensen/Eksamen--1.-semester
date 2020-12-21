@@ -42,7 +42,7 @@ public class MainMenu {
                     updatePizza();
                     break;
                 case 6:
-                    String statement = "select * from mario.order order by date DESC, pickup_time ASC";
+                    String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
                     System.out.println(dbOrderMapper.getOrdersAsList(statement));
                     break;
                 case 7:
@@ -75,20 +75,27 @@ public class MainMenu {
                     }
                     break;
                 case 11:
-                    System.out.println("Ønsker du at lukke programmet? ");
-                    System.out.println("Tryk y for at fortsætte eller en vilkårlig tast for at gå tilbage ");
-                    String input = Input.getString("");
-                    if (input.equals("y")){
-                        running=false;
-                    }else {
-                        showMenu();
-                    }
+                    setOrderAsDone();
+//                    System.out.println("Ønsker du at lukke programmet? ");
+//                    System.out.println("Tryk y for at fortsætte eller en vilkårlig tast for at gå tilbage ");
+//                    String input = Input.getString("");
+//                    if (input.equals("y")){
+//                        running=false;
+//                    }else {
+//                        showMenu();
+//                    }
                     break;
                 default:
                     System.out.println("Vælg en menu ");
             }
         }
         System.out.println("Tak for denne gang!");
+    }
+
+    private void setOrderAsDone() {
+
+        dbOrderMapper.setOrderAsDone();
+
     }
 
     private void showMenu() {
