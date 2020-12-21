@@ -1,28 +1,23 @@
 package exceptionHandling;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Date;
 
 public class ExceptionHandling extends Exception {
 
 
-    public ExceptionHandling(String message) throws Exception {
-        super(message);
-//        logfile();
+    public ExceptionHandling(Exception e) throws Exception {
+        super(e);
+        logfile(e);
     }
 
     public static void logfile(Exception e) throws Exception {
-        File file = new File("tracelog.txt");
+        File file = new File("Errorlog.txt");
         Date date = new Date();
-        try {
-            FileWriter fileWriter = new FileWriter(file, true);
-            fileWriter.write(date.toString() + " : " + e.toString() + "\n");
-            fileWriter.close();
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }
+        StringWriter errors = new StringWriter();
+        e.printStackTrace(new PrintWriter(errors));
+        FileWriter fileWriter = new FileWriter(file, true);
+        fileWriter.write(date.toString() + " : " + errors + "\n");
+        fileWriter.close();
     }
 }

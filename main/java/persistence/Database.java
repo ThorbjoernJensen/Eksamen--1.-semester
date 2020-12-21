@@ -1,12 +1,9 @@
 package persistence;
 
 import exceptionHandling.ExceptionHandling;
-import exceptionHandling.SUPER;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class Database {
 
@@ -22,7 +19,7 @@ public class Database {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            ExceptionHandling.logfile(e);
+            throw new ExceptionHandling(e);
         }
     }
 
@@ -31,7 +28,7 @@ public class Database {
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (Exception e) {
-            ExceptionHandling.logfile(e);
+            throw new ExceptionHandling(e);
         }
         return connection;
     }

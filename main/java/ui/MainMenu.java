@@ -7,7 +7,6 @@ import persistence.Database;
 import persistence.DbMenuCardMapper;
 import persistence.DbOrderMapper;
 
-import java.io.IOException;
 import java.util.List;
 
 public class MainMenu {
@@ -52,11 +51,9 @@ public class MainMenu {
                         String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
                         System.out.println(dbOrderMapper.getOrdersAsList(statement));
                     } catch (Exception e) {
-                        ExceptionHandling.logfile(e);
-                        throw new ExceptionHandling("Fejl i database");
+                        System.out.println("Fejl i hentning af menukort. Kontant venligst en admin");
+//                        throw new ExceptionHandling(e);
                     }
-
-
                     break;
                 case 7:
                     insertOrder();
@@ -191,8 +188,7 @@ public class MainMenu {
                 System.out.println(pizza.toString());
             }
         } catch (Exception e) {
-//            ExceptionHandling.logfile(e);
-            throw new ExceptionHandling("Fejl i hentning af menukort. Kontakt Wehba");
+            throw new ExceptionHandling(e);
         }
     }
 

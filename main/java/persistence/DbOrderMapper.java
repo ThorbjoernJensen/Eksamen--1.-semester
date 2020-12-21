@@ -3,7 +3,6 @@ package persistence;
 
 import domain.Order;
 import exceptionHandling.ExceptionHandling;
-import exceptionHandling.SUPER;
 
 import java.io.IOException;
 import java.sql.*;
@@ -49,11 +48,11 @@ public class DbOrderMapper {
                     String phone = rs.getString("phone");
                     orderList.add(new Order(order_nr, pizza_id, amount, pickup_time, order_time, date, custemor_name, phone));
                 }
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (Exception e) {
+                throw new ExceptionHandling(e);
             }
-        } catch (SQLException | IOException throwables) {
-            throwables.printStackTrace();
+        } catch (Exception e) {
+            throw new ExceptionHandling(e);
         }
         return orderList;
     }
@@ -85,13 +84,11 @@ public class DbOrderMapper {
                 } else {
                     order = null;
                 }
-            } catch (SQLException throwables) {
-                // TODO: Make own throwable exception and let it bubble upwards
-//                throwables.printStackTrace();
+            } catch (Exception e) {
+                throw new ExceptionHandling(e);
             }
-        } catch (SQLException | IOException throwables) {
-            // TODO: Make own throwable exception and let it bubble upwards
-//            throwables.printStackTrace();
+        } catch (Exception e) {
+            throw new ExceptionHandling(e);
         }
         return order;
     }
@@ -112,13 +109,11 @@ public class DbOrderMapper {
                 if (rowsAffected == 1) {
                     result = true;
                 }
-            } catch (SQLException throwables) {
-                // TODO: Make own throwable exception and let it bubble upwards
-//                throwables.printStackTrace();
+            } catch (Exception e) {
+                throw new ExceptionHandling(e);
             }
-        } catch (SQLException | IOException throwables) {
-            // TODO: Make own throwable exception and let it bubble upwards
-//            throwables.printStackTrace();
+        } catch (Exception e) {
+            throw new ExceptionHandling(e);
         }
         return result;
     }
@@ -142,12 +137,11 @@ public class DbOrderMapper {
                     boolean remove = rs.getBoolean("remove");
                     order = new Order(orderNr, pizza_id, amount, pickup_time, order_time, date, custemor_name, phone);
                 }
-            } catch (SQLException throwables) {
-                // TODO: Make own throwable exception and let it bubble upwards
-//                throwables.printStackTrace();
+            } catch (Exception e) {
+                throw new ExceptionHandling(e);
             }
-        } catch (SQLException | IOException throwables) {
-//            throwables.printStackTrace();
+        } catch (Exception e) {
+          throw new ExceptionHandling(e);
         }
         return order;
     }
@@ -162,13 +156,11 @@ public class DbOrderMapper {
                 if (rowsAffected == 1) {
                     result = true;
                 }
-            } catch (SQLException throwables) {
-                // TODO: Make own throwable exception and let it bubble upwards
-//                throwables.printStackTrace();
+            } catch (Exception e) {
+                throw new ExceptionHandling(e);
             }
-        } catch (SQLException | IOException throwables) {
-            // TODO: Make own throwable exception and let it bubble upwards
-//            throwables.printStackTrace();
+        } catch (Exception e) {
+            throw new ExceptionHandling(e);
         }
         return result;
     }
@@ -188,13 +180,11 @@ public class DbOrderMapper {
                     remove = true;
 
                 }
-            } catch (SQLException throwables) {
-                // TODO: Make own throwable exception and let it bubble upwards
-//                throwables.printStackTrace();
+            } catch (Exception e) {
+                throw new ExceptionHandling(e);
             }
-        } catch (SQLException | IOException throwables) {
-            // TODO: Make own throwable exception and let it bubble upwards
-//            throwables.printStackTrace();
+        } catch (Exception e) {
+            throw new ExceptionHandling(e);
         }
 
         return remove;

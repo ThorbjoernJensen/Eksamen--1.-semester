@@ -35,17 +35,13 @@ public class DbMenuCardMapper {
                     pizzaList.add(new Pizza(pizza_id, pizza_no, name, ingredients, price));
                 }
             } catch (Exception e) {
-//                ExceptionHandling.logfile(e);
-                throw new ExceptionHandling("Fejl i hentning af menukort");
+                throw new ExceptionHandling(e);
             }
         } catch (Exception e) {
-            ExceptionHandling.logfile(e);
-            throw new ExceptionHandling("Fejl i hentning af menukort");
+            throw new ExceptionHandling(e);
         }
         return pizzaList;
     }
-
-
     public Pizza getPizzaById(int pizzaNo) throws Exception {
         Pizza pizza = null;
         String sql = "select * from pizza where pizza_no = ?";
@@ -62,13 +58,10 @@ public class DbMenuCardMapper {
                     pizza = new Pizza(pizza_id, pizza_no, name, ingredients, price);
                 }
             } catch (Exception e) {
-                ExceptionHandling.logfile(e);
-                throw new ExceptionHandling("Fuck dig Rene");
+                throw new ExceptionHandling(e);
             }
         } catch (Exception e) {
-            ExceptionHandling.logfile(e);
-            throw new ExceptionHandling("Fuck dig Rene");
-
+            throw new ExceptionHandling(e);
         }
         return pizza;
     }
@@ -83,13 +76,11 @@ public class DbMenuCardMapper {
                 if (rowsAffected == 1) {
                     result = true;
                 }
-            } catch (SQLException throwables) {
-                // TODO: Make own throwable exception and let it bubble upwards
-                throwables.printStackTrace();
+            } catch (Exception e) {
+                throw new ExceptionHandling(e);
             }
-        } catch (SQLException | IOException | ExceptionHandling throwables) {
-            // TODO: Make own throwable exception and let it bubble upwards
-            throwables.printStackTrace();
+        } catch (Exception e) {
+            throw new ExceptionHandling(e);
         }
         return result;
     }
@@ -115,13 +106,11 @@ public class DbMenuCardMapper {
                 } else {
                     pizza = null;
                 }
-            } catch (SQLException throwables) {
-                // TODO: Make own throwable exception and let it bubble upwards
-                throwables.printStackTrace();
+            } catch (Exception e) {
+                throw new ExceptionHandling(e);
             }
-        } catch (SQLException | IOException | ExceptionHandling throwables) {
-            // TODO: Make own throwable exception and let it bubble upwards
-            throwables.printStackTrace();
+        } catch (Exception e) {
+            throw new ExceptionHandling(e);
         }
         return pizza;
     }
@@ -140,13 +129,11 @@ public class DbMenuCardMapper {
                 if (rowsAffected == 1) {
                     result = true;
                 }
-            } catch (SQLException throwables) {
-                // TODO: Make own throwable exception and let it bubble upwards
-                throwables.printStackTrace();
+            } catch (Exception e) {
+                throw new ExceptionHandling(e);
             }
-        } catch (SQLException | IOException | ExceptionHandling throwables) {
-            // TODO: Make own throwable exception and let it bubble upwards
-            throwables.printStackTrace();
+        } catch (Exception e) {
+            throw new ExceptionHandling(e);
         }
         return result;
     }
