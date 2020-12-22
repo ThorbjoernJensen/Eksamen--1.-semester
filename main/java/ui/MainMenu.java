@@ -296,7 +296,7 @@ public class MainMenu {
                 if (newPizzaAmountInput > 0) {
                     order.setAmount(newPizzaAmountInput);
                 }
-                int newPickupTimeInput = Input.getInt("Leverings tid: (" + order.getPickuptime() + "): ");
+                int newPickupTimeInput = Input.getIntTime("Leverings tid: (" + order.getStringPickUpTime() + "): ");
                 if (newPickupTimeInput > 0) {
                     order.setPickuptime(newPickupTimeInput);
                 }
@@ -328,7 +328,7 @@ public class MainMenu {
                 updateSqlOrder(orderNo, order);
                 break;
             case 4:
-                int newPickupTimeInput4 = Input.getInt("Leverings tid: (" + order.getPickuptime() + "): ");
+                int newPickupTimeInput4 = Input.getIntTime("Leverings tid: (" + order.getStringPickUpTime() + "): ");
                 if (newPickupTimeInput4 > 0) {
                     order.setPickuptime(newPickupTimeInput4);
                 }

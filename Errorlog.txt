@@ -1,70 +1,6 @@
-Tue Dec 22 09:53:57 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:836)
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:456)
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246)
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:197)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
-	at persistence.Database.connect(Database.java:29)
-	at persistence.DbOrderMapper.deleteOrder(DbOrderMapper.java:152)
-	at ui.MainMenu.deleteOrder(MainMenu.java:352)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:91)
-	at Main.main(Main.java:11)
 
-Tue Dec 22 09:53:57 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
-	at persistence.Database.connect(Database.java:31)
-	at persistence.DbOrderMapper.deleteOrder(DbOrderMapper.java:152)
-	at ui.MainMenu.deleteOrder(MainMenu.java:352)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:91)
-	at Main.main(Main.java:11)
-Caused by: java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:836)
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:456)
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246)
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:197)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
-	at persistence.Database.connect(Database.java:29)
-	... 4 more
 
-Tue Dec 22 21:07:10 CET 2020 : java.sql.SQLException: Field 'pickup_timeLocal' doesn't have a default value
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
-	at persistence.DbOrderMapper.insertOrder(DbOrderMapper.java:75)
-	at ui.MainMenu.insertOrder(MainMenu.java:288)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:76)
-	at Main.main(Main.java:11)
-
-Tue Dec 22 21:07:10 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLException: Field 'pickup_timeLocal' doesn't have a default value
-	at persistence.DbOrderMapper.insertOrder(DbOrderMapper.java:88)
-	at ui.MainMenu.insertOrder(MainMenu.java:288)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:76)
-	at Main.main(Main.java:11)
-Caused by: java.sql.SQLException: Field 'pickup_timeLocal' doesn't have a default value
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
-	at persistence.DbOrderMapper.insertOrder(DbOrderMapper.java:75)
-	... 3 more
-
-Tue Dec 22 22:08:44 CET 2020 : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '15' for key 'pizza.pizza_no_UNIQUE'
+Tue Dec 22 22:25:29 CET 2020 : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'pizza.pizza_no_UNIQUE'
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -74,47 +10,16 @@ Tue Dec 22 22:08:44 CET 2020 : java.sql.SQLIntegrityConstraintViolationException
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
 	at persistence.DbMenuCardMapper.insertPizza(DbMenuCardMapper.java:95)
-	at ui.MainMenu.insertPizza(MainMenu.java:217)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:55)
+	at ui.MainMenu.insertPizza(MainMenu.java:212)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:54)
 	at Main.main(Main.java:11)
 
-Tue Dec 22 22:08:44 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '15' for key 'pizza.pizza_no_UNIQUE'
+Tue Dec 22 22:25:29 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'pizza.pizza_no_UNIQUE'
 	at persistence.DbMenuCardMapper.insertPizza(DbMenuCardMapper.java:107)
-	at ui.MainMenu.insertPizza(MainMenu.java:217)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:55)
+	at ui.MainMenu.insertPizza(MainMenu.java:212)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:54)
 	at Main.main(Main.java:11)
-Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '15' for key 'pizza.pizza_no_UNIQUE'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
-	at persistence.DbMenuCardMapper.insertPizza(DbMenuCardMapper.java:95)
-	... 3 more
-
-Tue Dec 22 22:09:41 CET 2020 : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '15' for key 'pizza.pizza_no_UNIQUE'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
-	at persistence.DbMenuCardMapper.insertPizza(DbMenuCardMapper.java:95)
-	at ui.MainMenu.insertPizza(MainMenu.java:217)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:55)
-	at Main.main(Main.java:11)
-
-Tue Dec 22 22:09:41 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '15' for key 'pizza.pizza_no_UNIQUE'
-	at persistence.DbMenuCardMapper.insertPizza(DbMenuCardMapper.java:107)
-	at ui.MainMenu.insertPizza(MainMenu.java:217)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:55)
-	at Main.main(Main.java:11)
-Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '15' for key 'pizza.pizza_no_UNIQUE'
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'pizza.pizza_no_UNIQUE'
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)

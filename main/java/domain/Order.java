@@ -14,11 +14,16 @@ public class Order {
     private String custemorName;
     private String phone;
     private boolean remove;
+    private String stringPickUpTime;
 
     public String stringPickUpTime(){
         String token = Integer.toString(getPickuptime());
         token = new StringBuilder(token).insert(token.length()-2, ":").toString();
      return token;
+    }
+
+    public void setStringPickUpTime(String stringPickUpTime) {
+        this.stringPickUpTime = stringPickUpTime;
     }
 
     public String getStringPickUpTime() {
