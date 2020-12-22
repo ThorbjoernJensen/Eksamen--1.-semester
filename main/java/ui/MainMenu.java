@@ -280,7 +280,7 @@ public class MainMenu {
             return; // TODO Ret så hvis man skriver en pizza der ikke findes skal den fortælle det og efterfølgende give dig lov til at skrive nyt nr.
         } else {
             int amount = Input.getInt("Indtast antal: ");
-            int pickup_time = Input.getInt("Hvad tid ønsker du at hente den: ");
+            int pickup_time = Input.getTimeInMinutes("Hvad tid ønsker du at hente den: ");
             String custemor_name = Input.getString("Hvad er dit navn: ");
             String phone = Input.getString("Skriv telefon nr: ");
             if (chosenPizza != null) {
