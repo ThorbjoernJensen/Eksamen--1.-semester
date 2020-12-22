@@ -66,8 +66,7 @@ public class MainMenu {
                     break;
                 case 6:
                     try {
-                        String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
-                        System.out.println(dbOrderMapper.getOrdersAsList(statement));
+                        showOrder();
                     } catch (Exception e) {
                         System.out.println("Fejl i hentning af menukort. Kontant venligst en admin");
                     }
@@ -147,6 +146,23 @@ public class MainMenu {
             }
         }
         System.out.println("Tak for denne gang!");
+    }
+
+    private void showOrder() {
+        String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
+        dbOrderMapper.getOrdersAsList(statement);
+        List<Order> orderList = dbOrderMapper.getOrdersAsList(statement);
+        for (Order order  : orderList) {
+
+            System.out.print("Order nr[" + order.getOrderNr() + "] -- " );
+            System.out.print("Pizza Id[" + order.getPizzaId() + "] -- ");
+            System.out.print("Antal[" + order.getAmount() + "] -- ");
+            System.out.print("AfhentningsTidspunkt kl:[" + Input.getMinutsToTimeFormat(order.getPickuptime()) + "] -- ");
+            //System.out.print(order.getOrdertime() + ". ");
+            System.out.print("Dato.[" + order.getDate() + "] -- ");
+            System.out.print("Navn: ["+ order.getCustemorName() + "] -- ");
+            System.out.println("Telefon Nr: [" + order.getPhone() + "].");
+        }
     }
 
     private void setOrderAsDone() throws Exception {
