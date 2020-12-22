@@ -11,7 +11,7 @@ import java.util.List;
 
 public class MainMenu {
 
-    private final String USER = "testdb_user1";
+    private final String USER = "testdb_user";
     private final String PASSWORD = "1234";
     private final String URL = "jdbc:mysql://localhost:3306/mario?serverTimezone=CET&useSSL=false";
 
@@ -31,57 +31,106 @@ public class MainMenu {
             showMenu();
             switch (Input.getInt("Vælg 1-11: ")) {
                 case 1:
-                    showMenuCard();
+                    try {
+                        showMenuCard();
+                    } catch (Exception e) {
+                        System.out.println("Fejl i hentning as menu ");                    }
                     break;
                 case 2:
-                    showSinglePizza();
+                    try {
+                        showSinglePizza();
+                    } catch (Exception e) {
+                        System.out.println("Fejl i visning af egentlig pizza ");
+                    }
                     break;
                 case 3:
-                    deletePizza();
+                    try {
+                        deletePizza();
+                    } catch (Exception e) {
+                        System.out.println("Fejl i sletning af pizza ");
+                    }
                     break;
                 case 4:
-                    insertPizza();
+                    try {
+                        insertPizza();
+                    } catch (Exception e) {
+                        System.out.println("Fejl i oprettelse as ny pizza ");
+                    }
                     break;
                 case 5:
-                    updatePizza();
+                    try {
+                        updatePizza();
+                    } catch (Exception e) {
+                        System.out.println("Fejl i opdatering as pizza ");
+                    }
                     break;
                 case 6:
-
                     try {
                         String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
                         System.out.println(dbOrderMapper.getOrdersAsList(statement));
                     } catch (Exception e) {
                         System.out.println("Fejl i hentning af menukort. Kontant venligst en admin");
-//                        throw new ExceptionHandling(e);
                     }
                     break;
                 case 7:
-                    insertOrder();
+                    try {
+                        insertOrder();
+                    } catch (Exception e) {
+                        System.out.println("Fejl i oprettelse as ny ordre ");
+                    }
                     break;
                 case 8:
-                    updateOrder();
+                    try {
+                        updateOrder();
+                    } catch (Exception e) {
+                        System.out.println("Fejl i opdatering as ordre ");
+                    }
                     break;
                 case 9:
-                    deleteOrder();
+                    try {
+                        deleteOrder();
+                    } catch (Exception e) {
+                        System.out.println("Fejl i sletning af ordre ");
+                    }
                     break;
                 case 10:
-                    System.out.println("Hvilken statistik vil du gerne se? ");
-                    System.out.println("1: Omsætning fordelt på pizzaer \n2: Daglig omsætning over periode \n3: Vis handler for given dato ");
-                    int option = Input.getInt("");
-                    switch (option) {
-                        case 1:
-                            statistik.pizzaCount();
-                            break;
-                        case 2:
-                            statistik.revenueCountDate();
-                            break;
-                        case 3:
-                            statistik.pizzaCountDate();
-                            break;
+                    try {
+                        System.out.println("Hvilken statistik vil du gerne se? ");
+                        System.out.println("1: Omsætning fordelt på pizzaer \n2: Daglig omsætning over periode \n3: Vis handler for given dato ");
+                        int option = Input.getInt("");
+                        switch (option) {
+                            case 1:
+                                try {
+                                    statistik.pizzaCount();
+                                } catch (Exception e) {
+                                    System.out.println("Fejl i Omsætning fordelt på pizzaer ");
+                                }
+                                break;
+                            case 2:
+                                try {
+                                    statistik.revenueCountDate();
+                                } catch (Exception e) {
+                                    System.out.println("Fejl i Daglig omsætning over periode ");
+                                }
+                                break;
+                            case 3:
+                                try {
+                                    statistik.pizzaCountDate();
+                                } catch (Exception e) {
+                                    System.out.println("Fejl i Vis handler for given dato ");
+                                }
+                                break;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Fejl i visning as statistik ");
                     }
                     break;
                 case 11:
-                    setOrderAsDone();
+                    try {
+                        setOrderAsDone();
+                    } catch (Exception e) {
+                        System.out.println("Fejl i afslutning af ordre ");
+                    }
                     break;
                 case 12:
                     System.out.println("Ønsker du at lukke programmet? ");

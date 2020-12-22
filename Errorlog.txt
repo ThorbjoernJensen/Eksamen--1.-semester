@@ -1,4 +1,4 @@
-Tue Dec 22 00:41:41 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Tue Dec 22 09:53:57 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -9,14 +9,16 @@ Tue Dec 22 00:41:41 CET 2020 : java.sql.SQLNonTransientConnectionException: Publ
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at persistence.Database.connect(Database.java:29)
-	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:37)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:52)
+	at persistence.DbOrderMapper.deleteOrder(DbOrderMapper.java:152)
+	at ui.MainMenu.deleteOrder(MainMenu.java:352)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:91)
 	at Main.main(Main.java:11)
 
-Tue Dec 22 00:41:41 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Tue Dec 22 09:53:57 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
 	at persistence.Database.connect(Database.java:31)
-	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:37)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:52)
+	at persistence.DbOrderMapper.deleteOrder(DbOrderMapper.java:152)
+	at ui.MainMenu.deleteOrder(MainMenu.java:352)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:91)
 	at Main.main(Main.java:11)
 Caused by: java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
@@ -29,5 +31,5 @@ Caused by: java.sql.SQLNonTransientConnectionException: Public Key Retrieval is 
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at persistence.Database.connect(Database.java:29)
-	... 3 more
+	... 4 more
 
