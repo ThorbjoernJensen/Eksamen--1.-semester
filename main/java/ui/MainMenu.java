@@ -246,14 +246,28 @@ public class MainMenu {
     }
 
     private void showMenuCard() throws Exception {
-        try {
-            System.out.println("**** Menukort hos Marios ******");
-            List<Pizza> menuCard = dbMenuCardMapper.getAllPizzas();
-            for (Pizza pizza : menuCard) {
-                System.out.println(pizza.toString());
+
+        String text, dotline;
+        int dotLenght = 100;
+
+        System.out.println("**** Menukort hos Marios ******");
+        List<Pizza> menuCard = dbMenuCardMapper.getAllPizzas();
+        for (Pizza pizza : menuCard) {
+
+            dotline = ".";
+            text = text = pizza.getPizzaNo() + ". " + pizza.getName() + " Ingredienser. " + pizza.getIngredients();
+            for (int i = 0; i < dotLenght - text.length(); i++) {
+                dotline = dotline + ".";
             }
-        } catch (Exception e) {
-            throw new ExceptionHandling(e);
+            text = text + " " + dotline + " " + pizza.getPrice() + " Kr.";
+            System.out.println(text);
+
+//            System.out.print("Nr " + pizza.getPizzaNo() + ". ");
+//            System.out.print(pizza.getName() + ". ");
+//            System.out.print("Ingredientser. " + pizza.getIngredients() + " ");
+//            System.out.println(pizza.getPrice() + " Kr. ");'
+
+
         }
     }
 
