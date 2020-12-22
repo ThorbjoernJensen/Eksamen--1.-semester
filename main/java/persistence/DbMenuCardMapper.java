@@ -31,10 +31,10 @@ public class DbMenuCardMapper {
                     int price = rs.getInt("price");
                     pizzaList.add(new Pizza(pizza_id, pizza_no, name, ingredients, price));
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 throw new ExceptionHandling(e);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             throw new ExceptionHandling(e);
         }
         return pizzaList;

@@ -1,33 +1,13 @@
 
-
-Tue Dec 22 22:25:29 CET 2020 : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'pizza.pizza_no_UNIQUE'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+Tue Dec 22 23:06:03 CET 2020 : java.sql.SQLException: Column 'pizza_id1' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
-	at persistence.DbMenuCardMapper.insertPizza(DbMenuCardMapper.java:95)
-	at ui.MainMenu.insertPizza(MainMenu.java:212)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:54)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:548)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:807)
+	at persistence.DbMenuCardMapper.getAllPizzas(DbMenuCardMapper.java:27)
+	at ui.MainMenu.showMenuCard(MainMenu.java:246)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:34)
 	at Main.main(Main.java:11)
-
-Tue Dec 22 22:25:29 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'pizza.pizza_no_UNIQUE'
-	at persistence.DbMenuCardMapper.insertPizza(DbMenuCardMapper.java:107)
-	at ui.MainMenu.insertPizza(MainMenu.java:212)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:54)
-	at Main.main(Main.java:11)
-Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'pizza.pizza_no_UNIQUE'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
-	at persistence.DbMenuCardMapper.insertPizza(DbMenuCardMapper.java:95)
-	... 3 more
 
