@@ -29,7 +29,7 @@ public class MainMenu {
 
         while (running) {
             showMenu();
-            switch (Input.getInt("Vælg 1-11: ")) {
+            switch (Input.getInt("Vælg 1-12: ")) {
                 case 1:
                     try {
                         showMenuCard();
