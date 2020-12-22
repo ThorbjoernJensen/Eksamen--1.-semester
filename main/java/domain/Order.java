@@ -15,8 +15,16 @@ public class Order {
     private String phone;
     private boolean remove;
 
-    public Order() {
+    public String stringPickUpTime(){
+        String token = Integer.toString(getPickuptime());
+        token = new StringBuilder(token).insert(token.length()-2, ":").toString();
+     return token;
     }
+
+    public String getStringPickUpTime() {
+        return stringPickUpTime();
+    }
+
 
     public Order(int pizzaId, int amount) {
         this.pizzaId = pizzaId;

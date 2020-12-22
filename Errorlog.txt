@@ -33,3 +33,34 @@ Caused by: java.sql.SQLNonTransientConnectionException: Public Key Retrieval is 
 	at persistence.Database.connect(Database.java:29)
 	... 4 more
 
+Tue Dec 22 21:07:10 CET 2020 : java.sql.SQLException: Field 'pickup_timeLocal' doesn't have a default value
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
+	at persistence.DbOrderMapper.insertOrder(DbOrderMapper.java:75)
+	at ui.MainMenu.insertOrder(MainMenu.java:288)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:76)
+	at Main.main(Main.java:11)
+
+Tue Dec 22 21:07:10 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLException: Field 'pickup_timeLocal' doesn't have a default value
+	at persistence.DbOrderMapper.insertOrder(DbOrderMapper.java:88)
+	at ui.MainMenu.insertOrder(MainMenu.java:288)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:76)
+	at Main.main(Main.java:11)
+Caused by: java.sql.SQLException: Field 'pickup_timeLocal' doesn't have a default value
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
+	at persistence.DbOrderMapper.insertOrder(DbOrderMapper.java:75)
+	... 3 more
+

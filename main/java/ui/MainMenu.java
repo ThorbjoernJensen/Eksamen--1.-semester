@@ -157,8 +157,7 @@ public class MainMenu {
             System.out.print("Order nr[" + order.getOrderNr() + "] -- " );
             System.out.print("Pizza Id[" + order.getPizzaId() + "] -- ");
             System.out.print("Antal[" + order.getAmount() + "] -- ");
-            System.out.print("AfhentningsTidspunkt kl:[" + Input.getMinutsToTimeFormat(order.getPickuptime()) + "] -- ");
-            //System.out.print(order.getOrdertime() + ". ");
+            System.out.print("AfhentningsTidspunkt kl:[" + order.getStringPickUpTime() + "] -- ");
             System.out.print("Dato.[" + order.getDate() + "] -- ");
             System.out.print("Navn: ["+ order.getCustemorName() + "] -- ");
             System.out.println("Telefon Nr: [" + order.getPhone() + "].");
@@ -280,7 +279,7 @@ public class MainMenu {
             return; // TODO Ret så hvis man skriver en pizza der ikke findes skal den fortælle det og efterfølgende give dig lov til at skrive nyt nr.
         } else {
             int amount = Input.getInt("Indtast antal: ");
-            int pickup_time = Input.getTimeInMinutes("Hvad tid ønsker du at hente den: ");
+            int pickup_time = Input.getIntTime("Hvad tid ønsker du at hente den: ");
             String custemor_name = Input.getString("Hvad er dit navn: ");
             String phone = Input.getString("Skriv telefon nr: ");
             if (chosenPizza != null) {
