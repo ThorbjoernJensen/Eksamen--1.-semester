@@ -148,7 +148,7 @@ public class MainMenu {
         System.out.println("Tak for denne gang!");
     }
 
-    private void showOrder() {
+    private void showOrder() throws Exception {
         String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
         dbOrderMapper.getOrdersAsList(statement);
         List<Order> orderList = dbOrderMapper.getOrdersAsList(statement);
