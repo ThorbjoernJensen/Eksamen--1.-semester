@@ -26,15 +26,6 @@ public class Order {
     }
 
 
-    public Order(int pizzaId, int amount) {
-        this.pizzaId = pizzaId;
-        this.amount = amount;
-        remove = false;
-
-    }
-
-
-
     public Order(int orderNr, int pizzaId, int amount, int pickuptime, Timestamp ordertime, Date date, String custemorName, String phone) {
         this.orderNr = orderNr;
         this.pizzaId = pizzaId;
@@ -58,20 +49,7 @@ public class Order {
         this.phone = phone;
     }
 
-    public Order(int pizzaId, int amount, int pickuptime, Timestamp ordertime, String custemorName, String phone, boolean remove) {
-        this.pizzaId = pizzaId;
-        this.amount = amount;
-        this.pickuptime = pickuptime;
-        this.ordertime = ordertime;
-        this.custemorName = custemorName;
-        this.phone = phone;
-        this.remove = remove;
-    }
-
-    public Order(int order_nr, int pizza_id, int amount, int pickup_time, Timestamp order_time, String custemor_name, String phone, boolean remove) {
-    }
-
-    public int getOrderNr() {
+       public int getOrderNr() {
         return orderNr;
     }
 

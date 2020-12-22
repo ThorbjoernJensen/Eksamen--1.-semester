@@ -2,7 +2,7 @@ package domain;
 
 public class Pizza {
 
-    private int pizzaId;  // Id i databasen
+    private int pizzaId;
     private int pizzaNo;
     private String name;
     private String ingredients;
@@ -29,9 +29,6 @@ public class Pizza {
 
     public void setPizzaId(int pizzaId) {
         this.pizzaId = pizzaId;
-    }
-
-    public Pizza() {
     }
 
     public int getPizzaNo() {

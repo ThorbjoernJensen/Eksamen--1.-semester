@@ -7,7 +7,6 @@ import java.sql.DriverManager;
 
 public class Database {
 
-    private Connection connection;
     private final String USER;
     private final String PASSWORD;
     private final String URL;

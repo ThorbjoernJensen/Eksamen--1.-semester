@@ -2,7 +2,6 @@ package ui;
 
 import domain.Pizza;
 import domain.Order;
-import exceptionHandling.ExceptionHandling;
 import persistence.Database;
 import persistence.DbMenuCardMapper;
 import persistence.DbOrderMapper;
@@ -23,7 +22,7 @@ public class MainMenu {
     public MainMenu() throws Exception {
     }
 
-    public void mainMenuLoop() throws Exception {
+    public void mainMenuLoop() {
 
         boolean running = true;
 
@@ -153,7 +152,6 @@ public class MainMenu {
         dbOrderMapper.getOrdersAsList(statement);
         List<Order> orderList = dbOrderMapper.getOrdersAsList(statement);
         for (Order order  : orderList) {
-
             System.out.print("Order nr[" + order.getOrderNr() + "] -- " );
             System.out.print("Pizza Id[" + order.getPizzaId() + "] -- ");
             System.out.print("Antal[" + order.getAmount() + "] -- ");
@@ -165,12 +163,9 @@ public class MainMenu {
     }
 
     private void setOrderAsDone() throws Exception {
-
         if (dbOrderMapper.setOrderAsDone()) {
             System.out.println("ordre " + dbOrderMapper.getOrderNr() + " er blevet leveret til kunden");
-
         }
-
     }
 
     private void showMenu() {
@@ -245,28 +240,18 @@ public class MainMenu {
     }
 
     private void showMenuCard() throws Exception {
-
         String text, dotline;
         int dotLenght = 100;
-
         System.out.println("**** Menukort hos Marios ******");
         List<Pizza> menuCard = dbMenuCardMapper.getAllPizzas();
         for (Pizza pizza : menuCard) {
-
             dotline = ".";
-            text = text = pizza.getPizzaNo() + ". " + pizza.getName() + " Ingredienser. " + pizza.getIngredients();
+            text = pizza.getPizzaNo() + ". " + pizza.getName() + " Ingredienser. " + pizza.getIngredients();
             for (int i = 0; i < dotLenght - text.length(); i++) {
                 dotline = dotline + ".";
             }
             text = text + " " + dotline + " " + pizza.getPrice() + " Kr.";
             System.out.println(text);
-
-//            System.out.print("Nr " + pizza.getPizzaNo() + ". ");
-//            System.out.print(pizza.getName() + ". ");
-//            System.out.print("Ingredientser. " + pizza.getIngredients() + " ");
-//            System.out.println(pizza.getPrice() + " Kr. ");'
-
-
         }
     }
 
@@ -364,7 +349,6 @@ public class MainMenu {
                 updateSqlOrder(orderNo, order);
                 break;
         }
-
     }
 
     private void updateSqlOrder(int orderNo, Order order) throws Exception {

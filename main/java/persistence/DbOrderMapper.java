@@ -1,10 +1,7 @@
 package persistence;
 
-
 import domain.Order;
 import exceptionHandling.ExceptionHandling;
-
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,12 +68,10 @@ public class DbOrderMapper {
                 ps.setString(4, order.getCustemorName());
                 ps.setString(5, order.getPhone());
                 ps.setBoolean(6, order.isRemove());
-
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     result = true;
                 }
-
                 ResultSet idResultset = ps.getGeneratedKeys();
                 if (idResultset.next()) {
                     newId = idResultset.getInt(1);
@@ -134,7 +129,6 @@ public class DbOrderMapper {
                     Date date = rs.getDate("date");
                     String custemor_name = rs.getString("custemor_name");
                     String phone = rs.getString("phone");
-                    boolean remove = rs.getBoolean("remove");
                     order = new Order(orderNr, pizza_id, amount, pickup_time, order_time, date, custemor_name, phone);
                 }
             } catch (Exception e) {
@@ -168,8 +162,6 @@ public class DbOrderMapper {
     public boolean setOrderAsDone() throws Exception {
         boolean remove = false;
         færdigeOrdre();
-
-
         String sql = "update mario.order SET remove = true where order_nr=?";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -178,7 +170,6 @@ public class DbOrderMapper {
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     remove = true;
-
                 }
             } catch (Exception e) {
                 throw new ExceptionHandling(e);
@@ -191,10 +182,8 @@ public class DbOrderMapper {
     }
 
     public int færdigeOrdre() throws Exception {
-
         List<Order> færdigeordre = getOrdersAsList("select * from mario.order where remove = 'false' order by date ASC, pickup_time ASC");
         int orderNo = færdigeordre.get(0).getOrderNr();
-
         return orderNo;
 
     }

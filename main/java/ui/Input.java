@@ -43,29 +43,4 @@ public class Input {
             }
         }
     }
-
-    public static String getMinutsToTimeFormat(int minuts) {
-
-        String hoursText = String.valueOf(minuts / 60);
-        String minutsText = String.valueOf(minuts % 60);
-        return hoursText + "." + minutsText;
-
-    }
-
-    public static int getTimeInMinutes(String question) {
-        while (true) {
-            System.out.print(question);
-            Scanner scanner = new Scanner(System.in);
-            String timeAsString = scanner.nextLine();
-            String[] strings = timeAsString.split("\\.");
-            try {
-                int hourInMinutes = Integer.parseInt(strings[0]) * 60;
-                int minutes = Integer.parseInt(strings[1]);
-                return hourInMinutes + minutes;
-            } catch (NumberFormatException e) {
-                System.out.println("fejl i tidsformat. Det skal være formen hh.mm");
-            }
-        }
-
-    }
 }
