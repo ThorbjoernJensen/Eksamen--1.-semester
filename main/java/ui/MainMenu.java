@@ -33,62 +33,62 @@ public class MainMenu {
                     try {
                         showMenuCard();
                     } catch (Exception e) {
-                        System.out.println("Fejl i hentning as menu ");                    }
+                        System.out.println("Fejl i hentning af menukort kontakt din udvikler. ");                    }
                     break;
                 case 2:
                     try {
                         showSinglePizza();
                     } catch (Exception e) {
-                        System.out.println("Fejl i visning af egentlig pizza ");
+                        System.out.println("Fejl i visning af enkelte pizzaer kontakt din udvikler. ");
                     }
                     break;
                 case 3:
                     try {
                         deletePizza();
                     } catch (Exception e) {
-                        System.out.println("Fejl i sletning af pizza ");
+                        System.out.println("Fejl i sletning af pizza kontakt din udvikler ");
                     }
                     break;
                 case 4:
                     try {
                         insertPizza();
                     } catch (Exception e) {
-                        System.out.println("Fejl i oprettelse as ny pizza ");
+                        System.out.println("Fejl i oprettelse af ny pizza kontakt din udvikler. ");
                     }
                     break;
                 case 5:
                     try {
                         updatePizza();
                     } catch (Exception e) {
-                        System.out.println("Fejl i opdatering as pizza ");
+                        System.out.println("Fejl i opdatering af pizza kontakt din udvikler. ");
                     }
                     break;
                 case 6:
                     try {
                         showOrder();
                     } catch (Exception e) {
-                        System.out.println("Fejl i hentning af menukort. Kontant venligst en admin");
+                        System.out.println("Fejl i hentning af menukort kontakt din udvikler.");
                     }
                     break;
                 case 7:
                     try {
                         insertOrder();
                     } catch (Exception e) {
-                        System.out.println("Fejl i oprettelse as ny ordre ");
+                        System.out.println("Fejl i oprettelse af ny ordre kontakt din udvikler. ");
                     }
                     break;
                 case 8:
                     try {
                         updateOrder();
                     } catch (Exception e) {
-                        System.out.println("Fejl i opdatering as ordre ");
+                        System.out.println("Fejl i opdatering af ordre kontakt din udvikler. ");
                     }
                     break;
                 case 9:
                     try {
                         deleteOrder();
                     } catch (Exception e) {
-                        System.out.println("Fejl i sletning af ordre ");
+                        System.out.println("Fejl i sletning af ordre  kontakt din udvikler.");
                     }
                     break;
                 case 10:
@@ -101,38 +101,38 @@ public class MainMenu {
                                 try {
                                     statistik.pizzaCount();
                                 } catch (Exception e) {
-                                    System.out.println("Fejl i Omsætning fordelt på pizzaer ");
+                                    System.out.println("Fejl i Omsætning fordelt på pizzaer kontakt din udvikler. ");
                                 }
                                 break;
                             case 2:
                                 try {
                                     statistik.revenueCountDate();
                                 } catch (Exception e) {
-                                    System.out.println("Fejl i Daglig omsætning over periode ");
+                                    System.out.println("Fejl i Daglig omsætning over given periode kontakt din udvikler. ");
                                 }
                                 break;
                             case 3:
                                 try {
                                     statistik.pizzaCountDate();
                                 } catch (Exception e) {
-                                    System.out.println("Fejl i Vis handler for given dato ");
+                                    System.out.println("Fejl i Vis handler for given dato kontakt din udvikler. ");
                                 }
                                 break;
                         }
                     } catch (Exception e) {
-                        System.out.println("Fejl i visning as statistik ");
+                        System.out.println("Fejl i visning af statistik kontakt din udvikler. ");
                     }
                     break;
                 case 11:
                     try {
                         setOrderAsDone();
                     } catch (Exception e) {
-                        System.out.println("Fejl i afslutning af ordre ");
+                        System.out.println("Fejl i afslutning af ordre kontakt din udvikler. ");
                     }
                     break;
                 case 12:
                     System.out.println("Ønsker du at lukke programmet? ");
-                    System.out.println("Tryk y for at fortsætte eller en vilkårlig tast for at gå tilbage ");
+                    System.out.println("Tryk y for at fortsætte eller en vilkårlig tast for at gå tilbage til menuen ");
                     String input = Input.getString("");
                     if (input.equals("y")) {
                         running = false;
@@ -144,7 +144,7 @@ public class MainMenu {
                     System.out.println("Vælg en menu ");
             }
         }
-        System.out.println("Tak for denne gang!");
+        System.out.println("Tak for denne gang! Håber at se dig snart igen.");
     }
 
     private void showOrder() throws Exception {

@@ -1,13 +1,27 @@
-
-Tue Dec 22 23:06:03 CET 2020 : java.sql.SQLException: Column 'pizza_id1' not found.
+Wed Dec 23 21:46:40 CET 2020 : java.sql.SQLException: Column 'custemor_nam' not found.
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
 	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:548)
-	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:807)
-	at persistence.DbMenuCardMapper.getAllPizzas(DbMenuCardMapper.java:27)
-	at ui.MainMenu.showMenuCard(MainMenu.java:246)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:34)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getString(ResultSetImpl.java:852)
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:44)
+	at ui.MainMenu.showOrder(MainMenu.java:152)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:68)
 	at Main.main(Main.java:11)
+
+Wed Dec 23 21:46:40 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLException: Column 'custemor_nam' not found.
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:49)
+	at ui.MainMenu.showOrder(MainMenu.java:152)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:68)
+	at Main.main(Main.java:11)
+Caused by: java.sql.SQLException: Column 'custemor_nam' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:548)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getString(ResultSetImpl.java:852)
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:44)
+	... 3 more
 
