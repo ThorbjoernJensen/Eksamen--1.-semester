@@ -58,7 +58,6 @@ public class DbOrderMapper {
         boolean result = false;
         int newId = 0;
 
-//
         String sql = "INSERT INTO mario.order ( pizza_id, amount, pickup_time, order_time, date, custemor_name, phone, remove) values (?, ?, ?,NOW(), CURDATE(),?,?,?)";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {

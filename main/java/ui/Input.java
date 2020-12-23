@@ -23,16 +23,25 @@ public class Input {
     public static int getIntTime(String question) {
         while (true) {
             try {
-        String token = getString(question);
-        int pickuptime = 0;
+                String token = getString(question);
+                int pickuptime = 0;
+
+//                token = new StringBuilder(token).insert(token.length() - 2, ":").toString();
+
                 if (token.contains(":") || token.contains(".") || token.contains(",")) {
                     token = token.replace(".", "");
                     token = token.replace(":", "");
-                    token = token.replace(",","");
+                    token = token.replace(",", "");
                 }
                 pickuptime = Integer.parseInt(token);
-                if (pickuptime < 2400) {
-                  return pickuptime;
+                if (pickuptime >= 1100 && pickuptime < 2400) {
+                    int minutes = pickuptime % 100;
+                    if (minutes <60 ) {
+                        return pickuptime;
+                    }
+                    else {
+                        System.out.println("Det skal være i tidsformatet \"hh:mm\" ");
+                    }
                 } else {
                     System.out.println("Fejl i tid - Over 24 timer. Prøv venligst at angive et nyt tidspunkt af formatet '0000' eller '00:00' eller '00.00' ");
                     return getIntTime("Afhentningstidspunkt: ");

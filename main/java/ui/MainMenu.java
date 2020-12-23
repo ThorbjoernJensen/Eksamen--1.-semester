@@ -33,7 +33,8 @@ public class MainMenu {
                     try {
                         showMenuCard();
                     } catch (Exception e) {
-                        System.out.println("Fejl i hentning af menukort kontakt din udvikler. ");                    }
+                        System.out.println("Fejl i hentning af menukort kontakt din udvikler. ");
+                    }
                     break;
                 case 2:
                     try {
@@ -76,6 +77,7 @@ public class MainMenu {
                     } catch (Exception e) {
                         System.out.println("Fejl i oprettelse af ny ordre kontakt din udvikler. ");
                     }
+
                     break;
                 case 8:
                     try {
@@ -151,13 +153,13 @@ public class MainMenu {
         String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
         dbOrderMapper.getOrdersAsList(statement);
         List<Order> orderList = dbOrderMapper.getOrdersAsList(statement);
-        for (Order order  : orderList) {
-            System.out.print("Order nr[" + order.getOrderNr() + "] -- " );
+        for (Order order : orderList) {
+            System.out.print("Order nr[" + order.getOrderNr() + "] -- ");
             System.out.print("Pizza Id[" + order.getPizzaId() + "] -- ");
             System.out.print("Antal[" + order.getAmount() + "] -- ");
             System.out.print("AfhentningsTidspunkt kl:[" + order.getStringPickUpTime() + "] -- ");
             System.out.print("Dato.[" + order.getDate() + "] -- ");
-            System.out.print("Navn: ["+ order.getCustemorName() + "] -- ");
+            System.out.print("Navn: [" + order.getCustemorName() + "] -- ");
             System.out.println("Telefon Nr: [" + order.getPhone() + "].");
         }
     }
@@ -259,26 +261,32 @@ public class MainMenu {
         System.out.println("**** Opret ny ordre *******");
         int pizzaNo = Input.getInt("Indtast pizza nummer: ");
         Pizza chosenPizza = dbMenuCardMapper.getPizzaById(pizzaNo);
+
         if (chosenPizza == null) {
             System.out.println("Pizza med nr " + pizzaNo + " findes ikke i menuen ");
-            return; // TODO Ret så hvis man skriver en pizza der ikke findes skal den fortælle det og efterfølgende give dig lov til at skrive nyt nr.
+            insertOrder();
         } else {
             int amount = Input.getInt("Indtast antal: ");
             int pickup_time = Input.getIntTime("Hvad tid ønsker du at hente den: ");
             String custemor_name = Input.getString("Hvad er dit navn: ");
             String phone = Input.getString("Skriv telefon nr: ");
-            if (chosenPizza != null) {
-                Order newOrder = new Order(chosenPizza.getPizzaId(), amount, pickup_time, custemor_name, phone);
-                Order insertedOrder = dbOrderMapper.insertOrder(newOrder);
-                if (insertedOrder != null) {
-                } else {
-                    System.out.println("Vi kunne desværre ikke oprette den nye pizza. PizzaNo findes allerede.");
-                }
-            } else {
-                System.out.println("Det lykkedes ikke at finde en pizza med det nummer");
-            }
+//            if (chosenPizza != null) {
+            Order newOrder = new Order(chosenPizza.getPizzaId(), amount, pickup_time, custemor_name, phone);
+            Order insertedOrder = dbOrderMapper.insertOrder(newOrder);
+
+//        insertedOrder.getPizzaId();
+//                if (insertedOrder != null) {
+//                } else {
+//                    System.out.println("Vi kunne desværre ikke oprette den nye ordre.");
+//                }
+////            }
+//
+//            }
+            System.out.println("Ordren blev oprettet.\n");
         }
     }
+
+//}
 
     private void updateOrder() throws Exception {
         System.out.println("***** Opdater order *******");
