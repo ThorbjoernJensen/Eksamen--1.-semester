@@ -133,13 +133,10 @@ public class MainMenu {
                     }
                     break;
                 case 12:
-                    System.out.println("Ønsker du at lukke programmet? ");
-                    System.out.println("Tryk y for at fortsætte eller en vilkårlig tast for at gå tilbage til menuen ");
-                    String input = Input.getString("");
-                    if (input.equals("y")) {
-                        running = false;
-                    } else {
-                        showMenu();
+                    try {
+                        running = exitProgram(running);
+                    } catch (Exception e) {
+                        System.out.println("Lukning af programmet fejlede ");
                     }
                     break;
                 default:
@@ -148,6 +145,17 @@ public class MainMenu {
         }
         System.out.println("Tak for denne gang! Håber at se dig snart igen.");
     }
+
+    private boolean exitProgram(boolean running) {
+        System.out.println("Ønsker du at lukke programmet? ");
+        System.out.println("Tryk y for at fortsætte eller en vilkårlig tast for at gå tilbage til menuen ");
+        String input = Input.getString("");
+        if (input.equals("y")) {
+            running = false;
+        }
+        return running;
+    }
+
 
     private void showOrder() throws Exception {
         String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";

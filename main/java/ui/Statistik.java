@@ -55,29 +55,33 @@ public class Statistik {
             System.out.println("pizza nr. " + pizza.getPizzaNo() + ", " + pizza.getName() + ": " + pizzaCount + " stk.");
             System.out.println("samlet omsætning: " + pizzaRevenue + " kr.\n");
             totalRevenue = totalRevenue + pizzaRevenue;
-            if (pizzaRevenue >= maxRevenue) {
-                if (pizzaRevenue == maxRevenue) {
-                    token2 = i;
+            if (totalRevenue != 0) {
+                if (pizzaRevenue >= maxRevenue) {
+                    if (pizzaRevenue == maxRevenue) {
+                        token2 = i;
+                    }
+                    if (pizzaRevenue > maxRevenue) {
+                        maxRevenue = pizzaRevenue;
+                        token = i;
+                        token2 = 0;
+                    }
                 }
-                if (pizzaRevenue > maxRevenue) {
-                    maxRevenue = pizzaRevenue;
-                    token = i;
-                    token2 = 0;
+                if (token2 == 0) {
+                    System.out.println("Total omsætning: " + totalRevenue + "kr.");
+                    System.out.println("pizza med størst omsætning er pizza nr. " + dbMenuCardMapper.getPizzaById(token).getPizzaNo() +
+                            " " + dbMenuCardMapper.getPizzaById(token).getName() + ", der har indtjent " + maxRevenue + " kr.\n");
                 }
+                if (token2 != 0) {
+                    System.out.println("Der er 2 pizzaer med samme omsætning: " + "pizza nr. " + dbMenuCardMapper.getPizzaById(token).getPizzaNo() +
+                            " og pizza nr. " + dbMenuCardMapper.getPizzaById(token2).getPizzaNo() + " har begge solgt for " + maxRevenue + " kr.\n");
+                }
+            } else {
+                System.out.println("Der har ikke været nogen omsætning.");
             }
-        }
-        if (token2 == 0) {
-            System.out.println("Total omsætning: " + totalRevenue + "kr.");
-            System.out.println("pizza med størst omsætning er pizza nr. " + dbMenuCardMapper.getPizzaById(token).getPizzaNo() +
-                    " " + dbMenuCardMapper.getPizzaById(token).getName() + ", der har indtjent " + maxRevenue + " kr.\n");
-        }
-        if (token2 != 0) {
-            System.out.println("Der er 2 pizzaer med samme omsætning: " + "pizza nr. " + dbMenuCardMapper.getPizzaById(token).getPizzaNo() +
-                    " og pizza nr. " + dbMenuCardMapper.getPizzaById(token2).getPizzaNo() + " har begge solgt for " + maxRevenue + " kr.\n");
         }
     }
 
-       public void pizzaCountDate() throws Exception {
+    public void pizzaCountDate() throws Exception {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
         int pizzaCount = 0;
         int pizzaRevenue = 0;
