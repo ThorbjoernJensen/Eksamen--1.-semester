@@ -4,6 +4,7 @@ import exceptionHandling.ExceptionHandling;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Database {
 
@@ -26,7 +27,7 @@ public class Database {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             throw new ExceptionHandling(e);
         }
         return connection;

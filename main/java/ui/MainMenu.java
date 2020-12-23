@@ -67,7 +67,7 @@ public class MainMenu {
                     try {
                         showOrder();
                     } catch (Exception e) {
-                        System.out.println("Fejl i hentning af menukort kontakt din udvikler.");
+                        System.out.println("Fejl i hentning af ordre. Kontakt din udvikler. ");
                     }
                     break;
                 case 7:

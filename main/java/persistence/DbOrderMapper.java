@@ -79,10 +79,10 @@ public class DbOrderMapper {
                 } else {
                     order = null;
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 throw new ExceptionHandling(e);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             throw new ExceptionHandling(e);
         }
         return order;

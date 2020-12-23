@@ -17,7 +17,7 @@ public class ExceptionHandling extends Exception {
         StringWriter errors = new StringWriter();
         e.printStackTrace(new PrintWriter(errors));
         FileWriter fileWriter = new FileWriter(file, true);
-        fileWriter.write(date.toString() + " : " + errors + "\n");
+        fileWriter.write(date.toString() + " : " + e.getMessage() + "\n" );
         fileWriter.close();
     }
 }

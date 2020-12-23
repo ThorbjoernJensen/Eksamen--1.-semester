@@ -43,7 +43,6 @@ public class Statistik {
         int token = 0;
         int token2 = 0;
         for (int i = 1; i < allPizzas.size() + 1; i++) {
-//            skal flyttes til io
             System.out.println("salgs-statistik for pizzaer: ");
             pizzaCount = 0;
             Pizza pizza = dbMenuCardMapper.getPizzaById(i);
@@ -78,26 +77,7 @@ public class Statistik {
         }
     }
 
-    public void pizzaRevenue() throws Exception {
-        List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
-        int pizzaCount = 0;
-        int pizzaRevenue = 0;
-        int totalRevenue = 0;
-        for (int i = 1; i < allPizzas.size(); i++) {
-            Pizza pizza = dbMenuCardMapper.getPizzaById(i);
-            String statement = "select * from mario.order where pizza_id = " + i;
-            List<Order> selectedOrders = dbOrderMapper.getOrdersAsList(statement);
-            for (Order o : selectedOrders) {
-                pizzaCount = pizzaCount + o.getAmount();
-            }
-            pizzaRevenue = pizzaCount * pizza.getPrice();
-            totalRevenue = totalRevenue + pizzaRevenue;
-        }
-        System.out.println("Total omsætning: " + totalRevenue + "kr.");
-    }
-
-
-    public void pizzaCountDate() throws Exception {
+       public void pizzaCountDate() throws Exception {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
         int pizzaCount = 0;
         int pizzaRevenue = 0;

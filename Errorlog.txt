@@ -1,27 +1,14 @@
-Wed Dec 23 21:46:40 CET 2020 : java.sql.SQLException: Column 'custemor_nam' not found.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
-	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:548)
-	at com.mysql.cj.jdbc.result.ResultSetImpl.getString(ResultSetImpl.java:852)
-	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:44)
-	at ui.MainMenu.showOrder(MainMenu.java:152)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:68)
-	at Main.main(Main.java:11)
-
-Wed Dec 23 21:46:40 CET 2020 : exceptionHandling.ExceptionHandling: java.sql.SQLException: Column 'custemor_nam' not found.
-	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:49)
-	at ui.MainMenu.showOrder(MainMenu.java:152)
-	at ui.MainMenu.mainMenuLoop(MainMenu.java:68)
-	at Main.main(Main.java:11)
-Caused by: java.sql.SQLException: Column 'custemor_nam' not found.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
-	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:548)
-	at com.mysql.cj.jdbc.result.ResultSetImpl.getString(ResultSetImpl.java:852)
-	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:44)
-	... 3 more
-
+Wed Dec 23 22:31:49 CET 2020 : Access denied for user 'testdb_user'@'%' to database 'mario1'
+Wed Dec 23 22:31:49 CET 2020 : java.sql.SQLSyntaxErrorException: Access denied for user 'testdb_user'@'%' to database 'mario1'
+Wed Dec 23 22:31:50 CET 2020 : Access denied for user 'testdb_user'@'%' to database 'mario1'
+Wed Dec 23 22:31:50 CET 2020 : java.sql.SQLSyntaxErrorException: Access denied for user 'testdb_user'@'%' to database 'mario1'
+Wed Dec 23 22:33:39 CET 2020 : Public Key Retrieval is not allowed
+Wed Dec 23 22:33:39 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Wed Dec 23 22:33:41 CET 2020 : Public Key Retrieval is not allowed
+Wed Dec 23 22:33:41 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+Wed Dec 23 22:35:05 CET 2020 : Access denied for user 'testdb_user'@'localhost' (using password: YES)
+Wed Dec 23 22:35:05 CET 2020 : java.sql.SQLException: Access denied for user 'testdb_user'@'localhost' (using password: YES)
+Wed Dec 23 22:36:01 CET 2020 : The connection property 'useSSL' acceptable values are: 'TRUE', 'FALSE', 'YES' or 'NO'. The value 'false1' is not acceptable.
+Wed Dec 23 22:36:01 CET 2020 : java.sql.SQLException: The connection property 'useSSL' acceptable values are: 'TRUE', 'FALSE', 'YES' or 'NO'. The value 'false1' is not acceptable.
+Wed Dec 23 22:36:07 CET 2020 : The connection property 'useSSL' acceptable values are: 'TRUE', 'FALSE', 'YES' or 'NO'. The value 'false1' is not acceptable.
+Wed Dec 23 22:36:07 CET 2020 : java.sql.SQLException: The connection property 'useSSL' acceptable values are: 'TRUE', 'FALSE', 'YES' or 'NO'. The value 'false1' is not acceptable.

@@ -32,7 +32,6 @@ public class Input {
                 }
                 pickuptime = Integer.parseInt(token);
                 if (pickuptime < 2400) {
-
                   return pickuptime;
                 } else {
                     System.out.println("Fejl i tid - Over 24 timer. Prøv venligst at angive et nyt tidspunkt af formatet '0000' eller '00:00' eller '00.00' ");
