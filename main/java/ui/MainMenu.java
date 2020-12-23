@@ -270,18 +270,11 @@ public class MainMenu {
             int pickup_time = Input.getIntTime("Hvad tid ønsker du at hente den: ");
             String custemor_name = Input.getString("Hvad er dit navn: ");
             String phone = Input.getString("Skriv telefon nr: ");
-//            if (chosenPizza != null) {
-            Order newOrder = new Order(chosenPizza.getPizzaId(), amount, pickup_time, custemor_name, phone);
-            Order insertedOrder = dbOrderMapper.insertOrder(newOrder);
 
-//        insertedOrder.getPizzaId();
-//                if (insertedOrder != null) {
-//                } else {
-//                    System.out.println("Vi kunne desværre ikke oprette den nye ordre.");
-//                }
-////            }
-//
-//            }
+            Order newOrder = new Order(chosenPizza.getPizzaId(), amount, pickup_time, custemor_name, phone);
+            dbOrderMapper.insertOrder(newOrder);
+
+
             System.out.println("Ordren blev oprettet.\n");
         }
     }
