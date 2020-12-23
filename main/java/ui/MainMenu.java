@@ -263,23 +263,19 @@ public class MainMenu {
         Pizza chosenPizza = dbMenuCardMapper.getPizzaById(pizzaNo);
 
         if (chosenPizza == null) {
-            System.out.println("Pizza med nr " + pizzaNo + " findes ikke i menuen ");
+            System.out.println("Pizza med nr " + pizzaNo + " findes ikke i menuen. Du skal vælge mellem disse pizzaer: ");
+            showMenuCard();
             insertOrder();
         } else {
             int amount = Input.getInt("Indtast antal: ");
             int pickup_time = Input.getIntTime("Hvad tid ønsker du at hente den: ");
             String custemor_name = Input.getString("Hvad er dit navn: ");
             String phone = Input.getString("Skriv telefon nr: ");
-
             Order newOrder = new Order(chosenPizza.getPizzaId(), amount, pickup_time, custemor_name, phone);
             dbOrderMapper.insertOrder(newOrder);
-
-
             System.out.println("Ordren blev oprettet.\n");
         }
     }
-
-//}
 
     private void updateOrder() throws Exception {
         System.out.println("***** Opdater order *******");
