@@ -6,7 +6,6 @@ import persistence.Database;
 import persistence.DbMenuCardMapper;
 import persistence.DbOrderMapper;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 public class MainMenu {
@@ -27,140 +26,194 @@ public class MainMenu {
 
         boolean running = true;
 
+//        System.out.println("[1] Vis menukort");
+//        System.out.println("[2] Ordrehåndtering");
+//        System.out.println("[3] Administration");
+//        System.out.println("[4] Afslut program");
+
         while (running) {
-            showMenu();
-            switch (Input.getInt("Vælg 1-12: ")) {
+            showMainMenu();
+            switch (Input.getInt("Vælg 1-4: ")) {
+                case 1:
+                    try {
+                        showMenuCard();
+                    } catch (Exception e) {
+                        System.out.println("Fejl i hentning af menukort kontakt din udvikler. ");
+                    }
+                    break;
 
                 case 2:
                     showOrdermenu();
-
+                    ordersLoop();
                     break;
 
-
-//                case 1:
-//                    try {
-//                        showMenuCard();
-//                    } catch (Exception e) {
-//                        System.out.println("Fejl i hentning af menukort kontakt din udvikler. ");
-//                    }
-//                    break;
-//                case 2:
-//                    try {
-//                        showSinglePizza();
-//                    } catch (Exception e) {
-//                        System.out.println("Fejl i visning af enkelte pizzaer kontakt din udvikler. ");
-//                    }
-//                    break;
                 case 3:
-                    try {
-                        deletePizza();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i sletning af pizza kontakt din udvikler ");
-                    }
+                    showAdministratorMenu();
+                    administratorLoop();
                     break;
-                case 4:
-                    try {
-                        insertPizza();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i oprettelse af ny pizza kontakt din udvikler. ");
-                    }
-                    break;
-                case 5:
-                    try {
-                        updatePizza();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i opdatering af pizza kontakt din udvikler. ");
-                    }
-                    break;
-                case 6:
-                    try {
-                        showOrder();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i hentning af ordre. Kontakt din udvikler. ");
-                    }
-                    break;
-                case 7:
-                    try {
-                        insertOrder();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i oprettelse af ny ordre kontakt din udvikler. ");
-                    }
 
-                    break;
-                case 8:
-                    try {
-                        updateOrder();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i opdatering af ordre kontakt din udvikler. ");
-                    }
-                    break;
-                case 9:
-                    try {
-                        deleteOrder();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i sletning af ordre  kontakt din udvikler.");
-                    }
-                    break;
-                case 10:
-                    try {
-                        statistik();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i visning af statistik kontakt din udvikler. ");
-                    }
-                    break;
-                case 11:
-                    try {
-                        setOrderAsDone();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i afslutning af ordre kontakt din udvikler. ");
-                    }
-                    break;
-                case 12:
+                case 4:
                     try {
                         running = exitProgram(running);
                     } catch (Exception e) {
                         System.out.println("Lukning af programmet fejlede ");
                     }
                     break;
+
                 default:
                     System.out.println("Vælg en menu ");
+                    break;
+
+
             }
         }
         System.out.println("Tak for denne gang! Håber at se dig snart igen.");
     }
 
-    private void showMenu() {
+    private void showMainMenu() {
         System.out.println("**** Marios pizzabar - hovedmenu ******");
         System.out.println("[1] Vis menukort");
-
         System.out.println("[2] Ordrehåndtering");
-
-
-
-        System.out.println("[3] Administration");
-        System.out.println("[1] Rediger menukort");
-            System.out.println("[1] Opret ny pizza");
-            System.out.println("[2] Fjern pizza");
-            System.out.println("[3] Opdater pizza");
-
-        System.out.println("[2] Statistik");
-        System.out.println("Hvilken statistik vil du gerne se? ");
-            System.out.println("[1] Omsætning fordelt på pizzaer");
-            System.out.println("[2] Daglig omsætning over periode");
-            System.out.println("[3] Vis handler for given dato");
+        System.out.println("[3] Administrator");
         System.out.println("[4] Afslut program");
     }
 
     private void showOrdermenu() {
+        System.out.println("**** Marios pizzabar - ordrehåndtering ******");
         System.out.println("[1] Se alle ordre");
         System.out.println("[2] Opret ny ordre");
-        System.out.println("[3] Afslut ordre ");
+        System.out.println("[3] Afslut ordre");
         System.out.println("[4] Slet ordre");
         System.out.println("[5] Opdater ordre ");
     }
 
-    private void statistik() {
 
+    private void showAdministratorMenu() {
+        System.out.println("**** Marios pizzabar - administrator ******");
+        System.out.println("[1] Rediger menukort");
+        System.out.println("[2] Statistik");
+    }
+
+    private void showEditPizzasMenu() {
+        System.out.println("**** Marios pizzabar - administrator-> rediger menukort ******");
+        System.out.println("[1] Opret ny pizza");
+        System.out.println("[2] Fjern pizza");
+        System.out.println("[3] Opdater pizza");
+    }
+
+    private void showStatisticMenu() {
+        System.out.println("**** Marios pizzabar - administrator-> statistik ******");
+        System.out.println("Hvilken statistik vil du gerne se? ");
+        System.out.println("[1] Omsætning fordelt på pizzaer");
+        System.out.println("[2] Daglig omsætning over periode");
+        System.out.println("[3] Vis handler for given dato");
+    }
+
+
+//    System.out.println("[1] Se alle ordre");
+//        System.out.println("[2] Opret ny ordre");
+//        System.out.println("[3] Afslut ordre");
+//        System.out.println("[4] Slet ordre");
+//        System.out.println("[5] Opdater ordre ");
+
+    private void ordersLoop() {
+        int option = Input.getInt("");
+        switch (option) {
+            case 1:
+                try {
+                    showOrders();
+                } catch (Exception e) {
+                    System.out.println("Fejl i hentning af ordre. Kontakt din udvikler. ");
+                }
+                break;
+            case 2:
+                try {
+                    insertOrder();
+                } catch (Exception e) {
+                    System.out.println("Fejl i opretning af ordre. Kontakt din udvikler. ");
+                }
+
+            case 3:
+                try {
+                    setOrderAsDone();
+                } catch (Exception e) {
+                    System.out.println("Fejl i afslutning af ordre kontakt din udvikler. ");
+                }
+                break;
+
+            case 4:
+                try {
+                    deleteOrder();
+                } catch (Exception e) {
+                    System.out.println("Fejl i sletning af ordre  kontakt din udvikler.");
+                }
+                break;
+            case 5:
+                try {
+                    updateOrder();
+                } catch (Exception e) {
+                    System.out.println("Fejl i opdatering af ordre kontakt din udvikler. ");
+                }
+                break;
+        }
+    }
+
+
+//     System.out.println("[1] Rediger menukort");
+//        System.out.println("[2] Statistik");
+
+    private void administratorLoop() {
+        int option = Input.getInt("");
+        switch (option) {
+            case 1:
+                showEditPizzasMenu();
+                EditPizzasLoop();
+                break;
+            case 2:
+                showStatisticMenu();
+                statisticLoop();               ;
+                break;
+            default:
+                System.out.println("Din indtastning svarer ikke til nogen funktion");
+                break;
+        }
+    }
+
+    //     System.out.println("[1] Opret ny pizza");
+//        System.out.println("[2] Fjern pizza");
+//        System.out.println("[3] Opdater pizza");
+
+    private void EditPizzasLoop() {
+        int option = Input.getInt("");
+        switch (option) {
+
+            case 1:
+                try {
+                    insertPizza();
+                } catch (Exception e) {
+                    System.out.println("Fejl i oprettelse af ny pizza kontakt din udvikler. ");
+                }
+                break;
+
+            case 2:
+                try {
+                    deletePizza();
+                } catch (Exception e) {
+                    System.out.println("Fejl i sletning af pizza kontakt din udvikler ");
+                }
+                break;
+
+            case 3:
+                try {
+                    updatePizza();
+                } catch (Exception e) {
+                    System.out.println("Fejl i opdatering af pizza kontakt din udvikler. ");
+                }
+                break;
+        }
+    }
+
+    private void statisticLoop() {
         int option = Input.getInt("");
         switch (option) {
             case 1:
@@ -184,6 +237,8 @@ public class MainMenu {
                     System.out.println("Fejl i Vis handler for given dato kontakt din udvikler. ");
                 }
                 break;
+            default:
+                System.out.println("Din indtastning svarer ikke til nogen funktion");
         }
     }
 
@@ -199,7 +254,7 @@ public class MainMenu {
     }
 
 
-    private void showOrder() throws Exception {
+    private void showOrders() throws Exception {
         String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
         dbOrderMapper.getOrdersAsList(statement);
         List<Order> orderList = dbOrderMapper.getOrdersAsList(statement);
@@ -219,7 +274,6 @@ public class MainMenu {
             System.out.println("ordre " + dbOrderMapper.getOrderNr() + " er blevet leveret til kunden");
         }
     }
-
 
 
     private void updatePizza() throws Exception {
