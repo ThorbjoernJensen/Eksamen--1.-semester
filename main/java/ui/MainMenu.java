@@ -6,6 +6,7 @@ import persistence.Database;
 import persistence.DbMenuCardMapper;
 import persistence.DbOrderMapper;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 public class MainMenu {
@@ -95,32 +96,7 @@ public class MainMenu {
                     break;
                 case 10:
                     try {
-                        System.out.println("Hvilken statistik vil du gerne se? ");
-                        System.out.println("1: Omsætning fordelt på pizzaer \n2: Daglig omsætning over periode \n3: Vis handler for given dato ");
-                        int option = Input.getInt("");
-                        switch (option) {
-                            case 1:
-                                try {
-                                    statistik.pizzaCount();
-                                } catch (Exception e) {
-                                    System.out.println("Fejl i Omsætning fordelt på pizzaer kontakt din udvikler. ");
-                                }
-                                break;
-                            case 2:
-                                try {
-                                    statistik.revenueCountDate();
-                                } catch (Exception e) {
-                                    System.out.println("Fejl i Daglig omsætning over given periode kontakt din udvikler. ");
-                                }
-                                break;
-                            case 3:
-                                try {
-                                    statistik.pizzaCountDate();
-                                } catch (Exception e) {
-                                    System.out.println("Fejl i Vis handler for given dato kontakt din udvikler. ");
-                                }
-                                break;
-                        }
+                        statistik();
                     } catch (Exception e) {
                         System.out.println("Fejl i visning af statistik kontakt din udvikler. ");
                     }
@@ -145,6 +121,60 @@ public class MainMenu {
         }
         System.out.println("Tak for denne gang! Håber at se dig snart igen.");
     }
+
+    private void showMenu() {
+//        System.out.println("    [6] Se alle ordre [7] Opret ny ordre [8] Opdater ordre [9] Slet ordre  [11] Afslut ordre [12] Afslut program");
+
+        System.out.println("**** Marios pizzabar - hovedmenu ******");
+        System.out.println("[1] Vis menukort");
+
+
+        System.out.println(" ");
+
+
+        System.out.println("[] Administration");
+        System.out.println("[1] Rediger menukort");
+        System.out.println("[1] Opret ny pizza");
+        System.out.println("[2] Fjern pizza");
+        System.out.println("[3] Opdater pizza");
+
+        System.out.println("[10] Statistik");
+        System.out.println("Hvilken statistik vil du gerne se? ");
+            System.out.println("[1] Omsætning fordelt på pizzaer");
+            System.out.println("[2] Daglig omsætning over periode");
+        System.out.println("[3] Vis handler for given dato");
+        System.out.println("");
+
+    }
+
+    private void statistik() {
+
+        int option = Input.getInt("");
+        switch (option) {
+            case 1:
+                try {
+                    statistik.pizzaCount();
+                } catch (Exception e) {
+                    System.out.println("Fejl i Omsætning fordelt på pizzaer kontakt din udvikler. ");
+                }
+                break;
+            case 2:
+                try {
+                    statistik.revenueCountDate();
+                } catch (Exception e) {
+                    System.out.println("Fejl i Daglig omsætning over given periode kontakt din udvikler. ");
+                }
+                break;
+            case 3:
+                try {
+                    statistik.pizzaCountDate();
+                } catch (Exception e) {
+                    System.out.println("Fejl i Vis handler for given dato kontakt din udvikler. ");
+                }
+                break;
+        }
+    }
+
 
     private boolean exitProgram(boolean running) {
         System.out.println("Ønsker du at lukke programmet? ");
@@ -178,10 +208,7 @@ public class MainMenu {
         }
     }
 
-    private void showMenu() {
-        System.out.println("**** Marios pizzabar - hovedmenu ******");
-        System.out.println("[1] Vis menukort [2] Vis enkelt pizza [3] Fjern pizza [4] Opret ny pizza [5] Opdater pizza [6] Se alle ordre [7] Opret ny ordre [8] Opdater ordre [9] Slet ordre [10] Statistik [11] Afslut ordre [12] Afslut program");
-    }
+
 
     private void updatePizza() throws Exception {
         System.out.println("***** Opdater pizza *******");
