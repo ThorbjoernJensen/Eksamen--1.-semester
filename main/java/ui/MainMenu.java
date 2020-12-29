@@ -30,20 +30,27 @@ public class MainMenu {
         while (running) {
             showMenu();
             switch (Input.getInt("Vælg 1-12: ")) {
-                case 1:
-                    try {
-                        showMenuCard();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i hentning af menukort kontakt din udvikler. ");
-                    }
-                    break;
+
                 case 2:
-                    try {
-                        showSinglePizza();
-                    } catch (Exception e) {
-                        System.out.println("Fejl i visning af enkelte pizzaer kontakt din udvikler. ");
-                    }
+                    showOrdermenu();
+
                     break;
+
+
+//                case 1:
+//                    try {
+//                        showMenuCard();
+//                    } catch (Exception e) {
+//                        System.out.println("Fejl i hentning af menukort kontakt din udvikler. ");
+//                    }
+//                    break;
+//                case 2:
+//                    try {
+//                        showSinglePizza();
+//                    } catch (Exception e) {
+//                        System.out.println("Fejl i visning af enkelte pizzaer kontakt din udvikler. ");
+//                    }
+//                    break;
                 case 3:
                     try {
                         deletePizza();
@@ -123,28 +130,33 @@ public class MainMenu {
     }
 
     private void showMenu() {
-//        System.out.println("    [6] Se alle ordre [7] Opret ny ordre [8] Opdater ordre [9] Slet ordre  [11] Afslut ordre [12] Afslut program");
-
         System.out.println("**** Marios pizzabar - hovedmenu ******");
         System.out.println("[1] Vis menukort");
 
+        System.out.println("[2] Ordrehåndtering");
 
-        System.out.println(" ");
 
 
-        System.out.println("[] Administration");
+        System.out.println("[3] Administration");
         System.out.println("[1] Rediger menukort");
-        System.out.println("[1] Opret ny pizza");
-        System.out.println("[2] Fjern pizza");
-        System.out.println("[3] Opdater pizza");
+            System.out.println("[1] Opret ny pizza");
+            System.out.println("[2] Fjern pizza");
+            System.out.println("[3] Opdater pizza");
 
-        System.out.println("[10] Statistik");
+        System.out.println("[2] Statistik");
         System.out.println("Hvilken statistik vil du gerne se? ");
             System.out.println("[1] Omsætning fordelt på pizzaer");
             System.out.println("[2] Daglig omsætning over periode");
-        System.out.println("[3] Vis handler for given dato");
-        System.out.println("");
+            System.out.println("[3] Vis handler for given dato");
+        System.out.println("[4] Afslut program");
+    }
 
+    private void showOrdermenu() {
+        System.out.println("[1] Se alle ordre");
+        System.out.println("[2] Opret ny ordre");
+        System.out.println("[3] Afslut ordre ");
+        System.out.println("[4] Slet ordre");
+        System.out.println("[5] Opdater ordre ");
     }
 
     private void statistik() {
