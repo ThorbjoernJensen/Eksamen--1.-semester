@@ -15,7 +15,7 @@ public class Input {
             try {
                 return Integer.parseInt(getString(question));
             } catch (Exception e) {
-                System.out.println("Det må ikke være et tal ord");
+                System.out.println("Det skal være et heltal");
             }
         }
     }

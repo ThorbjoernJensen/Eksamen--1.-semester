@@ -71,11 +71,13 @@ public class MainMenu {
     }
 
     private void showMainMenu() {
+        System.out.print("\n");
         System.out.println("**** Marios pizzabar - hovedmenu ******");
         System.out.println("[1] Vis menukort");
         System.out.println("[2] Ordrehåndtering");
         System.out.println("[3] Administrator");
         System.out.println("[4] Afslut program");
+        System.out.print("\n");
     }
 
     private void showOrdermenu() {
@@ -85,6 +87,7 @@ public class MainMenu {
         System.out.println("[3] Afslut ordre");
         System.out.println("[4] Slet ordre");
         System.out.println("[5] Opdater ordre ");
+        System.out.print("\n");
     }
 
 
@@ -92,6 +95,7 @@ public class MainMenu {
         System.out.println("**** Marios pizzabar - administrator ******");
         System.out.println("[1] Rediger menukort");
         System.out.println("[2] Statistik");
+        System.out.print("\n");
     }
 
     private void showEditPizzasMenu() {
@@ -99,14 +103,16 @@ public class MainMenu {
         System.out.println("[1] Opret ny pizza");
         System.out.println("[2] Fjern pizza");
         System.out.println("[3] Opdater pizza");
+        System.out.print("\n");
     }
 
     private void showStatisticMenu() {
         System.out.println("**** Marios pizzabar - administrator-> statistik ******");
         System.out.println("Hvilken statistik vil du gerne se? ");
         System.out.println("[1] Omsætning fordelt på pizzaer");
-        System.out.println("[2] Daglig omsætning over periode");
+        System.out.println("[2] Daglig omsætning de sidste 30 dage");
         System.out.println("[3] Vis handler for given dato");
+        System.out.print("\n");
     }
 
 
@@ -117,10 +123,11 @@ public class MainMenu {
 //        System.out.println("[5] Opdater ordre ");
 
     private void ordersLoop() {
-        int option = Input.getInt("");
+        int option = Input.getInt("Vælg 1-5, eller tast 0 for hovedmenu: ");
         switch (option) {
             case 1:
                 try {
+                    System.out.println("**** Marios pizzabar - alle aktive ordrer ******");
                     showOrders();
                 } catch (Exception e) {
                     System.out.println("Fejl i hentning af ordre. Kontakt din udvikler. ");
@@ -128,6 +135,7 @@ public class MainMenu {
                 break;
             case 2:
                 try {
+                    System.out.println("**** Marios pizzabar - indsæt ny ordre ******");
                     insertOrder();
                 } catch (Exception e) {
                     System.out.println("Fejl i opretning af ordre. Kontakt din udvikler. ");
@@ -135,6 +143,7 @@ public class MainMenu {
 
             case 3:
                 try {
+                    System.out.println("**** Marios pizzabar - afslut ordre ******");
                     setOrderAsDone();
                 } catch (Exception e) {
                     System.out.println("Fejl i afslutning af ordre kontakt din udvikler. ");
@@ -143,6 +152,7 @@ public class MainMenu {
 
             case 4:
                 try {
+                    System.out.println("**** Marios pizzabar - slet ordre ******");
                     deleteOrder();
                 } catch (Exception e) {
                     System.out.println("Fejl i sletning af ordre  kontakt din udvikler.");
@@ -150,10 +160,17 @@ public class MainMenu {
                 break;
             case 5:
                 try {
+                    System.out.println("**** Marios pizzabar - opdater ordre ******");
                     updateOrder();
                 } catch (Exception e) {
                     System.out.println("Fejl i opdatering af ordre kontakt din udvikler. ");
                 }
+                break;
+            case 0:
+                break;
+            default:
+                System.out.println("Din indtastning svarer ikke til nogen funktion");
+                administratorLoop();
                 break;
         }
     }
@@ -163,18 +180,21 @@ public class MainMenu {
 //        System.out.println("[2] Statistik");
 
     private void administratorLoop() {
-        int option = Input.getInt("");
+        int option = Input.getInt("Vælg 1-2, eller tast 0 for hovedmenu: ");
         switch (option) {
             case 1:
                 showEditPizzasMenu();
-                EditPizzasLoop();
+                editPizzasLoop();
                 break;
             case 2:
                 showStatisticMenu();
-                statisticLoop();               ;
+                statisticLoop();
+                break;
+            case 0:
                 break;
             default:
                 System.out.println("Din indtastning svarer ikke til nogen funktion");
+                administratorLoop();
                 break;
         }
     }
@@ -183,8 +203,8 @@ public class MainMenu {
 //        System.out.println("[2] Fjern pizza");
 //        System.out.println("[3] Opdater pizza");
 
-    private void EditPizzasLoop() {
-        int option = Input.getInt("");
+    private void editPizzasLoop() {
+        int option = Input.getInt("Vælg 1-3, eller tast 0 for hovedmenu: ");
         switch (option) {
 
             case 1:
@@ -210,11 +230,17 @@ public class MainMenu {
                     System.out.println("Fejl i opdatering af pizza kontakt din udvikler. ");
                 }
                 break;
+            case 0:
+                break;
+            default:
+                System.out.println("Din indtastning svarer ikke til nogen funktion");
+                administratorLoop();
+                break;
         }
     }
 
     private void statisticLoop() {
-        int option = Input.getInt("");
+        int option = Input.getInt("Vælg 1-3, eller tast 0 for hovedmenu: ");
         switch (option) {
             case 1:
                 try {
@@ -237,8 +263,13 @@ public class MainMenu {
                     System.out.println("Fejl i Vis handler for given dato kontakt din udvikler. ");
                 }
                 break;
+            case 0:
+                break;
             default:
                 System.out.println("Din indtastning svarer ikke til nogen funktion");
+                administratorLoop();
+                break;
+
         }
     }
 

@@ -131,7 +131,7 @@ public class Statistik {
             System.out.println("omsætning den " + nDaysAgo + " er " + dayRevenue + " kr.");
             totalRevenue = totalRevenue + dayRevenue;
             n++;
-            if (n > 5) {
+            if (n > 30) {
                 running = false;
             }
         }
