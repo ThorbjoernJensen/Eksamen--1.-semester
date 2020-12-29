@@ -2,16 +2,13 @@ package ui;
 
 import domain.Order;
 import domain.Pizza;
-import exceptionHandling.ExceptionHandling;
 import persistence.Database;
 import persistence.DbMenuCardMapper;
 import persistence.DbOrderMapper;
-
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Statistik {
