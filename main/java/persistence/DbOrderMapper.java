@@ -24,10 +24,6 @@ public class DbOrderMapper {
         this.database = database;
     }
 
-    public DbOrderMapper() {
-
-    }
-
     public List<Order> getOrdersAsList(String sqlargument) throws Exception {
         List<Order> orderList = new ArrayList<>();
         String sql = sqlargument;
@@ -57,7 +53,6 @@ public class DbOrderMapper {
     public Order insertOrder(Order order) throws Exception {
         boolean result = false;
         int newId = 0;
-
         String sql = "INSERT INTO mario.order ( pizza_id, amount, pickup_time, order_time, date, custemor_name, phone, remove) values (?, ?, ?,NOW(), CURDATE(),?,?,?)";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {

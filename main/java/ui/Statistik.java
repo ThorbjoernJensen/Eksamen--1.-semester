@@ -26,32 +26,23 @@ public class Statistik {
 
     }
 
-
-    public void showOrdersByTime() {
-
-    }
-
     public void pizzaCount() throws Exception {
         List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
         int pizzaCount = 0;
         int pizzaRevenue = 0;
-
         int totalRevenue = 0;
         int maxRevenue = pizzaRevenue;
         int token = 0;
         int token2 = 0;
-
         System.out.println("salgs-statistik for pizzaer: ");
         for (int i = 1; i < allPizzas.size() + 1; i++) {
             pizzaCount = 0;
             Pizza pizza = dbMenuCardMapper.getPizzaById(i);
-
             String statement = "select * from mario.order where pizza_id = " + i;
             List<Order> selectedOrders = dbOrderMapper.getOrdersAsList(statement);
             for (Order o : selectedOrders) {
                 pizzaCount = pizzaCount + o.getAmount();
             }
-
             pizzaRevenue = pizzaCount * pizza.getPrice();
             System.out.println("pizza nr. " + pizza.getPizzaNo() + ", " + pizza.getName() + ": " + pizzaCount + " stk.");
             System.out.println("samlet omsætning: " + pizzaRevenue + " kr.\n");
@@ -98,8 +89,7 @@ public class Statistik {
         System.out.println(dates.toString());
         String orderdate = Input.getString("Dato? ");
         int totalRevenue = 0;
-        for (
-                int i = 1; i < allPizzas.size(); i++) {
+        for (int i = 1; i < allPizzas.size(); i++) {
             String statement2 = "select * from mario.order where date = '" + orderdate + "'" + " AND pizza_id = " + i;
             List<Order> selectedOrders2 = dbOrderMapper.getOrdersAsList(statement2);
             Pizza pizza = dbMenuCardMapper.getPizzaById(i);

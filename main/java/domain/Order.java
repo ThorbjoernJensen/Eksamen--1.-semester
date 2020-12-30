@@ -14,7 +14,6 @@ public class Order {
     private String custemorName;
     private String phone;
     private boolean remove;
-    private String stringPickUpTime;
 
     public String stringPickUpTime(){
         String token = Integer.toString(getPickuptime());
@@ -22,14 +21,9 @@ public class Order {
      return token;
     }
 
-    public void setStringPickUpTime(String stringPickUpTime) {
-        this.stringPickUpTime = stringPickUpTime;
-    }
-
     public String getStringPickUpTime() {
         return stringPickUpTime();
     }
-
 
     public Order(int orderNr, int pizzaId, int amount, int pickuptime, Timestamp ordertime, Date date, String custemorName, String phone) {
         this.orderNr = orderNr;
@@ -54,7 +48,7 @@ public class Order {
         this.phone = phone;
     }
 
-       public int getOrderNr() {
+    public int getOrderNr() {
         return orderNr;
     }
 
@@ -121,7 +115,6 @@ public class Order {
     public void setRemove(boolean remove) {
         this.remove = remove;
     }
-
 
     @Override
     public String toString() {

@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class ExceptionHandling extends Exception {
 
-
     public ExceptionHandling(Exception e) throws Exception {
         super(e);
         logfile(e);

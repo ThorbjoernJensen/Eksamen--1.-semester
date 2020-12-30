@@ -26,11 +26,6 @@ public class MainMenu {
 
         boolean running = true;
 
-//        System.out.println("[1] Vis menukort");
-//        System.out.println("[2] Ordrehåndtering");
-//        System.out.println("[3] Administration");
-//        System.out.println("[4] Afslut program");
-
         while (running) {
             showMainMenu();
             switch (Input.getInt("Vælg 1-4: ")) {
@@ -41,17 +36,14 @@ public class MainMenu {
                         System.out.println("Fejl i hentning af menukort kontakt din udvikler. ");
                     }
                     break;
-
                 case 2:
                     showOrdermenu();
                     ordersLoop();
                     break;
-
                 case 3:
                     showAdministratorMenu();
                     administratorLoop();
                     break;
-
                 case 4:
                     try {
                         running = exitProgram(running);
@@ -59,12 +51,9 @@ public class MainMenu {
                         System.out.println("Lukning af programmet fejlede ");
                     }
                     break;
-
                 default:
                     System.out.println("Vælg en menu ");
                     break;
-
-
             }
         }
         System.out.println("Tak for denne gang! Håber at se dig snart igen.");
@@ -90,7 +79,6 @@ public class MainMenu {
         System.out.print("\n");
     }
 
-
     private void showAdministratorMenu() {
         System.out.println("**** Marios pizzabar - administrator ******");
         System.out.println("[1] Rediger menukort");
@@ -115,13 +103,6 @@ public class MainMenu {
         System.out.print("\n");
     }
 
-
-//    System.out.println("[1] Se alle ordre");
-//        System.out.println("[2] Opret ny ordre");
-//        System.out.println("[3] Afslut ordre");
-//        System.out.println("[4] Slet ordre");
-//        System.out.println("[5] Opdater ordre ");
-
     private void ordersLoop() {
         int option = Input.getInt("Vælg 1-5, eller tast 0 for hovedmenu: ");
         switch (option) {
@@ -140,7 +121,7 @@ public class MainMenu {
                 } catch (Exception e) {
                     System.out.println("Fejl i opretning af ordre. Kontakt din udvikler. ");
                 }
-
+                break;
             case 3:
                 try {
                     System.out.println("**** Marios pizzabar - afslut ordre ******");
@@ -149,7 +130,6 @@ public class MainMenu {
                     System.out.println("Fejl i afslutning af ordre kontakt din udvikler. ");
                 }
                 break;
-
             case 4:
                 try {
                     System.out.println("**** Marios pizzabar - slet ordre ******");
@@ -175,10 +155,6 @@ public class MainMenu {
         }
     }
 
-
-//     System.out.println("[1] Rediger menukort");
-//        System.out.println("[2] Statistik");
-
     private void administratorLoop() {
         int option = Input.getInt("Vælg 1-2, eller tast 0 for hovedmenu: ");
         switch (option) {
@@ -199,14 +175,9 @@ public class MainMenu {
         }
     }
 
-    //     System.out.println("[1] Opret ny pizza");
-//        System.out.println("[2] Fjern pizza");
-//        System.out.println("[3] Opdater pizza");
-
     private void editPizzasLoop() {
         int option = Input.getInt("Vælg 1-3, eller tast 0 for hovedmenu: ");
         switch (option) {
-
             case 1:
                 try {
                     insertPizza();
@@ -214,7 +185,6 @@ public class MainMenu {
                     System.out.println("Fejl i oprettelse af ny pizza kontakt din udvikler. ");
                 }
                 break;
-
             case 2:
                 try {
                     deletePizza();
@@ -222,7 +192,6 @@ public class MainMenu {
                     System.out.println("Fejl i sletning af pizza kontakt din udvikler ");
                 }
                 break;
-
             case 3:
                 try {
                     updatePizza();
@@ -273,7 +242,6 @@ public class MainMenu {
         }
     }
 
-
     private boolean exitProgram(boolean running) {
         System.out.println("Ønsker du at lukke programmet? ");
         System.out.println("Tryk y for at fortsætte eller en vilkårlig tast for at gå tilbage til menuen ");
@@ -283,7 +251,6 @@ public class MainMenu {
         }
         return running;
     }
-
 
     private void showOrders() throws Exception {
         String statement = "select * from mario.order where remove=0 order by date DESC, pickup_time ASC";
@@ -305,7 +272,6 @@ public class MainMenu {
             System.out.println("ordre " + dbOrderMapper.getOrderNr() + " er blevet leveret til kunden");
         }
     }
-
 
     private void updatePizza() throws Exception {
         System.out.println("***** Opdater pizza *******");
@@ -362,17 +328,6 @@ public class MainMenu {
         }
     }
 
-    private void showSinglePizza() throws Exception {
-        int pizzaNo = Input.getInt("Indtast pizzanummer: ");
-        Pizza pizza = dbMenuCardMapper.getPizzaById(pizzaNo);
-        if (pizza != null) {
-            System.out.println("Du har fundet pizza nummer: " + pizzaNo);
-            System.out.println(pizza.toString());
-        } else {
-            System.out.println("Pizza med nr = " + pizzaNo + " findes desværre ikke");
-        }
-    }
-
     private void showMenuCard() throws Exception {
         String text, dotline;
         int dotLenght = 100;
@@ -393,7 +348,6 @@ public class MainMenu {
         System.out.println("**** Opret ny ordre *******");
         int pizzaNo = Input.getInt("Indtast pizza nummer: ");
         Pizza chosenPizza = dbMenuCardMapper.getPizzaById(pizzaNo);
-
         if (chosenPizza == null) {
             System.out.println("Pizza med nr " + pizzaNo + " findes ikke i menuen. Du skal vælge mellem disse pizzaer: ");
             showMenuCard();
@@ -429,12 +383,10 @@ public class MainMenu {
                 if (newPickupTimeInput > 0) {
                     order.setPickuptime(newPickupTimeInput);
                 }
-
                 String newNameInput = Input.getString("Kundens navn: (" + order.getCustemorName() + "): ");
                 if (newNameInput.length() > 0) {
                     order.setCustemorName(newNameInput);
                 }
-
                 String newPhoneInput = Input.getString("Tlf nr: (" + order.getPhone() + "): ");
                 if (newPhoneInput.length() > 0) {
                     order.setPhone(newPhoneInput);
@@ -448,7 +400,6 @@ public class MainMenu {
                 }
                 updateSqlOrder(orderNo, order);
                 break;
-
             case 3:
                 int newPizzaAmountInputOption3 = Input.getInt("Pizza mængde: (" + order.getAmount() + "): ");
                 if (newPizzaAmountInputOption3 > 0) {
@@ -499,4 +450,15 @@ public class MainMenu {
         }
     }
 
+    //Viser single Pizza
+    //    private void showSinglePizza() throws Exception {
+//        int pizzaNo = Input.getInt("Indtast pizzanummer: ");
+//        Pizza pizza = dbMenuCardMapper.getPizzaById(pizzaNo);
+//        if (pizza != null) {
+//            System.out.println("Du har fundet pizza nummer: " + pizzaNo);
+//            System.out.println(pizza.toString());
+//        } else {
+//            System.out.println("Pizza med nr = " + pizzaNo + " findes desværre ikke");
+//        }
+//    }
 }

@@ -25,9 +25,6 @@ public class Input {
             try {
                 String token = getString(question);
                 int pickuptime = 0;
-
-//                token = new StringBuilder(token).insert(token.length() - 2, ":").toString();
-
                 if (token.contains(":") || token.contains(".") || token.contains(",")) {
                     token = token.replace(".", "");
                     token = token.replace(":", "");
@@ -43,7 +40,7 @@ public class Input {
                         System.out.println("Det skal være i tidsformatet \"hh:mm\" ");
                     }
                 } else {
-                    System.out.println("Fejl i tid - Over 24 timer. Prøv venligst at angive et nyt tidspunkt af formatet '0000' eller '00:00' eller '00.00' ");
+                    System.out.println("Fejl i tid. Uden for åbningstiden. Åbningstid fra: kl 11:00 til 23:59");
                     return getIntTime("Afhentningstidspunkt: ");
                 }
             } catch (Exception e) {
