@@ -84,16 +84,15 @@ public class DbOrderMapper {
 
     public boolean updateOrder(Order order) throws Exception {
         boolean result = false;
-        String sql = "update mario.order set order_nr = ?, pizza_id = ?, amount = ?, pickup_time = ?, custemor_name = ?, phone = ? where order_nr = ?";
+        String sql = "update mario.order set pizza_id = ?, amount = ?, pickup_time = ?, custemor_name = ?, phone = ? where order_nr = ?";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, order.getOrderNr());
-                ps.setInt(2, order.getPizzaId());
-                ps.setInt(3, order.getAmount());
-                ps.setInt(4, order.getPickuptime());
-                ps.setString(5, order.getCustemorName());
-                ps.setString(6, order.getPhone());
-                ps.setInt(7, order.getOrderNr());
+                ps.setInt(1, order.getPizzaId());
+                ps.setInt(2, order.getAmount());
+                ps.setInt(3, order.getPickuptime());
+                ps.setString(4, order.getCustemorName());
+                ps.setString(5, order.getPhone());
+                ps.setInt(6, order.getOrderNr());
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     result = true;

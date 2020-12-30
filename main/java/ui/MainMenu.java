@@ -277,7 +277,7 @@ public class MainMenu {
         System.out.println("***** Opdater pizza *******");
         int pizzaNo = Input.getInt("Indtast pizza nummer på den du vil rette: ");
         System.out.println("Indtast ny værdi, hvis den skal rettes - eller blot <retur>: ");
-        Pizza pizza = dbMenuCardMapper.getPizzaById(pizzaNo);
+        Pizza pizza = dbMenuCardMapper.getPizzaByNo(pizzaNo);
         String newPizzaNoInput = Input.getString("Pizzanummer: (" + pizza.getPizzaNo() + "): ");
         if (newPizzaNoInput.length() > 0) {
             pizza.setPizzaNo(Integer.parseInt(newPizzaNoInput));
@@ -347,7 +347,7 @@ public class MainMenu {
     private void insertOrder() throws Exception {
         System.out.println("**** Opret ny ordre *******");
         int pizzaNo = Input.getInt("Indtast pizza nummer: ");
-        Pizza chosenPizza = dbMenuCardMapper.getPizzaById(pizzaNo);
+        Pizza chosenPizza = dbMenuCardMapper.getPizzaByNo(pizzaNo);
         if (chosenPizza == null) {
             System.out.println("Pizza med nr " + pizzaNo + " findes ikke i menuen. Du skal vælge mellem disse pizzaer: ");
             showMenuCard();

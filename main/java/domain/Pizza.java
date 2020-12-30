@@ -23,16 +23,20 @@ public class Pizza {
         this.price = price;
     }
 
+    public int getPizzaNo() {
+        return pizzaNo;
+    }
+
+    public void setPizzaNo(int pizzaNo) {
+        this.pizzaNo = pizzaNo;
+    }
+
     public int getPizzaId() {
         return pizzaId;
     }
 
     public void setPizzaId(int pizzaId) {
         this.pizzaId = pizzaId;
-    }
-
-    public int getPizzaNo() {
-        return pizzaNo;
     }
 
     public String getName() {
@@ -45,10 +49,6 @@ public class Pizza {
 
     public int getPrice() {
         return price;
-    }
-
-    public void setPizzaNo(int pizzaNo) {
-        this.pizzaNo = pizzaNo;
     }
 
     public void setName(String name) {

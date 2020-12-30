@@ -39,9 +39,34 @@ public class DbMenuCardMapper {
         }
         return pizzaList;
     }
-    public Pizza getPizzaById(int pizzaNo) throws Exception {
+    public Pizza getPizzaByNo(int pizzaNo) throws Exception {
         Pizza pizza = null;
         String sql = "select * from pizza where pizza_no = ?";
+        try (Connection connection = database.connect()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, pizzaNo);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    int pizza_id = rs.getInt("pizza_id");
+                    int pizza_no = rs.getInt("pizza_no");
+                    String name = rs.getString("name");
+                    String ingredients = rs.getString("ingredients");
+                    int price = rs.getInt("price");
+                    pizza = new Pizza(pizza_id, pizza_no, name, ingredients, price);
+                }
+            } catch (Exception e) {
+                throw new ExceptionHandling(e);
+            }
+        } catch (Exception e) {
+            throw new ExceptionHandling(e);
+        }
+        return pizza;
+    }
+
+
+    public Pizza getPizzaById(int pizzaNo) throws Exception {
+        Pizza pizza = null;
+        String sql = "select * from pizza where pizza_id = ?";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, pizzaNo);
@@ -114,14 +139,14 @@ public class DbMenuCardMapper {
 
     public boolean updatePizza(Pizza pizza) throws Exception {
         boolean result = false;
-        String sql = "update pizza set pizza_no = ?, name = ?, ingredients = ?, price = ? where pizza_no = ?";
+        String sql = "update mario.pizza set pizza_no = ?, name = ?, ingredients = ?, price = ? where pizza_id = ?";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, pizza.getPizzaNo());
                 ps.setString(2, pizza.getName());
                 ps.setString(3, pizza.getIngredients());
                 ps.setInt(4, pizza.getPrice());
-                ps.setInt(5, pizza.getPizzaNo());
+                ps.setInt(5, pizza.getPizzaId());
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     result = true;
