@@ -2,6 +2,7 @@ package persistence;
 
 import domain.Pizza;
 import exceptionHandling.ExceptionHandling;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,24 +22,23 @@ public class DbMenuCardMapper {
         String sql = "select * from pizza";
 
         try (Connection connection = database.connect()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    int pizza_id = rs.getInt("pizza_id");
-                    int pizza_no = rs.getInt("pizza_no");
-                    String name = rs.getString("name");
-                    String ingredients = rs.getString("ingredients");
-                    int price = rs.getInt("price");
-                    pizzaList.add(new Pizza(pizza_id, pizza_no, name, ingredients, price));
-                }
-            } catch (Exception e) {
-                throw new ExceptionHandling(e);
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int pizza_id = rs.getInt("pizza_id");
+                int pizza_no = rs.getInt("pizza_no");
+                String name = rs.getString("name");
+                String ingredients = rs.getString("ingredients");
+                int price = rs.getInt("price");
+                pizzaList.add(new Pizza(pizza_id, pizza_no, name, ingredients, price));
+
             }
         } catch (Exception e) {
             throw new ExceptionHandling(e);
         }
         return pizzaList;
     }
+
     public Pizza getPizzaByNo(int pizzaNo) throws Exception {
         Pizza pizza = null;
         String sql = "select * from pizza where pizza_no = ?";

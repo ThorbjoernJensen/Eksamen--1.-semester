@@ -1,24 +1,142 @@
-Wed Dec 23 22:31:49 CET 2020 : Access denied for user 'testdb_user'@'%' to database 'mario1'
-Wed Dec 23 22:31:49 CET 2020 : java.sql.SQLSyntaxErrorException: Access denied for user 'testdb_user'@'%' to database 'mario1'
-Wed Dec 23 22:31:50 CET 2020 : Access denied for user 'testdb_user'@'%' to database 'mario1'
-Wed Dec 23 22:31:50 CET 2020 : java.sql.SQLSyntaxErrorException: Access denied for user 'testdb_user'@'%' to database 'mario1'
-Wed Dec 23 22:33:39 CET 2020 : Public Key Retrieval is not allowed
-Wed Dec 23 22:33:39 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
-Wed Dec 23 22:33:41 CET 2020 : Public Key Retrieval is not allowed
-Wed Dec 23 22:33:41 CET 2020 : java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
-Wed Dec 23 22:35:05 CET 2020 : Access denied for user 'testdb_user'@'localhost' (using password: YES)
-Wed Dec 23 22:35:05 CET 2020 : java.sql.SQLException: Access denied for user 'testdb_user'@'localhost' (using password: YES)
-Wed Dec 23 22:36:01 CET 2020 : The connection property 'useSSL' acceptable values are: 'TRUE', 'FALSE', 'YES' or 'NO'. The value 'false1' is not acceptable.
-Wed Dec 23 22:36:01 CET 2020 : java.sql.SQLException: The connection property 'useSSL' acceptable values are: 'TRUE', 'FALSE', 'YES' or 'NO'. The value 'false1' is not acceptable.
-Wed Dec 23 22:36:07 CET 2020 : The connection property 'useSSL' acceptable values are: 'TRUE', 'FALSE', 'YES' or 'NO'. The value 'false1' is not acceptable.
-Wed Dec 23 22:36:07 CET 2020 : java.sql.SQLException: The connection property 'useSSL' acceptable values are: 'TRUE', 'FALSE', 'YES' or 'NO'. The value 'false1' is not acceptable.
-Wed Dec 23 23:09:53 CET 2020 : Access denied for user 'testdb_users'@'localhost' (using password: YES)
-Wed Dec 23 23:09:53 CET 2020 : java.sql.SQLException: Access denied for user 'testdb_users'@'localhost' (using password: YES)
-Wed Dec 23 23:22:55 CET 2020 : Access denied for user 'testdb_users'@'localhost' (using password: YES)
-Wed Dec 23 23:22:55 CET 2020 : java.sql.SQLException: Access denied for user 'testdb_users'@'localhost' (using password: YES)
-Wed Dec 23 23:25:57 CET 2020 : Access denied for user 'testdb_users'@'localhost' (using password: YES)
-Wed Dec 23 23:25:57 CET 2020 : java.sql.SQLException: Access denied for user 'testdb_users'@'localhost' (using password: YES)
-Wed Dec 23 23:26:47 CET 2020 : Access denied for user 'testdb_users'@'localhost' (using password: YES)
-Wed Dec 23 23:26:47 CET 2020 : java.sql.SQLException: Access denied for user 'testdb_users'@'localhost' (using password: YES)
-Wed Dec 23 23:36:55 CET 2020 : Access denied for user 'testdb_users'@'localhost' (using password: YES)
-Wed Dec 23 23:36:55 CET 2020 : java.sql.SQLException: Access denied for user 'testdb_users'@'localhost' (using password: YES)
+Mon Jan 04 11:06:04 CET 2021 : java.sql.SQLException: Column 'pizza_i' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:548)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:807)
+	at persistence.DbMenuCardMapper.getAllPizzas(DbMenuCardMapper.java:27)
+	at ui.MainMenu.showMenuCard(MainMenu.java:335)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:34)
+	at Main.main(Main.java:9)
+
+Mon Jan 04 11:06:04 CET 2021 : exceptionHandling.ExceptionHandling: java.sql.SQLException: Column 'pizza_i' not found.
+	at persistence.DbMenuCardMapper.getAllPizzas(DbMenuCardMapper.java:35)
+	at ui.MainMenu.showMenuCard(MainMenu.java:335)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:34)
+	at Main.main(Main.java:9)
+Caused by: java.sql.SQLException: Column 'pizza_i' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:548)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:807)
+	at persistence.DbMenuCardMapper.getAllPizzas(DbMenuCardMapper.java:27)
+	... 3 more
+
+Mon Jan 04 11:08:06 CET 2021 : java.sql.SQLException: Column 'pizza_i' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:548)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:807)
+	at persistence.DbMenuCardMapper.getAllPizzas(DbMenuCardMapper.java:28)
+	at ui.MainMenu.showMenuCard(MainMenu.java:335)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:34)
+	at Main.main(Main.java:9)
+
+Mon Jan 04 12:16:55 CET 2021 : java.sql.SQLException: Column 'pizza_i' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:548)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:807)
+	at persistence.DbMenuCardMapper.getAllPizzas(DbMenuCardMapper.java:28)
+	at ui.Statistik.pizzaCountDate(Statistik.java:77)
+	at ui.MainMenu.statisticLoop(MainMenu.java:230)
+	at ui.MainMenu.administratorLoop(MainMenu.java:167)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:45)
+	at Main.main(Main.java:9)
+
+Mon Jan 04 12:24:00 CET 2021 : java.sql.SQLException: Incorrect DATE value: 'Drop table orders'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:32)
+	at ui.Statistik.pizzaCountDate(Statistik.java:94)
+	at ui.MainMenu.statisticLoop(MainMenu.java:230)
+	at ui.MainMenu.administratorLoop(MainMenu.java:167)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:45)
+	at Main.main(Main.java:9)
+
+Mon Jan 04 12:24:00 CET 2021 : exceptionHandling.ExceptionHandling: java.sql.SQLException: Incorrect DATE value: 'Drop table orders'
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:45)
+	at ui.Statistik.pizzaCountDate(Statistik.java:94)
+	at ui.MainMenu.statisticLoop(MainMenu.java:230)
+	at ui.MainMenu.administratorLoop(MainMenu.java:167)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:45)
+	at Main.main(Main.java:9)
+Caused by: java.sql.SQLException: Incorrect DATE value: 'Drop table orders'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:32)
+	... 5 more
+
+Mon Jan 04 12:24:38 CET 2021 : java.sql.SQLException: Incorrect DATE value: '; drop table orders;'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:32)
+	at ui.Statistik.pizzaCountDate(Statistik.java:94)
+	at ui.MainMenu.statisticLoop(MainMenu.java:230)
+	at ui.MainMenu.administratorLoop(MainMenu.java:167)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:45)
+	at Main.main(Main.java:9)
+
+Mon Jan 04 12:24:38 CET 2021 : exceptionHandling.ExceptionHandling: java.sql.SQLException: Incorrect DATE value: '; drop table orders;'
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:45)
+	at ui.Statistik.pizzaCountDate(Statistik.java:94)
+	at ui.MainMenu.statisticLoop(MainMenu.java:230)
+	at ui.MainMenu.administratorLoop(MainMenu.java:167)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:45)
+	at Main.main(Main.java:9)
+Caused by: java.sql.SQLException: Incorrect DATE value: '; drop table orders;'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:32)
+	... 5 more
+
+Mon Jan 04 12:33:55 CET 2021 : java.sql.SQLException: Can not issue data manipulation statements with executeQuery().
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.StatementImpl.checkForDml(StatementImpl.java:367)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:962)
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:34)
+	at ui.Statistik.revenueCountDate(Statistik.java:116)
+	at ui.MainMenu.statisticLoop(MainMenu.java:223)
+	at ui.MainMenu.administratorLoop(MainMenu.java:167)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:45)
+	at Main.main(Main.java:9)
+
+Mon Jan 04 12:33:55 CET 2021 : exceptionHandling.ExceptionHandling: java.sql.SQLException: Can not issue data manipulation statements with executeQuery().
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:47)
+	at ui.Statistik.revenueCountDate(Statistik.java:116)
+	at ui.MainMenu.statisticLoop(MainMenu.java:223)
+	at ui.MainMenu.administratorLoop(MainMenu.java:167)
+	at ui.MainMenu.mainMenuLoop(MainMenu.java:45)
+	at Main.main(Main.java:9)
+Caused by: java.sql.SQLException: Can not issue data manipulation statements with executeQuery().
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.StatementImpl.checkForDml(StatementImpl.java:367)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:962)
+	at persistence.DbOrderMapper.getOrdersAsList(DbOrderMapper.java:34)
+	... 5 more
+
