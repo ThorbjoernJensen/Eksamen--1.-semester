@@ -34,10 +34,15 @@ public class Statistik {
         int maxRevenue = pizzaRevenue;
         int token = 0;
         int token2 = 0;
+        int i=0;
         System.out.println("salgs-statistik for pizzaer: ");
-        for (int i = 1; i < allPizzas.size()+1; i++) {
+
+//        for (int i = 1; i < allPizzas.size()+1; i++) {
+        for (Pizza pizza : allPizzas) {
+            i=pizza.getPizzaId();
+
             pizzaCount = 0;
-            Pizza pizza = dbMenuCardMapper.getPizzaById(i);
+//            Pizza pizza = dbMenuCardMapper.getPizzaById(i);
             String statement = "select * from mario.order where pizza_id = " + i;
             List<Order> selectedOrders = dbOrderMapper.getOrdersAsList(statement);
             for (Order o : selectedOrders) {
