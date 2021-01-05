@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Statistik {
@@ -27,7 +28,10 @@ public class Statistik {
     }
 
     public void pizzaCount() throws Exception {
-        List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
+//        List<Pizza> allPizzas = dbMenuCardMapper.getAllPizzas();
+        List<Pizza> allPizzas = new LinkedList<>(dbMenuCardMapper.getAllPizzas());
+
+//        List<Object>
         int pizzaCount = 0;
         int pizzaRevenue = 0;
         int totalRevenue = 0;
